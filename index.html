@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EigenTunnel | Hybrid PQC Overlay</title>
-  <meta name="description" content="EigenTunnel: hybrid post-quantum overlay, CBOM discovery, integration-first zero trust. Formerly FreeQ." />
+  <meta name="description" content="EigenTunnel: hybrid post-quantum overlay, CBOM discovery, integration-first zero trust." />
   <style>
     :root{--bg:#0b1018;--bg2:#121a24;--line:#2a3a4d;--text:#e8eef6;--muted:#9aa8b8;--teal:#4fd1c5}
     *{box-sizing:border-box;margin:0;padding:0}
@@ -30,13 +30,11 @@
     .card{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:22px}
     pre{background:#071018;border:1px solid var(--line);border-radius:12px;padding:16px;overflow:auto;font-size:13px;color:#d7eee9}
     .note{background:#1b3a3a;border:1px solid #2a6a66;border-radius:12px;padding:14px;margin:16px 0}
-    table{width:100%;border-collapse:collapse;font-size:14px}
-    th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
     footer{padding:28px 8vw 48px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
   </style>
 </head>
 <body>
-  <div class="banner"><strong>Public alpha honesty.</strong> EigenTunnel Core and field gateway paths are real and inspectable. Formerly shipped as FreeQ at getfreeq.com.</div>
+  <div class="banner"><strong>Public alpha.</strong> EigenTunnel Core and field gateway paths are real and inspectable.</div>
   <header>
     <a class="brand" href="#top"><span class="mark">ET</span> EigenTunnel</a>
     <nav>
@@ -51,10 +49,10 @@
     <div class="hero">
       <p class="kicker">Core for testing hybrid PQC. Cloud for enterprise protection across the network.</p>
       <h1>Find risky crypto. Protect unpatchable paths. Connect when the network will not cooperate.</h1>
-      <p class="lede">EigenTunnel Core is the free open-source overlay: cloak enrolled nodes and protect data in flight with hybrid post-quantum crypto. EigenTunnel Cloud adds enrollment, CBOM evidence, managed rendezvous, and optional outbound-only gateway relay.</p>
+      <p class="lede">EigenTunnel Core is the free overlay: cloak enrolled nodes and protect data in flight with hybrid post-quantum crypto. EigenTunnel Cloud adds enrollment, CBOM evidence, managed rendezvous, and optional outbound-only gateway relay.</p>
       <div class="cta">
         <a class="btn btn-p" href="#install">Install Core</a>
-        <a class="btn" href="https://github.com/freeq-io">GitHub org</a>
+        <a class="btn" href="https://github.com/eigentunnel">GitHub org</a>
         <a class="btn" href="mailto:patrick@eigen-systems.com">Talk to Eigen Systems</a>
       </div>
     </div>
@@ -77,23 +75,23 @@
     </section>
     <section id="connectivity">
       <h2>Connect when the network will not cooperate.</h2>
-      <pre>Direct: Node A -&gt; EigenTunnel overlay -&gt; Node B
-Relay:  Node A --outbound only--&gt; gateway &lt;--outbound only-- Node B</pre>
+      <pre>Direct: Node A -> EigenTunnel overlay -> Node B
+Relay:  Node A --outbound only--> gateway <--outbound only-- Node B</pre>
       <p class="sub" style="margin-top:16px">Gateway accepts leaf sessions only. It never dials your phone, Starlink home, or hotel laptop.</p>
     </section>
     <section id="install">
       <h2>Install on macOS</h2>
-      <p class="sub">Confirm the current installer in the org before running it on a production Mac. Repos are already named eigentunnel-core and eigentunnel-cloud.</p>
+      <p class="sub">Confirm the current installer in <a href="https://github.com/eigentunnel/eigentunnel-core">eigentunnel-core</a> before running it on a production Mac.</p>
       <pre># Expected success line after a clean local setup:
 EigenTunnel install result: PASS</pre>
       <div class="note">Alpha — not independently audited. Do not use for classified or life-safety data yet.</div>
     </section>
     <section id="contact">
-      <h2>Rebrand complete. Product unchanged.</h2>
-      <p class="sub">Previously marketed as FreeQ at getfreeq.com. The name collided with unrelated FreeQ products, including a public IRC / AT Protocol project. EigenTunnel is the continuing hybrid-PQC overlay from Eigen Systems.</p>
+      <h2>Eigen Systems</h2>
+      <p class="sub">This product was previously marketed as FreeQ. The overlay did not change. The name did, after a collision with unrelated FreeQ products.</p>
       <div class="grid">
-        <article class="card"><h3>Contact</h3><p>Patrick, Eigen Systems<br><a href="mailto:patrick@eigen-systems.com">patrick@eigen-systems.com</a><br><a href="https://github.com/freeq-io">github.com/freeq-io</a></p></article>
-        <article class="card"><h3>Repos</h3><p>eigentunnel-core · eigentunnel-cloud · eigentunnel-core-dev · eigentunnel-continual-harness · this public site repo</p></article>
+        <article class="card"><h3>Contact</h3><p>Patrick, Eigen Systems<br><a href="mailto:patrick@eigen-systems.com">patrick@eigen-systems.com</a><br><a href="https://github.com/eigentunnel">github.com/eigentunnel</a></p></article>
+        <article class="card"><h3>Repos</h3><p><a href="https://github.com/eigentunnel/eigentunnel-core">eigentunnel-core</a> · <a href="https://github.com/eigentunnel/eigentunnel-cloud">eigentunnel-cloud</a> · eigentunnel-core-dev · eigentunnel-continual-harness · this site</p></article>
       </div>
     </section>
   </main>
