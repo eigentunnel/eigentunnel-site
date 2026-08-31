@@ -55,6 +55,9 @@ h3{font-size:18px;margin-bottom:8px}
 .price small{font-size:13px;font-weight:500;color:var(--muted)}
 
 pre{background:#071018;border:1px solid var(--line);border-radius:12px;padding:16px;overflow:auto;font-size:13px;color:#d7eee9}
+
+.diagram{width:100%;overflow-x:auto}
+.diagram svg{display:block;width:100%;min-width:640px;height:auto}
 .note{background:#1b3a3a;border:1px solid var(--teal-dim);border-radius:12px;padding:14px;margin:16px 0;font-size:14px}
 
 table{width:100%;border-collapse:collapse;background:var(--bg2);border:1px solid var(--line);border-radius:14px;overflow:hidden}
