@@ -19,24 +19,24 @@ Static, multi-page, no build step:
 - `about.html` &mdash; company, rename story, why-now
 - `contact.html` &mdash; lead capture form + calendar booking
 - `assets/style.css` &mdash; shared styles
-- `assets/lead-form.js` &mdash; fetch-based submit handler for the Formspree forms
+- `assets/lead-form.js` &mdash; fetch-based submit handler for the lead forms
+- `google-apps-script/` &mdash; the Apps Script that receives form submissions
 
-## Lead capture (Formspree)
+## Lead capture (Google Apps Script + Sheets)
 
-The lead forms on `index.html` and `contact.html` post to Formspree so the site
-can capture leads without a backend. **The form `action` URLs currently point
-to a placeholder (`https://formspree.io/f/YOUR_FORM_ID`) and won't work until
-you swap it in:**
+The lead forms on `index.html` and `contact.html` post to a Google Apps
+Script Web App that appends each submission to a Google Sheet in the
+`eigentunnel.com` Workspace and emails `patrick@eigentunnel.com`. No third
+party holds lead data.
 
-1. Sign up free at https://formspree.io and create a form.
-2. Copy the endpoint it gives you (looks like `https://formspree.io/f/abcdwxyz`).
-3. Replace `YOUR_FORM_ID` in the `<form action="...">` attribute in both
-   `index.html` and `contact.html`.
-4. In the Formspree dashboard, set the notification email to
-   `patrick@eigentunnel.com`.
+**The form `action` URLs currently point to a placeholder**
+(`https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec`) **and won't
+work until it's deployed and swapped in.** Full setup instructions (10
+minutes, done once as the Workspace admin) are in
+[`google-apps-script/SETUP.md`](./google-apps-script/SETUP.md).
 
 Each form includes a honeypot field (`_gotcha`) for basic spam filtering,
-which Formspree respects automatically.
+handled in `google-apps-script/Code.gs`.
 
 ## GitHub Pages
 
