@@ -3,46 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EigenTunnel | Hybrid PQC Overlay</title>
-  <meta name="description" content="EigenTunnel: hybrid post-quantum overlay, CBOM discovery, integration-first zero trust." />
-  <style>
-    :root{--bg:#0b1018;--bg2:#121a24;--line:#2a3a4d;--text:#e8eef6;--muted:#9aa8b8;--teal:#4fd1c5}
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
-    a{color:var(--teal);text-decoration:none}
-    .banner{background:#dbeafe;color:#0f2744;font-size:13px;padding:10px 20px;text-align:center}
-    header{display:flex;justify-content:space-between;align-items:center;padding:16px 28px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(11,16,24,.9)}
-    .brand{display:flex;gap:10px;align-items:center;color:var(--text);font-weight:700}
-    .mark{width:34px;height:34px;border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;color:var(--teal);font-size:11px}
-    nav{display:flex;gap:14px;font-size:13px;flex-wrap:wrap}
-    nav a{color:#c5d0db}
-    .hero{padding:72px 8vw 80px}
-    .kicker{color:var(--teal);font-size:12px;letter-spacing:.14em;font-weight:700;text-transform:uppercase;margin-bottom:18px}
-    h1{font-size:clamp(36px,6vw,72px);line-height:1.02;max-width:16ch}
-    .lede{margin-top:22px;max-width:58ch;color:#d5dee8;font-size:18px}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-    .btn{display:inline-flex;padding:12px 16px;border-radius:10px;font-weight:600;font-size:14px;border:1px solid var(--line);color:var(--text)}
-    .btn-p{background:var(--teal);color:#06201d;border-color:transparent}
-    section{padding:72px 8vw;border-top:1px solid var(--line)}
-    h2{font-size:clamp(26px,3vw,40px);margin-bottom:12px}
-    .sub{color:var(--muted);max-width:70ch;margin-bottom:24px}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-    .card{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:22px}
-    pre{background:#071018;border:1px solid var(--line);border-radius:12px;padding:16px;overflow:auto;font-size:13px;color:#d7eee9}
-    .note{background:#1b3a3a;border:1px solid #2a6a66;border-radius:12px;padding:14px;margin:16px 0}
-    footer{padding:28px 8vw 48px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
-  </style>
+  <title>EigenTunnel | Hybrid Post-Quantum Overlay</title>
+  <meta name="description" content="EigenTunnel: hybrid post-quantum overlay, CBOM discovery, integration-first zero trust. Free Core, paid Cloud enrollment and evidence plane." />
+  <meta property="og:title" content="EigenTunnel | Hybrid Post-Quantum Overlay" />
+  <meta property="og:description" content="Find risky crypto. Protect unpatchable paths. Connect when the network will not cooperate." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://eigentunnel.com/" />
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
   <div class="banner"><strong>Public alpha.</strong> EigenTunnel Core and field gateway paths are real and inspectable.</div>
   <header>
-    <a class="brand" href="#top"><span class="mark">ET</span> EigenTunnel</a>
-    <nav>
-      <a href="#offering">Offering</a>
-      <a href="#protection">Protection</a>
-      <a href="#connectivity">Connectivity</a>
-      <a href="#install">Install</a>
-      <a href="#contact">Contact</a>
+    <a class="brand" href="index.html"><span class="mark">ET</span> EigenTunnel</a>
+    <nav class="primary">
+      <input type="checkbox" id="nav-toggle">
+      <label for="nav-toggle" class="hamburger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <div class="links">
+        <a href="index.html" class="active">Home</a>
+        <a href="product.html">Product</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a class="btn btn-p cta-link" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
     </nav>
   </header>
   <main id="top">
@@ -51,50 +34,84 @@
       <h1>Find risky crypto. Protect unpatchable paths. Connect when the network will not cooperate.</h1>
       <p class="lede">EigenTunnel Core is the free overlay: cloak enrolled nodes and protect data in flight with hybrid post-quantum crypto. EigenTunnel Cloud adds enrollment, CBOM evidence, managed rendezvous, and optional outbound-only gateway relay.</p>
       <div class="cta">
-        <a class="btn btn-p" href="#install">Install Core</a>
-        <a class="btn" href="https://github.com/eigentunnel">GitHub org</a>
-        <a class="btn" href="mailto:patrick@eigen-systems.com">Talk to Eigen Systems</a>
+        <a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
+        <a class="btn" href="product.html#install">Install Core</a>
+        <a class="btn" href="https://github.com/eigentunnel" target="_blank" rel="noopener">GitHub org</a>
       </div>
     </div>
+
     <section id="offering">
+      <p class="eyebrow">Offering</p>
       <h2>Two layers. One security foundation.</h2>
-      <p class="sub">Core must remain useful and secure when Cloud is absent.</p>
+      <p class="sub">Core must remain useful and secure when Cloud is absent. Read the full breakdown on the <a href="product.html">product page</a> or see <a href="pricing.html">pricing</a>.</p>
       <div class="grid">
         <article class="card"><h3>EigenTunnel Core</h3><p>Free hybrid-PQC overlay. Self-managed nodes, peer trust, cloaking, local status. AGPL v3. Rust.</p></article>
-        <article class="card"><h3>EigenTunnel Cloud</h3><p>Paid plane: enrollment, approvals, CBOM evidence, rendezvous, optional relay, fleet dashboards.</p></article>
+        <article class="card highlight"><h3>EigenTunnel Cloud</h3><p>Paid plane: enrollment, approvals, CBOM evidence, rendezvous, optional relay, fleet dashboards.</p></article>
       </div>
     </section>
+
     <section id="protection">
+      <p class="eyebrow">Why it matters</p>
       <h2>Protect traffic with a long shelf life.</h2>
-      <p class="sub">Harvest-now-decrypt-later is the primary threat model.</p>
+      <p class="sub">Harvest-now-decrypt-later is the primary threat model: traffic captured today can be decrypted once large-scale quantum computers arrive. Anything with a multi-year confidentiality requirement is exposed now, not later.</p>
       <div class="grid">
         <article class="card"><h3>Hybrid tunnels</h3><p>X25519 + ML-KEM-768 (FIPS 203). AES-256-GCM or ChaCha20-Poly1305 bulk.</p></article>
         <article class="card"><h3>Mutual auth</h3><p>ML-DSA-65 (FIPS 204). No session unless the peer proves a registered identity.</p></article>
         <article class="card"><h3>Agility</h3><p>Parameter sets can move with standards. Forward secrecy per session.</p></article>
       </div>
     </section>
+
     <section id="connectivity">
+      <p class="eyebrow">Connectivity</p>
       <h2>Connect when the network will not cooperate.</h2>
       <pre>Direct: Node A -> EigenTunnel overlay -> Node B
 Relay:  Node A --outbound only--> gateway <--outbound only-- Node B</pre>
-      <p class="sub" style="margin-top:16px">Gateway accepts leaf sessions only. It never dials your phone, Starlink home, or hotel laptop.</p>
+      <p class="sub" style="margin-top:16px">Gateway accepts leaf sessions only. It never dials your phone, Starlink home, or hotel laptop. More detail on <a href="product.html#connectivity">the product page</a>.</p>
     </section>
-    <section id="install">
-      <h2>Install on macOS</h2>
-      <p class="sub">Confirm the current installer in <a href="https://github.com/eigentunnel/eigentunnel-core">eigentunnel-core</a> before running it on a production Mac.</p>
-      <pre># Expected success line after a clean local setup:
-EigenTunnel install result: PASS</pre>
-      <div class="note">Alpha — not independently audited. Do not use for classified or life-safety data yet.</div>
-    </section>
-    <section id="contact">
-      <h2>Eigen Systems</h2>
-      <p class="sub">This product was previously marketed as FreeQ. The overlay did not change. The name did, after a collision with unrelated FreeQ products.</p>
-      <div class="grid">
-        <article class="card"><h3>Contact</h3><p>Patrick, Eigen Systems<br><a href="mailto:patrick@eigen-systems.com">patrick@eigen-systems.com</a><br><a href="https://github.com/eigentunnel">github.com/eigentunnel</a></p></article>
-        <article class="card"><h3>Repos</h3><p><a href="https://github.com/eigentunnel/eigentunnel-core">eigentunnel-core</a> · <a href="https://github.com/eigentunnel/eigentunnel-cloud">eigentunnel-cloud</a> · eigentunnel-core-dev · eigentunnel-continual-harness · this site</p></article>
+
+    <section id="lead" class="tight">
+      <div class="split">
+        <div>
+          <p class="eyebrow">Talk to us</p>
+          <h2>Piloting EigenTunnel in your environment?</h2>
+          <p class="sub">Tell us about your network and we'll scope a Core deployment or a Cloud pilot together. No pitch deck required &mdash; a working call beats a demo.</p>
+          <div class="cta" style="margin-top:0">
+            <a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
+            <a class="btn" href="contact.html">Full contact form</a>
+          </div>
+        </div>
+        <form class="form-card" action="https://script.google.com/macros/s/AKfycbyHmYuK2raMMHFWlxOV9w1ERoaYtPuR9VeYa1m40m8Bi-xcGYrYbbtUtMRkAfAkWa6iiw/exec" method="POST" id="lead-form">
+          <h3>Get the technical brief</h3>
+          <p class="sub" style="margin-bottom:16px">Drop your email and we'll send the CBOM &amp; hybrid-PQC architecture notes.</p>
+          <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="source" value="home-brief">
+          <input type="hidden" name="interest" value="Technical brief request">
+          <div class="field">
+            <label for="lead-email">Work email</label>
+            <input type="email" id="lead-email" name="email" required placeholder="you@company.com">
+          </div>
+          <button class="btn btn-p btn-block" type="submit">Send me the brief</button>
+          <p class="form-status" id="lead-status" role="status"></p>
+        </form>
       </div>
     </section>
   </main>
-  <footer>© 2026 Eigen Systems. EigenTunnel Core is intended to remain free under AGPL v3.</footer>
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px"><span class="mark">ET</span> EigenTunnel</div>
+        <p>&copy; 2026 Eigen Systems. EigenTunnel Core is intended to remain free under AGPL v3.</p>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="product.html">Product</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/eigentunnel" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="assets/lead-form.js"></script>
 </body>
 </html>

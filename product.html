@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product | EigenTunnel</title>
+  <meta name="description" content="How EigenTunnel Core and Cloud work: hybrid PQC tunnels, mutual authentication, CBOM evidence, outbound-only gateway relay, and macOS install." />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html"><span class="mark">ET</span> EigenTunnel</a>
+    <nav class="primary">
+      <input type="checkbox" id="nav-toggle">
+      <label for="nav-toggle" class="hamburger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="product.html" class="active">Product</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a class="btn btn-p cta-link" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
+    </nav>
+  </header>
+  <main>
+    <div class="hero" style="padding-bottom:40px">
+      <p class="kicker">Product</p>
+      <h1>One overlay. Two ways to run it.</h1>
+      <p class="lede">EigenTunnel Core does the cryptographic work: it cloaks enrolled nodes and protects data in flight with hybrid post-quantum key exchange and signatures. EigenTunnel Cloud sits on top and handles everything a fleet needs that a single node can't do for itself.</p>
+    </div>
+
+    <section id="compare">
+      <p class="eyebrow">Core vs. Cloud</p>
+      <h2>What each layer actually does</h2>
+      <table>
+        <thead><tr><th>Capability</th><th>Core (free)</th><th>Cloud (paid)</th></tr></thead>
+        <tbody>
+          <tr><td>Hybrid PQC tunnels (X25519 + ML-KEM-768)</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Mutual authentication (ML-DSA-65)</td><td>Yes, self-managed trust</td><td>Yes, with enrollment &amp; approvals</td></tr>
+          <tr><td>Node cloaking &amp; local status</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>CBOM (crypto bill of materials) discovery</td><td>&mdash;</td><td>Yes, fleet-wide evidence</td></tr>
+          <tr><td>Managed rendezvous</td><td>&mdash;</td><td>Yes</td></tr>
+          <tr><td>Outbound-only gateway relay</td><td>Manual / self-hosted</td><td>Optional managed relay</td></tr>
+          <tr><td>Fleet dashboards &amp; approvals</td><td>&mdash;</td><td>Yes</td></tr>
+          <tr><td>License</td><td>AGPL v3</td><td>Commercial</td></tr>
+        </tbody>
+      </table>
+      <p class="sub" style="margin-top:20px">Core must remain useful and secure with Cloud absent entirely &mdash; that's a design constraint, not a marketing line. See <a href="pricing.html">pricing</a> for how the two are packaged.</p>
+    </section>
+
+    <section id="protection">
+      <p class="eyebrow">Cryptography</p>
+      <h2>Protect traffic with a long shelf life.</h2>
+      <p class="sub">Harvest-now-decrypt-later is the primary threat model: an adversary records ciphertext today and decrypts it once a cryptographically-relevant quantum computer exists. Anything that needs to stay confidential for years &mdash; not days &mdash; is exposed under classical-only crypto right now.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Hybrid tunnels</h3>
+          <p>X25519 + ML-KEM-768 (FIPS 203) key establishment. AES-256-GCM or ChaCha20-Poly1305 for bulk encryption. Classical and post-quantum components are combined, so the session stays safe even if one primitive is later broken.</p>
+        </article>
+        <article class="card">
+          <h3>Mutual authentication</h3>
+          <p>ML-DSA-65 (FIPS 204) signatures. No session is established unless the peer proves a registered identity &mdash; there is no anonymous listener mode.</p>
+        </article>
+        <article class="card">
+          <h3>Cryptographic agility</h3>
+          <p>Parameter sets and algorithms can move forward as NIST and industry standards evolve. Forward secrecy is per-session, so compromising one session key doesn't unwind history.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="connectivity">
+      <p class="eyebrow">Connectivity</p>
+      <h2>Connect when the network will not cooperate.</h2>
+      <p class="sub">Two paths, same cryptography underneath.</p>
+      <pre>Direct: Node A -> EigenTunnel overlay -> Node B
+Relay:  Node A --outbound only--> gateway <--outbound only-- Node B</pre>
+      <p class="sub" style="margin-top:16px">When a direct path exists, nodes connect over the overlay directly. When NAT, CGNAT, or a restrictive network gets in the way, the gateway relay accepts leaf sessions only &mdash; it never dials your phone, your Starlink home connection, or a hotel laptop. Both endpoints reach out to the gateway; the gateway never reaches in.</p>
+    </section>
+
+    <section id="install">
+      <p class="eyebrow">Get started</p>
+      <h2>Install on macOS</h2>
+      <p class="sub">Confirm the current installer in <a href="https://github.com/eigentunnel/eigentunnel-core" target="_blank" rel="noopener">eigentunnel-core</a> before running it on a production Mac.</p>
+      <pre># Expected success line after a clean local setup:
+EigenTunnel install result: PASS</pre>
+      <div class="note">Alpha &mdash; not independently audited. Do not use for classified or life-safety data yet.</div>
+      <div class="cta">
+        <a class="btn btn-p" href="https://github.com/eigentunnel/eigentunnel-core" target="_blank" rel="noopener">eigentunnel-core on GitHub</a>
+        <a class="btn" href="contact.html">Ask about a Cloud pilot</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px"><span class="mark">ET</span> EigenTunnel</div>
+        <p>&copy; 2026 Eigen Systems. EigenTunnel Core is intended to remain free under AGPL v3.</p>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="product.html">Product</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/eigentunnel" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | EigenTunnel</title>
+  <meta name="description" content="EigenTunnel is built by Eigen Systems. Previously marketed as FreeQ, renamed after a naming collision. The overlay didn't change &mdash; the name did." />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html"><span class="mark">ET</span> EigenTunnel</a>
+    <nav class="primary">
+      <input type="checkbox" id="nav-toggle">
+      <label for="nav-toggle" class="hamburger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="product.html">Product</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a class="btn btn-p cta-link" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
+    </nav>
+  </header>
+  <main>
+    <div class="hero" style="padding-bottom:40px">
+      <p class="kicker">About</p>
+      <h1>Eigen Systems builds EigenTunnel.</h1>
+      <p class="lede">We're a small team building a hybrid post-quantum overlay that's honest about where it is: public alpha, real code, not yet independently audited.</p>
+    </div>
+
+    <section id="rename">
+      <p class="eyebrow">Why the name changed</p>
+      <h2>Previously FreeQ. Now EigenTunnel.</h2>
+      <p class="sub">This product was previously marketed as FreeQ. That name collided with an unrelated influencer's site, so everything &mdash; the product name, the repos, the domain &mdash; was renamed to EigenTunnel. The overlay itself, the cryptography, and the roadmap did not change. If you have old links or docs referencing FreeQ or getfreeq.com, they now point to EigenTunnel and eigentunnel.com.</p>
+    </section>
+
+    <section id="thesis">
+      <p class="eyebrow">Why now</p>
+      <h2>Harvest-now-decrypt-later is not hypothetical.</h2>
+      <p class="sub">Traffic encrypted with classical-only key exchange today can be recorded now and decrypted later, once large-scale quantum computers exist. For data with a multi-year confidentiality requirement &mdash; infrastructure telemetry, credentials, long-lived secrets &mdash; that clock is already running. EigenTunnel exists so teams can start hybrid PQC migration on real traffic paths now, without waiting for a mandate.</p>
+      <div class="grid">
+        <article class="card"><h3>Integration-first</h3><p>Designed to sit alongside what you already run, not replace it. Overlay, not rip-and-replace.</p></article>
+        <article class="card"><h3>Evidence, not vibes</h3><p>CBOM discovery gives you an inventory of what's actually protected, so audits and migrations are based on data.</p></article>
+        <article class="card"><h3>Free core, by design</h3><p>The cryptographic protection layer is AGPL v3 and stays free. Cloud monetizes fleet operations, not the crypto.</p></article>
+      </div>
+    </section>
+
+    <section id="team">
+      <p class="eyebrow">Team</p>
+      <h2>Get in touch</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Patrick &middot; Eigen Systems</h3>
+          <p><a href="mailto:patrick@eigentunnel.com">patrick@eigentunnel.com</a><br><a href="https://github.com/eigentunnel" target="_blank" rel="noopener">github.com/eigentunnel</a></p>
+        </article>
+        <article class="card">
+          <h3>Repos</h3>
+          <p><a href="https://github.com/eigentunnel/eigentunnel-core" target="_blank" rel="noopener">eigentunnel-core</a> &middot; <a href="https://github.com/eigentunnel/eigentunnel-cloud" target="_blank" rel="noopener">eigentunnel-cloud</a> &middot; eigentunnel-core-dev &middot; eigentunnel-continual-harness &middot; this site</p>
+        </article>
+      </div>
+      <div class="cta">
+        <a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
+        <a class="btn" href="contact.html">Contact form</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px"><span class="mark">ET</span> EigenTunnel</div>
+        <p>&copy; 2026 Eigen Systems. EigenTunnel Core is intended to remain free under AGPL v3.</p>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="product.html">Product</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/eigentunnel" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

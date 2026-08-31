@@ -4,9 +4,39 @@ Public marketing site for **EigenTunnel**, the hybrid post-quantum overlay from 
 
 - Live site: https://eigentunnel.com
 - Org: https://github.com/eigentunnel
-- Contact: patrick@eigen-systems.com
+- Contact: patrick@eigentunnel.com
+- Book a call: https://calendar.app.google/K5anZSkG7kXmQUEX6
 
-Previously marketed as FreeQ at getfreeq.com. That name collided with unrelated products. Product is unchanged; the brand is EigenTunnel.
+Previously marketed as FreeQ at getfreeq.com. That name collided with an unrelated influencer's site, so everything was renamed EigenTunnel. Product is unchanged; the brand is EigenTunnel.
+
+## Pages
+
+Static, multi-page, no build step:
+
+- `index.html` &mdash; home
+- `product.html` &mdash; Core vs. Cloud, cryptography, connectivity, install
+- `pricing.html` &mdash; Core (free) / Cloud (pilot-priced) tiers, FAQ
+- `about.html` &mdash; company, rename story, why-now
+- `contact.html` &mdash; lead capture form + calendar booking
+- `assets/style.css` &mdash; shared styles
+- `assets/lead-form.js` &mdash; fetch-based submit handler for the lead forms
+- `google-apps-script/` &mdash; the Apps Script that receives form submissions
+
+## Lead capture (Google Apps Script + Sheets)
+
+The lead forms on `index.html` and `contact.html` post to a Google Apps
+Script Web App that appends each submission to a Google Sheet in the
+`eigentunnel.com` Workspace and emails `patrick@eigentunnel.com`. No third
+party holds lead data.
+
+**The form `action` URLs currently point to a placeholder**
+(`https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec`) **and won't
+work until it's deployed and swapped in.** Full setup instructions (10
+minutes, done once as the Workspace admin) are in
+[`google-apps-script/SETUP.md`](./google-apps-script/SETUP.md).
+
+Each form includes a honeypot field (`_gotcha`) for basic spam filtering,
+handled in `google-apps-script/Code.gs`.
 
 ## GitHub Pages
 
