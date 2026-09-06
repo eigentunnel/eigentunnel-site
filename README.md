@@ -13,7 +13,8 @@ Previously marketed as FreeQ at getfreeq.com. That name collided with an unrelat
 
 Static, multi-page, no build step:
 
-- `index.html` &mdash; home
+- `index.html` &mdash; plain-language buyer homepage
+- `executive.html` &mdash; executive business case and evaluation decision guide
 - `product.html` &mdash; Core Public, private Core, Cloud, cryptography, connectivity, and claim boundaries
 - `developers.html` &mdash; developer and test-lab access path
 - `oem.html` &mdash; OEM and integrator licensing path

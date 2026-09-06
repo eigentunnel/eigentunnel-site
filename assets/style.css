@@ -91,11 +91,18 @@ footer nav{display:flex;gap:14px;flex-wrap:wrap}
 footer a{color:var(--muted)}
 footer a:hover{color:var(--teal)}
 
-@media (max-width:760px){
+@media (max-width:1100px){
   nav.primary .links{position:fixed;top:67px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .2s ease}
-  #nav-toggle:checked ~ .links{max-height:400px}
+  #nav-toggle:checked ~ .links{max-height:calc(100dvh - 67px);overflow-y:auto}
   nav.primary .links a{padding:14px 28px;border-bottom:1px solid var(--line)}
   .hamburger{display:flex}
   nav.primary .cta-link{display:none}
   .split{grid-template-columns:1fr}
 }
+
+/* Executive buyer journey */
+.hero-note{margin-top:24px;color:var(--muted);font-size:14px}.connection-flow{display:flex;align-items:center;gap:18px;margin:28px 0}.connection-flow div{flex:1;padding:24px;border:1px solid var(--teal-dim);border-radius:12px;background:var(--bg2);text-align:center}.connection-flow strong{color:var(--teal)}.skip-link{position:absolute;left:16px;top:-80px;z-index:99;background:var(--bg);padding:12px}.skip-link:focus{top:8px}a:focus-visible{outline:2px solid var(--teal);outline-offset:4px}
+@media(max-width:700px){.connection-flow{flex-direction:column}.connection-flow div{width:100%}.connection-flow>span{transform:rotate(90deg)}.grid.cols-2{grid-template-columns:1fr}}
+@media print{header,.cta,footer,.skip-link{display:none}body{background:white;color:black}section,.hero{padding:20px 0}.card{background:white;color:black;break-inside:avoid}.sub,.lede{color:#333}}
+
+nav.primary a.btn-p{color:#06201d}
