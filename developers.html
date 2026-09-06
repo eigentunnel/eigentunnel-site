@@ -25,46 +25,7 @@
       <a class="btn btn-p cta-link" href="contact.html">Request access</a>
     </nav>
   </header>
-  <main>
-    <div class="hero" style="padding-bottom:40px">
-      <p class="kicker">Developers and test labs</p>
-      <h1>A narrow public path for real technical review.</h1>
-      <p class="lede">Core Public is designed to answer a specific question: can a reviewer build the lab kernel, inspect the cryptographic boundary, and run synthetic tests without receiving the commercial product?</p>
-    </div>
-
-    <section>
-      <p class="eyebrow">What labs can test</p>
-      <h2>The public surface is intentionally small.</h2>
-      <div class="grid">
-        <article class="card"><h3>Crypto and identity</h3><p>Hybrid key establishment, ML-DSA identity behavior, AEAD packet protection, and negative tests around invalid material.</p></article>
-        <article class="card"><h3>Transport primitives</h3><p>QUIC/session/framing primitives, packet routing, and local pipeline behavior under synthetic conditions.</p></article>
-        <article class="card"><h3>Config boundary</h3><p>Sanitized TOML parsing and validation that makes the public profile explicit and keeps private modes out of the public branch.</p></article>
-      </div>
-    </section>
-
-    <section>
-      <p class="eyebrow">What labs do not get</p>
-      <h2>The store stays private.</h2>
-      <div class="grid">
-        <article class="card"><h3>No Cloud workflow</h3><p>No enrollment service, tenant workflow, approvals, evidence engine, reports, CBOM generator, OSCAL package, or integrations.</p></article>
-        <article class="card"><h3>No product packaging</h3><p>No production installer, daemon packaging, managed gateway/relay productization, field scripts, customer topology, or performance claims.</p></article>
-        <article class="card"><h3>No private profiles</h3><p>Commercial profiles, hardened feature paths, and proprietary functions require private access under written terms.</p></article>
-      </div>
-    </section>
-
-    <section>
-      <p class="eyebrow">Recommended lab flow</p>
-      <h2>Keep the review repeatable.</h2>
-      <ol class="steps">
-        <li>Build Core Public from a clean checkout.</li>
-        <li>Run the documented workspace and crate-level test recipes.</li>
-        <li>Review fixture provenance and confirm all inputs are synthetic.</li>
-        <li>Record questions against the public boundary before requesting private access.</li>
-        <li>Move to private Core or Cloud only under NDA, pilot scope, or commercial agreement.</li>
-      </ol>
-      <div class="note">Core Public is a separate lab review surface, not production authorization. The eigentunnel-core and eigentunnel-cloud product repositories are private; access to their source requires written terms. <a href="contact.html">Request private source-review access</a>.</div>
-    </section>
-  </main>
+  <main><div class="hero"><p class="kicker">Free developer and lab evaluation</p><h1>Test two nodes. Use your own infrastructure.</h1><p class="lede">Evaluate a direct connection or connect through a gateway you host in your own network or private cloud. Core source remains private; public Python tools help you analyze lab observations.</p><div class="cta"><a class="btn btn-p" href="contact.html">Request free lab access</a><a class="btn" href="https://github.com/eigentunnel/eigentunnel-lab">Get the Python lab tools</a></div></div><section><h2>Choose your lab path</h2><div class="grid"><article class="card"><h3>Node → node</h3><p>Start with two machines on a trusted network. Pair them, test synthetic traffic in both directions and verify clean shutdown.</p></article><article class="card"><h3>Node → your gateway → node</h3><p>Evaluate a relay path using a reachable gateway on infrastructure you operate and pay for. This can help when direct connectivity is blocked by NAT.</p></article></div><p class="note">Free lab software does not include Eigen Systems-funded AWS resources or managed hosting. A gateway in your own cloud account is self-hosted. Eigen Systems-operated infrastructure and engineering assistance require a paid scope.</p></section><section><h2>Request access</h2><ol class="steps"><li>Send your name, organization, work email, operating systems and intended test.</li><li>We manually review the request and confirm package availability and evaluation terms.</li><li>Use the approved package and version-specific two-machine guide.</li><li>Bring your results and integration questions to a follow-up conversation.</li></ol><p class="sub">Corporate, government and academic emails are welcome. Independent consultants and researchers can request manual review. No payment card is required to request the free lab. Source access is a separate decision.</p></section><section><h2>Availability</h2><p class="sub">Python tools are public now. macOS Apple Silicon/Intel and Linux x86-64/ARM64 binaries have been built; the lab distribution package and installation instructions are under review. Registration is not an immediate download. Windows support is not established.</p><p class="sub">Relay connectivity has been founder-tested over macOS → AWS → macOS through Starlink NAT. Cloud payment and provisioning are unfinished. Algorithm implementation evidence and independent assessment status are separate from this connectivity test.</p></section></main>
   <footer>
     <div class="foot-grid">
       <div><div class="brand"><span class="mark">ET</span> EigenTunnel</div></div>
