@@ -19,17 +19,17 @@
     "name": "Eigen Systems",
     "url": "https://eigentunnel.com/",
     "sameAs": ["https://github.com/eigentunnel"],
-    "description": "Eigen Systems builds EigenTunnel, a hybrid post-quantum overlay: a free encrypted tunnel plus an optional managed control plane for enrollment, crypto inventory, and fleet-wide relay.",
+    "description": "Eigen Systems builds EigenTunnel, a hybrid post-quantum overlay: a free lab/evaluation tunnel plus a paid production tier with a locked CNSA 2.0 profile, enrollment, crypto inventory, and fleet-wide relay.",
     "makesOffer": [
       {
         "@type": "Offer",
         "name": "EigenTunnel Core",
-        "description": "Free, open-source (AGPL v3) hybrid post-quantum overlay for encrypting and cloaking node-to-node traffic."
+        "description": "Free, open-source (AGPL v3) hybrid post-quantum overlay, interop profile (ML-KEM-768 + ML-DSA-65), for lab and evaluation use."
       },
       {
         "@type": "Offer",
         "name": "EigenTunnel Cloud",
-        "description": "Paid control plane for enrollment, CBOM evidence, managed rendezvous, and outbound-only gateway relay."
+        "description": "Paid production tier: locked CNSA 2.0 profile (ML-KEM-1024 + ML-DSA-87 + AES-256-GCM), enrollment, CBOM evidence, managed rendezvous, and outbound-only gateway relay."
       }
     ]
   }
@@ -54,9 +54,9 @@
   </header>
   <main id="top">
     <div class="hero">
-      <p class="kicker">Start free with Core. Scale to a fleet with Cloud.</p>
+      <p class="kicker">Free for lab and eval with Core. Production runs on Cloud.</p>
       <h1>Find risky crypto. Protect unpatchable paths. Connect when the network will not cooperate.</h1>
-      <p class="lede">Every connection you encrypt today can be recorded today and read tomorrow, once quantum computers catch up. EigenTunnel Core closes that window for free &mdash; it cloaks your nodes and wraps traffic in hybrid post-quantum crypto, no account required. EigenTunnel Cloud adds what a fleet needs on top: enrollment, a live inventory of your crypto risk, and a way to reach devices that can't open inbound ports.</p>
+      <p class="lede">Every connection you encrypt today can be recorded today and read tomorrow, once quantum computers catch up. EigenTunnel Core is free for lab and evaluation &mdash; cloak your nodes and prove hybrid post-quantum crypto works on your traffic, no account required. EigenTunnel Cloud is where production runs: a locked CNSA 2.0 profile, fleet enrollment, a live inventory of your crypto risk, and a way to reach devices that can't open inbound ports.</p>
       <div class="cta">
         <a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
         <a class="btn" href="product.html#install">Install Core</a>
@@ -82,10 +82,10 @@
     <section id="offering">
       <p class="eyebrow">Offering</p>
       <h2>Two layers. One security foundation.</h2>
-      <p class="sub">Run Core on its own and you're already protected &mdash; it's a complete, self-managed overlay, not a crippled trial. Add Cloud when you need to manage that protection across a fleet instead of one box at a time. Read the full breakdown on the <a href="product.html">product page</a> or see <a href="pricing.html">pricing</a>.</p>
+      <p class="sub">Core is free for lab, evaluation, and interop testing &mdash; a real overlay, not a crippled trial. Production needs Cloud: that's where the locked CNSA 2.0 profile lives, plus everything a fleet needs beyond one box. Read the full breakdown on the <a href="product.html">product page</a> or see <a href="pricing.html">pricing</a>.</p>
       <div class="grid">
-        <article class="card"><h3>EigenTunnel Core</h3><p>Free, forever. Encrypt and cloak node-to-node traffic with hybrid post-quantum crypto &mdash; self-managed trust, no account, no lock-in. AGPL v3, written in Rust.</p></article>
-        <article class="card highlight"><h3>EigenTunnel Cloud</h3><p>The control plane for a fleet: approve every enrollment, see your crypto risk across the network, and reach devices behind NAT without opening a single inbound port.</p></article>
+        <article class="card"><h3>EigenTunnel Core</h3><p>Free, for lab and evaluation. Interop-grade hybrid PQC (X25519 + ML-KEM-768, ML-DSA-65) &mdash; self-managed trust, no account, no lock-in. AGPL v3, written in Rust.</p></article>
+        <article class="card highlight"><h3>EigenTunnel Cloud</h3><p>Where production runs: the locked CNSA 2.0 profile (ML-KEM-1024 + ML-DSA-87), fleet enrollment, crypto risk visibility, and NAT-safe reach without opening a single inbound port.</p></article>
       </div>
     </section>
 
@@ -95,8 +95,8 @@
       <p class="sub">An attacker doesn't need to break your encryption now &mdash; they just need to record the ciphertext and wait for a quantum computer that can. That's "harvest now, decrypt later," and it's already happening. If what you're protecting needs to stay confidential for years &mdash; credentials, telemetry, IP, anything long-lived &mdash; it's exposed under classical-only crypto right now, not someday.</p>
       <div class="grid">
         <article class="card"><h3>Hybrid tunnels</h3><p>Break one algorithm and the connection still holds. X25519 + ML-KEM-768 (FIPS 203) key exchange, AES-256-GCM or ChaCha20-Poly1305 bulk encryption.</p></article>
-        <article class="card"><h3>Mutual auth</h3><p>No anonymous listeners, ever. ML-DSA-65 (FIPS 204) proves both sides before a session opens.</p></article>
-        <article class="card"><h3>Agility</h3><p>Upgrade the crypto without redeploying the network. Parameter sets track NIST standards as they evolve, and every session gets its own forward secrecy.</p></article>
+        <article class="card"><h3>Mutual auth</h3><p>No anonymous listeners, ever. Core's interop profile uses ML-DSA-65 (FIPS 204); Cloud's locked CNSA 2.0 profile steps up to ML-DSA-87.</p></article>
+        <article class="card"><h3>CNSA 2.0 for production</h3><p>Cloud runs a fail-closed profile &mdash; ML-KEM-1024 + ML-DSA-87 (Category 5) + AES-256-GCM &mdash; enforced at startup and at peer admission. No mid-session downgrade.</p></article>
       </div>
     </section>
 

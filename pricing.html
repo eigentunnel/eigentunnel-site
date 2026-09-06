@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing | EigenTunnel</title>
-  <meta name="description" content="EigenTunnel Core is free and AGPL v3. EigenTunnel Cloud is a paid plane for enrollment, CBOM evidence, and managed relay, priced per pilot." />
+  <meta name="description" content="EigenTunnel Core is free (AGPL v3) for lab and evaluation. EigenTunnel Cloud is the paid production tier: CNSA 2.0 crypto, enrollment, CBOM evidence, and managed relay, priced per pilot." />
   <link rel="canonical" href="https://eigentunnel.com/pricing.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='8' fill='%230b1018'/%3E%3Ctext x='17' y='23' font-family='system-ui,sans-serif' font-size='13' font-weight='700' fill='%234fd1c5' text-anchor='middle'%3EET%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="assets/style.css" />
@@ -28,20 +28,20 @@
   <main>
     <div class="hero" style="padding-bottom:40px">
       <p class="kicker">Pricing</p>
-      <h1>Core stays free. Cloud is priced with you, not at you.</h1>
-      <p class="lede">Run Core with zero cost and zero commitment for as long as you want. When you need it managed across a fleet, we scope Cloud pilots individually instead of forcing your network into a generic tier. If you want a number, the fastest way is a 20-minute call.</p>
+      <h1>Core stays free for lab and eval. Production is priced with you, not at you.</h1>
+      <p class="lede">Run Core with zero cost and zero commitment for lab, evaluation, and interop testing. Production deployments need the locked CNSA 2.0 profile, which runs under Cloud &mdash; we scope those pilots individually instead of forcing your network into a generic tier. If you want a number, the fastest way is a 20-minute call.</p>
     </div>
 
     <section id="tiers">
       <div class="grid cols-2">
         <article class="card">
-          <p class="eyebrow">Self-managed</p>
+          <p class="eyebrow">Self-managed &middot; lab &amp; eval</p>
           <h3>EigenTunnel Core</h3>
           <p class="price">Free<small> / forever</small></p>
-          <p>The hybrid-PQC overlay itself. Run it yourself, own your trust store, no account required.</p>
+          <p>The hybrid-PQC overlay for lab, evaluation, and interop testing. Run it yourself, own your trust store, no account required.</p>
           <ul>
-            <li>Hybrid PQC tunnels (X25519 + ML-KEM-768)</li>
-            <li>Mutual authentication (ML-DSA-65)</li>
+            <li>Hybrid PQC tunnels, interop profile (X25519 + ML-KEM-768)</li>
+            <li>Mutual authentication, interop profile (ML-DSA-65)</li>
             <li>Node cloaking and local status</li>
             <li>AGPL v3, Rust, source on GitHub</li>
           </ul>
@@ -50,11 +50,12 @@
           </div>
         </article>
         <article class="card highlight">
-          <p class="eyebrow">Managed</p>
+          <p class="eyebrow">Managed &middot; production</p>
           <h3>EigenTunnel Cloud</h3>
           <p class="price">Custom<small> / scoped per pilot</small></p>
-          <p>Everything a fleet needs that one node can't do alone. Priced against node count and which pieces you need.</p>
+          <p>Production-grade crypto plus everything a fleet needs that one node can't do alone. Priced against node count and which pieces you need.</p>
           <ul>
+            <li>CNSA 2.0 profile (ML-KEM-1024 + ML-DSA-87 + AES-256-GCM, fail-closed)</li>
             <li>Enrollment, approvals, fleet dashboards</li>
             <li>CBOM discovery and audit-ready evidence</li>
             <li>Managed rendezvous</li>
@@ -73,7 +74,7 @@
       <div class="grid">
         <article class="card">
           <h3>Will Core ever stop being free?</h3>
-          <p>No. Core ships under AGPL v3 and is designed to remain useful and secure with zero dependency on Cloud.</p>
+          <p>No. Core's interop profile ships under AGPL v3 and stays free forever for lab, evaluation, and interop testing. Production deployments that need the locked CNSA 2.0 profile run under Cloud.</p>
         </article>
         <article class="card">
           <h3>How is Cloud priced?</h3>

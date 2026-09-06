@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product | EigenTunnel</title>
-  <meta name="description" content="How EigenTunnel Core and Cloud work: hybrid PQC tunnels, mutual authentication, CBOM evidence, outbound-only gateway relay, and macOS install." />
+  <meta name="description" content="How EigenTunnel Core (free, lab/eval) and Cloud (paid, CNSA 2.0 production profile) work: hybrid PQC tunnels, mutual authentication, CBOM evidence, outbound-only gateway relay, and macOS install." />
   <link rel="canonical" href="https://eigentunnel.com/product.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='8' fill='%230b1018'/%3E%3Ctext x='17' y='23' font-family='system-ui,sans-serif' font-size='13' font-weight='700' fill='%234fd1c5' text-anchor='middle'%3EET%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="assets/style.css" />
@@ -29,18 +29,19 @@
     <div class="hero" style="padding-bottom:40px">
       <p class="kicker">Product</p>
       <h1>One overlay. Two ways to run it.</h1>
-      <p class="lede">EigenTunnel Core does the cryptographic work: it cloaks enrolled nodes and protects data in flight with hybrid post-quantum key exchange and signatures &mdash; free, self-managed, no account. EigenTunnel Cloud sits on top and handles everything a fleet needs that one node can't do for itself: who gets to join, what's actually protected, and how to reach devices that can't be reached directly.</p>
+      <p class="lede">EigenTunnel Core does the cryptographic work for lab and evaluation: it cloaks enrolled nodes and protects data in flight with interop-grade hybrid post-quantum key exchange and signatures &mdash; free, self-managed, no account. EigenTunnel Cloud is where production runs, with a locked CNSA 2.0 profile plus everything a fleet needs that one node can't do for itself: who gets to join, what's actually protected, and how to reach devices that can't be reached directly.</p>
     </div>
 
     <section id="compare">
       <p class="eyebrow">Core vs. Cloud</p>
       <h2>What each layer actually does</h2>
-      <p class="sub">Most teams start on Core to prove the crypto holds up on real traffic. Cloud is what you add once you're trusting a fleet instead of a laptop &mdash; when someone needs to approve new nodes, prove what's actually protected, and reach devices that can't dial out on their own.</p>
+      <p class="sub">Core is the free lab and evaluation tier &mdash; prove the overlay and the crypto work on real traffic. Cloud is production: the locked CNSA 2.0 profile, plus the approvals, evidence, and reach a fleet needs that one node can't provide alone.</p>
       <table>
         <thead><tr><th>Capability</th><th>Core (free)</th><th>Cloud (paid)</th></tr></thead>
         <tbody>
-          <tr><td>Hybrid PQC tunnels (X25519 + ML-KEM-768)</td><td>Yes</td><td>Yes</td></tr>
-          <tr><td>Mutual authentication (ML-DSA-65)</td><td>Yes, self-managed trust</td><td>Yes, with enrollment &amp; approvals</td></tr>
+          <tr><td>Hybrid PQC tunnels, interop profile (X25519 + ML-KEM-768)</td><td>Yes &mdash; lab / eval</td><td>Yes</td></tr>
+          <tr><td>Mutual authentication, interop profile (ML-DSA-65)</td><td>Yes &mdash; lab / eval, self-managed trust</td><td>Yes, with enrollment &amp; approvals</td></tr>
+          <tr><td>CNSA 2.0 profile (ML-KEM-1024 + ML-DSA-87 + AES-256-GCM, fail-closed)</td><td>&mdash;</td><td>Yes &mdash; production</td></tr>
           <tr><td>Node cloaking &amp; local status</td><td>Yes</td><td>Yes</td></tr>
           <tr><td>CBOM (crypto bill of materials) discovery</td><td>&mdash;</td><td>Yes, fleet-wide evidence</td></tr>
           <tr><td>Managed rendezvous</td><td>&mdash;</td><td>Yes</td></tr>
@@ -49,7 +50,7 @@
           <tr><td>License</td><td>AGPL v3</td><td>Commercial</td></tr>
         </tbody>
       </table>
-      <p class="sub" style="margin-top:20px">Core must remain useful and secure with Cloud absent entirely &mdash; that's a design constraint, not a marketing line. See <a href="pricing.html">pricing</a> for how the two are packaged.</p>
+      <p class="sub" style="margin-top:20px">Core's interop profile is free forever for lab and evaluation. Production security &mdash; the locked CNSA 2.0 profile &mdash; runs under Cloud. See <a href="pricing.html">pricing</a> for how the two are packaged.</p>
     </section>
 
     <section id="protection">
@@ -63,11 +64,11 @@
         </article>
         <article class="card">
           <h3>Mutual authentication</h3>
-          <p>Every peer proves who they are before a byte moves &mdash; there's no anonymous listener mode to misconfigure. ML-DSA-65 (FIPS 204) signatures back every session.</p>
+          <p>Every peer proves who they are before a byte moves &mdash; there's no anonymous listener mode to misconfigure. Core's interop profile uses ML-DSA-65 (FIPS 204) signatures.</p>
         </article>
         <article class="card">
-          <h3>Cryptographic agility</h3>
-          <p>When NIST or industry standards move, you upgrade parameters instead of re-architecting the network. Forward secrecy is per-session, so compromising one key never unwinds history.</p>
+          <h3>CNSA 2.0 for production</h3>
+          <p>Cloud runs a locked profile &mdash; ML-KEM-1024 + ML-DSA-87 (Category 5) + AES-256-GCM &mdash; enforced at process start and at peer admission, with no mid-session downgrade. Forward secrecy is per-session either way.</p>
         </article>
       </div>
     </section>
@@ -148,10 +149,10 @@
     <section id="install">
       <p class="eyebrow">Get started</p>
       <h2>Install on macOS</h2>
-      <p class="sub">Confirm the current installer in <a href="https://github.com/eigentunnel/eigentunnel-core" target="_blank" rel="noopener">eigentunnel-core</a> before running it on a production Mac.</p>
+      <p class="sub">Core installs in minutes for lab and evaluation use. Confirm the current installer in <a href="https://github.com/eigentunnel/eigentunnel-core" target="_blank" rel="noopener">eigentunnel-core</a> before running it.</p>
       <pre># Expected success line after a clean local setup:
 EigenTunnel install result: PASS</pre>
-      <div class="note">Alpha &mdash; not independently audited. Do not use for classified or life-safety data yet.</div>
+      <div class="note">Alpha &mdash; not independently audited. Core is for lab and evaluation, not production. Do not use for classified or life-safety data.</div>
       <div class="cta">
         <a class="btn btn-p" href="https://github.com/eigentunnel/eigentunnel-core" target="_blank" rel="noopener">eigentunnel-core on GitHub</a>
         <a class="btn" href="contact.html">Ask about a Cloud pilot</a>
