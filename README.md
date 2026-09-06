@@ -18,6 +18,7 @@ Static, multi-page, no build step:
 - `product.html` &mdash; Core Public, private Core, Cloud, cryptography, connectivity, and claim boundaries
 - `developers.html` &mdash; developer and test-lab access path
 - `oem.html` &mdash; OEM and integrator licensing path
+- `public-sector.html` &mdash; sourced SLED lab scenarios and policy context
 - `federal.html` &mdash; federal and regulated-program positioning
 - `pricing.html` &mdash; access and licensing model
 - `about.html` &mdash; company, rename story, why-now
