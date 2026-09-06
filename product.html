@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product | EigenTunnel</title>
-  <meta name="description" content="How EigenTunnel splits Core Public, private Core, and Cloud across public testing, commercial IP, and managed evidence workflows." />
+  <meta name="description" content="How EigenTunnel splits Restricted Core lab kernel, private Core, and Cloud across public testing, commercial IP, and managed evidence workflows." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -29,14 +29,14 @@
     <div class="hero" style="padding-bottom:40px">
       <p class="kicker">Product split</p>
       <h1>How EigenTunnel connects systems—and what has been tested.</h1>
-      <p class="lede">EigenTunnel combines endpoint software, transport and relay/gateway capabilities. The table separates the public lab surface from private capabilities and unfinished Cloud workflows.</p>
+      <p class="lede">EigenTunnel combines endpoint software, transport and relay/gateway capabilities. The table separates the restricted lab surface from private capabilities and unfinished Cloud workflows.</p>
     </div>
 
     <section id="compare">
       <p class="eyebrow">Core vs. Cloud</p>
       <h2>Capabilities and availability</h2>
       <table>
-        <thead><tr><th>Capability</th><th>Core Public</th><th>Private Core</th><th>Cloud</th></tr></thead>
+        <thead><tr><th>Capability</th><th>Restricted Core lab kernel</th><th>Private Core</th><th>Cloud</th></tr></thead>
         <tbody>
           <tr><td>Hybrid PQC primitives and lab tests</td><td>Yes</td><td>Yes</td><td>Uses via product integration</td></tr>
           <tr><td>Peer registry, cloaking checks, local transport tests</td><td>Yes, sanitized</td><td>Yes, hardened</td><td>Fleet management: roadmap</td></tr>
@@ -50,7 +50,7 @@
           <tr><td>License posture</td><td>Private source; separate binary evaluation terms</td><td>Commercial/OEM license</td><td>Commercial SaaS/service terms</td></tr>
         </tbody>
       </table>
-      <p class="sub" style="margin-top:20px">Core Public is a separate lab kernel for developers, test labs, and security reviewers. The eigentunnel-core and eigentunnel-cloud product repositories are private. <a href="contact.html">Request private source-review access</a> under written terms.</p>
+      <p class="sub" style="margin-top:20px">Restricted Core lab kernel is a separate lab kernel for developers, test labs, and security reviewers. The eigentunnel-core and eigentunnel-cloud product repositories are private. <a href="contact.html">Request private source-review access</a> under written terms.</p>
     </section>
 
     <section id="crypto">
@@ -58,12 +58,12 @@
       <h2>Current public cryptography story</h2>
       <div class="grid">
         <article class="card">
-          <h3>Public lab kernel</h3>
-          <p>Core Public exposes hybrid X25519 plus ML-KEM key establishment, ML-DSA identity signatures, AEAD packet protection, session derivation, and validation tests.</p>
+          <h3>Private lab kernel</h3>
+          <p>Restricted Core lab kernel exposes hybrid X25519 plus ML-KEM key establishment, ML-DSA identity signatures, AEAD packet protection, session derivation, and validation tests.</p>
         </article>
         <article class="card">
           <h3>Claims boundary</h3>
-          <p>The public branch is alpha lab code and not independently audited. It is not a FIPS 140-3 validation, FedRAMP authorization, or approval for classified or life-safety systems.</p>
+          <p>The lab branch is alpha code and not independently audited. It is not a FIPS 140-3 validation, FedRAMP authorization, or approval for classified or life-safety systems.</p>
         </article>
         <article class="card">
           <h3>Private advancement</h3>
@@ -106,7 +106,7 @@
     <div class="foot-grid">
       <div>
         <div class="brand" style="margin-bottom:10px"><span class="mark">ET</span> EigenTunnel</div>
-        <p>&copy; 2026 Eigen Systems. Core Public is lab-alpha software. Private Core and Cloud are commercial offerings.</p>
+        <p>&copy; 2026 Eigen Systems. Restricted Core lab kernel is lab-alpha software. Private Core and Cloud are commercial offerings.</p>
       </div>
       <nav>
         <a href="index.html">Home</a>
