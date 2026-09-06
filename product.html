@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product | EigenTunnel</title>
   <meta name="description" content="How EigenTunnel Core and Cloud work: hybrid PQC tunnels, mutual authentication, CBOM evidence, outbound-only gateway relay, and macOS install." />
+  <link rel="canonical" href="https://eigentunnel.com/product.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='8' fill='%230b1018'/%3E%3Ctext x='17' y='23' font-family='system-ui,sans-serif' font-size='13' font-weight='700' fill='%234fd1c5' text-anchor='middle'%3EET%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -27,12 +29,13 @@
     <div class="hero" style="padding-bottom:40px">
       <p class="kicker">Product</p>
       <h1>One overlay. Two ways to run it.</h1>
-      <p class="lede">EigenTunnel Core does the cryptographic work: it cloaks enrolled nodes and protects data in flight with hybrid post-quantum key exchange and signatures. EigenTunnel Cloud sits on top and handles everything a fleet needs that a single node can't do for itself.</p>
+      <p class="lede">EigenTunnel Core does the cryptographic work: it cloaks enrolled nodes and protects data in flight with hybrid post-quantum key exchange and signatures &mdash; free, self-managed, no account. EigenTunnel Cloud sits on top and handles everything a fleet needs that one node can't do for itself: who gets to join, what's actually protected, and how to reach devices that can't be reached directly.</p>
     </div>
 
     <section id="compare">
       <p class="eyebrow">Core vs. Cloud</p>
       <h2>What each layer actually does</h2>
+      <p class="sub">Most teams start on Core to prove the crypto holds up on real traffic. Cloud is what you add once you're trusting a fleet instead of a laptop &mdash; when someone needs to approve new nodes, prove what's actually protected, and reach devices that can't dial out on their own.</p>
       <table>
         <thead><tr><th>Capability</th><th>Core (free)</th><th>Cloud (paid)</th></tr></thead>
         <tbody>
@@ -56,15 +59,15 @@
       <div class="grid">
         <article class="card">
           <h3>Hybrid tunnels</h3>
-          <p>X25519 + ML-KEM-768 (FIPS 203) key establishment. AES-256-GCM or ChaCha20-Poly1305 for bulk encryption. Classical and post-quantum components are combined, so the session stays safe even if one primitive is later broken.</p>
+          <p>An attacker has to break two independent algorithms, not one, to read your traffic. X25519 + ML-KEM-768 (FIPS 203) key establishment, AES-256-GCM or ChaCha20-Poly1305 for bulk encryption &mdash; classical and post-quantum combined, so the session stays safe even if one primitive is later broken.</p>
         </article>
         <article class="card">
           <h3>Mutual authentication</h3>
-          <p>ML-DSA-65 (FIPS 204) signatures. No session is established unless the peer proves a registered identity &mdash; there is no anonymous listener mode.</p>
+          <p>Every peer proves who they are before a byte moves &mdash; there's no anonymous listener mode to misconfigure. ML-DSA-65 (FIPS 204) signatures back every session.</p>
         </article>
         <article class="card">
           <h3>Cryptographic agility</h3>
-          <p>Parameter sets and algorithms can move forward as NIST and industry standards evolve. Forward secrecy is per-session, so compromising one session key doesn't unwind history.</p>
+          <p>When NIST or industry standards move, you upgrade parameters instead of re-architecting the network. Forward secrecy is per-session, so compromising one key never unwinds history.</p>
         </article>
       </div>
     </section>
@@ -72,7 +75,7 @@
     <section id="connectivity">
       <p class="eyebrow">Connectivity</p>
       <h2>Connect when the network will not cooperate.</h2>
-      <p class="sub">Two paths, same cryptography underneath.</p>
+      <p class="sub">NAT, CGNAT, and locked-down networks stop most overlays cold. EigenTunnel doesn't need an inbound port on either end &mdash; two paths, same cryptography underneath.</p>
       <div class="diagram">
         <svg viewBox="0 0 1160 640" role="img" aria-label="Direct connections route through the EigenTunnel overlay between two nodes. When that is not possible, both nodes connect outbound-only to a gateway, which accepts leaf sessions only and never dials out.">
           <defs>

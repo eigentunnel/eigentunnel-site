@@ -9,10 +9,34 @@
   <meta property="og:description" content="Find risky crypto. Protect unpatchable paths. Connect when the network will not cooperate." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://eigentunnel.com/" />
+  <link rel="canonical" href="https://eigentunnel.com/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='8' fill='%230b1018'/%3E%3Ctext x='17' y='23' font-family='system-ui,sans-serif' font-size='13' font-weight='700' fill='%234fd1c5' text-anchor='middle'%3EET%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="assets/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Eigen Systems",
+    "url": "https://eigentunnel.com/",
+    "sameAs": ["https://github.com/eigentunnel"],
+    "description": "Eigen Systems builds EigenTunnel, a hybrid post-quantum overlay: a free encrypted tunnel plus an optional managed control plane for enrollment, crypto inventory, and fleet-wide relay.",
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "name": "EigenTunnel Core",
+        "description": "Free, open-source (AGPL v3) hybrid post-quantum overlay for encrypting and cloaking node-to-node traffic."
+      },
+      {
+        "@type": "Offer",
+        "name": "EigenTunnel Cloud",
+        "description": "Paid control plane for enrollment, CBOM evidence, managed rendezvous, and outbound-only gateway relay."
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-  <div class="banner"><strong>Public alpha.</strong> EigenTunnel Core and field gateway paths are real and inspectable.</div>
+  <div class="banner"><strong>Public alpha.</strong> The code is real, running today, and open for you to inspect.</div>
   <header>
     <a class="brand" href="index.html"><span class="mark">ET</span> EigenTunnel</a>
     <nav class="primary">
@@ -30,9 +54,9 @@
   </header>
   <main id="top">
     <div class="hero">
-      <p class="kicker">Core for testing hybrid PQC. Cloud for enterprise protection across the network.</p>
+      <p class="kicker">Start free with Core. Scale to a fleet with Cloud.</p>
       <h1>Find risky crypto. Protect unpatchable paths. Connect when the network will not cooperate.</h1>
-      <p class="lede">EigenTunnel Core is the free overlay: cloak enrolled nodes and protect data in flight with hybrid post-quantum crypto. EigenTunnel Cloud adds enrollment, CBOM evidence, managed rendezvous, and optional outbound-only gateway relay.</p>
+      <p class="lede">Every connection you encrypt today can be recorded today and read tomorrow, once quantum computers catch up. EigenTunnel Core closes that window for free &mdash; it cloaks your nodes and wraps traffic in hybrid post-quantum crypto, no account required. EigenTunnel Cloud adds what a fleet needs on top: enrollment, a live inventory of your crypto risk, and a way to reach devices that can't open inbound ports.</p>
       <div class="cta">
         <a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
         <a class="btn" href="product.html#install">Install Core</a>
@@ -43,27 +67,28 @@
     <section id="offering">
       <p class="eyebrow">Offering</p>
       <h2>Two layers. One security foundation.</h2>
-      <p class="sub">Core must remain useful and secure when Cloud is absent. Read the full breakdown on the <a href="product.html">product page</a> or see <a href="pricing.html">pricing</a>.</p>
+      <p class="sub">Run Core on its own and you're already protected &mdash; it's a complete, self-managed overlay, not a crippled trial. Add Cloud when you need to manage that protection across a fleet instead of one box at a time. Read the full breakdown on the <a href="product.html">product page</a> or see <a href="pricing.html">pricing</a>.</p>
       <div class="grid">
-        <article class="card"><h3>EigenTunnel Core</h3><p>Free hybrid-PQC overlay. Self-managed nodes, peer trust, cloaking, local status. AGPL v3. Rust.</p></article>
-        <article class="card highlight"><h3>EigenTunnel Cloud</h3><p>Paid plane: enrollment, approvals, CBOM evidence, rendezvous, optional relay, fleet dashboards.</p></article>
+        <article class="card"><h3>EigenTunnel Core</h3><p>Free, forever. Encrypt and cloak node-to-node traffic with hybrid post-quantum crypto &mdash; self-managed trust, no account, no lock-in. AGPL v3, written in Rust.</p></article>
+        <article class="card highlight"><h3>EigenTunnel Cloud</h3><p>The control plane for a fleet: approve every enrollment, see your crypto risk across the network, and reach devices behind NAT without opening a single inbound port.</p></article>
       </div>
     </section>
 
     <section id="protection">
       <p class="eyebrow">Why it matters</p>
-      <h2>Protect traffic with a long shelf life.</h2>
-      <p class="sub">Harvest-now-decrypt-later is the primary threat model: traffic captured today can be decrypted once large-scale quantum computers arrive. Anything with a multi-year confidentiality requirement is exposed now, not later.</p>
+      <h2>The traffic you encrypt today can be read tomorrow.</h2>
+      <p class="sub">An attacker doesn't need to break your encryption now &mdash; they just need to record the ciphertext and wait for a quantum computer that can. That's "harvest now, decrypt later," and it's already happening. If what you're protecting needs to stay confidential for years &mdash; credentials, telemetry, IP, anything long-lived &mdash; it's exposed under classical-only crypto right now, not someday.</p>
       <div class="grid">
-        <article class="card"><h3>Hybrid tunnels</h3><p>X25519 + ML-KEM-768 (FIPS 203). AES-256-GCM or ChaCha20-Poly1305 bulk.</p></article>
-        <article class="card"><h3>Mutual auth</h3><p>ML-DSA-65 (FIPS 204). No session unless the peer proves a registered identity.</p></article>
-        <article class="card"><h3>Agility</h3><p>Parameter sets can move with standards. Forward secrecy per session.</p></article>
+        <article class="card"><h3>Hybrid tunnels</h3><p>Break one algorithm and the connection still holds. X25519 + ML-KEM-768 (FIPS 203) key exchange, AES-256-GCM or ChaCha20-Poly1305 bulk encryption.</p></article>
+        <article class="card"><h3>Mutual auth</h3><p>No anonymous listeners, ever. ML-DSA-65 (FIPS 204) proves both sides before a session opens.</p></article>
+        <article class="card"><h3>Agility</h3><p>Upgrade the crypto without redeploying the network. Parameter sets track NIST standards as they evolve, and every session gets its own forward secrecy.</p></article>
       </div>
     </section>
 
     <section id="connectivity">
       <p class="eyebrow">Connectivity</p>
       <h2>Connect when the network will not cooperate.</h2>
+      <p class="sub">NAT, CGNAT, hotel Wi-Fi, a factory floor with no public IPs &mdash; real networks don't cooperate. EigenTunnel routes around it without opening a single inbound port anywhere.</p>
       <div class="diagram">
         <svg viewBox="0 0 1160 640" role="img" aria-label="Direct connections route through the EigenTunnel overlay between two nodes. When that is not possible, both nodes connect outbound-only to a gateway, which accepts leaf sessions only and never dials out.">
           <defs>
