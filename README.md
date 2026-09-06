@@ -1,21 +1,24 @@
 # EigenTunnel site
 
-Public marketing site for **EigenTunnel**, the hybrid post-quantum overlay from Eigen Systems.
+Public marketing site for **EigenTunnel**, the post-quantum protected-path product from Eigen Systems.
 
 - Live site: https://eigentunnel.com
 - Org: https://github.com/eigentunnel
 - Contact: patrick@eigentunnel.com
 - Book a call: https://calendar.app.google/K5anZSkG7kXmQUEX6
 
-Previously marketed as FreeQ at getfreeq.com. That name collided with an unrelated influencer's site, so everything was renamed EigenTunnel. Product is unchanged; the brand is EigenTunnel.
+Previously marketed as FreeQ at getfreeq.com. That name collided with an unrelated influencer's site, so public-facing work now uses EigenTunnel. The product packaging has also changed: Core Public is a minimal lab/review kernel, while private Core and EigenTunnel Cloud contain commercial functions.
 
 ## Pages
 
 Static, multi-page, no build step:
 
 - `index.html` &mdash; home
-- `product.html` &mdash; Core vs. Cloud, cryptography, connectivity, install
-- `pricing.html` &mdash; Core (free) / Cloud (pilot-priced) tiers, FAQ
+- `product.html` &mdash; Core Public, private Core, Cloud, cryptography, connectivity, and claim boundaries
+- `developers.html` &mdash; developer and test-lab access path
+- `oem.html` &mdash; OEM and integrator licensing path
+- `federal.html` &mdash; federal and regulated-program positioning
+- `pricing.html` &mdash; access and licensing model
 - `about.html` &mdash; company, rename story, why-now
 - `contact.html` &mdash; lead capture form + calendar booking
 - `assets/style.css` &mdash; shared styles

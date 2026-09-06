@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product | EigenTunnel</title>
-  <meta name="description" content="How EigenTunnel Core and Cloud work: hybrid PQC tunnels, mutual authentication, CBOM evidence, outbound-only gateway relay, and macOS install." />
+  <meta name="description" content="How EigenTunnel splits Core Public, private Core, and Cloud across public testing, commercial IP, and managed evidence workflows." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -16,8 +16,10 @@
       <div class="links">
         <a href="index.html">Home</a>
         <a href="product.html" class="active">Product</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
+        <a href="developers.html">Developers</a>
+        <a href="oem.html">OEM</a>
+        <a href="federal.html">Federal</a>
+        <a href="pricing.html">Access</a>
         <a href="contact.html">Contact</a>
       </div>
       <a class="btn btn-p cta-link" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
@@ -25,149 +27,89 @@
   </header>
   <main>
     <div class="hero" style="padding-bottom:40px">
-      <p class="kicker">Product</p>
-      <h1>One overlay. Two ways to run it.</h1>
-      <p class="lede">EigenTunnel Core does the cryptographic work: it cloaks enrolled nodes and protects data in flight with hybrid post-quantum key exchange and signatures. EigenTunnel Cloud sits on top and handles everything a fleet needs that a single node can't do for itself.</p>
+      <p class="kicker">Product split</p>
+      <h1>Core Public proves the kernel. Private Core and Cloud create the product.</h1>
+      <p class="lede">The valuable boundary is intentional: public lab tests build trust, while proprietary functions stay in private repositories under commercial access.</p>
     </div>
 
     <section id="compare">
       <p class="eyebrow">Core vs. Cloud</p>
-      <h2>What each layer actually does</h2>
+      <h2>What each layer should expose</h2>
       <table>
-        <thead><tr><th>Capability</th><th>Core (free)</th><th>Cloud (paid)</th></tr></thead>
+        <thead><tr><th>Capability</th><th>Core Public</th><th>Private Core</th><th>Cloud</th></tr></thead>
         <tbody>
-          <tr><td>Hybrid PQC tunnels (X25519 + ML-KEM-768)</td><td>Yes</td><td>Yes</td></tr>
-          <tr><td>Mutual authentication (ML-DSA-65)</td><td>Yes, self-managed trust</td><td>Yes, with enrollment &amp; approvals</td></tr>
-          <tr><td>Node cloaking &amp; local status</td><td>Yes</td><td>Yes</td></tr>
-          <tr><td>CBOM (crypto bill of materials) discovery</td><td>&mdash;</td><td>Yes, fleet-wide evidence</td></tr>
-          <tr><td>Managed rendezvous</td><td>&mdash;</td><td>Yes</td></tr>
-          <tr><td>Outbound-only gateway relay</td><td>Manual / self-hosted</td><td>Optional managed relay</td></tr>
-          <tr><td>Fleet dashboards &amp; approvals</td><td>&mdash;</td><td>Yes</td></tr>
-          <tr><td>License</td><td>AGPL v3</td><td>Commercial</td></tr>
+          <tr><td>Hybrid PQC primitives and lab tests</td><td>Yes</td><td>Yes</td><td>Uses via product integration</td></tr>
+          <tr><td>Peer registry, cloaking checks, local transport tests</td><td>Yes, sanitized</td><td>Yes, hardened</td><td>Observed and managed</td></tr>
+          <tr><td>Production packaging, installers, daemons, gateway productization</td><td>No</td><td>Commercial/private</td><td>Managed deployment path</td></tr>
+          <tr><td>Managed rendezvous and relay</td><td>No</td><td>Private functions as needed</td><td>Commercial service</td></tr>
+          <tr><td>Scanner, CBOM, OSCAL-oriented evidence, reports</td><td>No</td><td>Private interfaces</td><td>Commercial workflow</td></tr>
+          <tr><td>ITSM, SIEM, CMDB, SOAR, cloud integrations</td><td>No</td><td>Private hooks</td><td>Commercial workflow</td></tr>
+          <tr><td>License posture</td><td>Public lab license</td><td>Commercial/OEM license</td><td>Commercial SaaS/service terms</td></tr>
         </tbody>
       </table>
-      <p class="sub" style="margin-top:20px">Core must remain useful and secure with Cloud absent entirely &mdash; that's a design constraint, not a marketing line. See <a href="pricing.html">pricing</a> for how the two are packaged.</p>
+      <p class="sub" style="margin-top:20px">Do not treat Core Public as the full product. It is the minimum inspectable kernel for developers, test labs, and security reviewers.</p>
     </section>
 
-    <section id="protection">
-      <p class="eyebrow">Cryptography</p>
-      <h2>Protect traffic with a long shelf life.</h2>
-      <p class="sub">Harvest-now-decrypt-later is the primary threat model: an adversary records ciphertext today and decrypts it once a cryptographically-relevant quantum computer exists. Anything that needs to stay confidential for years &mdash; not days &mdash; is exposed under classical-only crypto right now.</p>
+    <section id="crypto">
+      <p class="eyebrow">Encryption status</p>
+      <h2>Current public cryptography story</h2>
       <div class="grid">
         <article class="card">
-          <h3>Hybrid tunnels</h3>
-          <p>X25519 + ML-KEM-768 (FIPS 203) key establishment. AES-256-GCM or ChaCha20-Poly1305 for bulk encryption. Classical and post-quantum components are combined, so the session stays safe even if one primitive is later broken.</p>
+          <h3>Public lab kernel</h3>
+          <p>Core Public exposes hybrid X25519 plus ML-KEM key establishment, ML-DSA identity signatures, AEAD packet protection, session derivation, and validation tests.</p>
         </article>
         <article class="card">
-          <h3>Mutual authentication</h3>
-          <p>ML-DSA-65 (FIPS 204) signatures. No session is established unless the peer proves a registered identity &mdash; there is no anonymous listener mode.</p>
+          <h3>Claims boundary</h3>
+          <p>The public branch is alpha lab code and not independently audited. It is not a FIPS 140-3 validation, FedRAMP authorization, or approval for classified or life-safety systems.</p>
         </article>
         <article class="card">
-          <h3>Cryptographic agility</h3>
-          <p>Parameter sets and algorithms can move forward as NIST and industry standards evolve. Forward secrecy is per-session, so compromising one session key doesn't unwind history.</p>
+          <h3>Private advancement</h3>
+          <p>Product hardening, private profiles, performance work, endpoint/gateway packaging, and commercial-grade controls remain private until released under explicit terms.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cloud">
+      <p class="eyebrow">Cloud functions</p>
+      <h2>Cloud is the operating system around the kernel.</h2>
+      <div class="grid">
+        <article class="card">
+          <p class="tag private">Private pilot</p>
+          <h3>Enrollment and approvals</h3>
+          <p>Fleet enrollment, approval flow, rotation, revocation, tenant isolation, and operator workflow belong in the private control plane.</p>
+        </article>
+        <article class="card">
+          <p class="tag private">Private pilot</p>
+          <h3>Evidence and CBOM</h3>
+          <p>Network discovery, cryptographic inventory, CBOM generation, evidence bundles, and customer reports are Cloud-side commercial value.</p>
+        </article>
+        <article class="card">
+          <p class="tag planned">Roadmap/partner work</p>
+          <h3>OSCAL and federal artifacts</h3>
+          <p>OSCAL-oriented mappings, control narratives, POA&amp;M inputs, and federal evidence packages should be described as support work, not authorization claims.</p>
         </article>
       </div>
     </section>
 
     <section id="connectivity">
       <p class="eyebrow">Connectivity</p>
-      <h2>Connect when the network will not cooperate.</h2>
-      <p class="sub">Two paths, same cryptography underneath.</p>
-      <div class="diagram">
-        <svg viewBox="0 0 1160 640" role="img" aria-label="Direct connections route through the EigenTunnel overlay between two nodes. When that is not possible, both nodes connect outbound-only to a gateway, which accepts leaf sessions only and never dials out.">
-          <defs>
-            <marker id="et-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-              <path d="M0,0 L10,5 L0,10 Z" fill="var(--teal)"></path>
-            </marker>
-            <pattern id="et-dots" width="26" height="26" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1" fill="var(--line)"></circle>
-            </pattern>
-          </defs>
-
-          <rect x="0" y="0" width="1160" height="300" rx="20" fill="var(--bg2)" stroke="var(--line)"></rect>
-          <rect x="0" y="0" width="1160" height="300" rx="20" fill="url(#et-dots)" opacity="0.5"></rect>
-          <text x="32" y="46" fill="var(--teal)" font-size="13" font-weight="700" letter-spacing="2">DIRECT</text>
-
-          <rect x="48" y="105" width="200" height="110" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <text x="148" y="167" fill="var(--text)" font-size="20" font-weight="700" text-anchor="middle">NODE A</text>
-
-          <rect x="380" y="95" width="400" height="130" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <rect x="404" y="128" width="44" height="44" rx="10" fill="var(--bg)" stroke="var(--line)"></rect>
-          <text x="426" y="156" fill="var(--teal)" font-size="14" font-weight="700" text-anchor="middle">ET</text>
-          <text x="464" y="157" fill="var(--text)" font-size="20" font-weight="700">EIGENTUNNEL OVERLAY</text>
-          <text x="464" y="186" fill="var(--muted)" font-size="14">hybrid PQC cloak</text>
-
-          <rect x="912" y="105" width="200" height="110" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <text x="1012" y="167" fill="var(--text)" font-size="20" font-weight="700" text-anchor="middle">NODE B</text>
-
-          <line x1="248" y1="160" x2="374" y2="160" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-          <line x1="786" y1="160" x2="906" y2="160" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-
-          <text x="580" y="264" fill="var(--muted)" font-size="14" text-anchor="middle">peer path over the overlay</text>
-
-          <rect x="0" y="332" width="1160" height="300" rx="20" fill="var(--bg2)" stroke="var(--line)"></rect>
-          <rect x="0" y="332" width="1160" height="300" rx="20" fill="url(#et-dots)" opacity="0.5"></rect>
-          <text x="32" y="378" fill="var(--teal)" font-size="13" font-weight="700" letter-spacing="2">RELAY</text>
-
-          <rect x="48" y="437" width="180" height="110" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <text x="138" y="489" fill="var(--text)" font-size="20" font-weight="700" text-anchor="middle">NODE A</text>
-          <text x="138" y="516" fill="var(--muted)" font-size="13" text-anchor="middle">outbound only</text>
-
-          <rect x="269" y="457" width="140" height="70" rx="12" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <rect x="281" y="477" width="30" height="30" rx="6" fill="var(--bg)" stroke="var(--line)"></rect>
-          <text x="296" y="497" fill="var(--teal)" font-size="11" font-weight="700" text-anchor="middle">ET</text>
-          <text x="321" y="497" fill="var(--text)" font-size="13" font-weight="700">OVERLAY</text>
-
-          <rect x="450" y="427" width="260" height="130" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <text x="580" y="479" fill="var(--text)" font-size="20" font-weight="700" text-anchor="middle">GATEWAY</text>
-          <text x="580" y="507" fill="var(--muted)" font-size="13" text-anchor="middle">leaf sessions only &#183; never dials out</text>
-
-          <rect x="751" y="457" width="140" height="70" rx="12" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <rect x="763" y="477" width="30" height="30" rx="6" fill="var(--bg)" stroke="var(--line)"></rect>
-          <text x="778" y="497" fill="var(--teal)" font-size="11" font-weight="700" text-anchor="middle">ET</text>
-          <text x="803" y="497" fill="var(--text)" font-size="13" font-weight="700">OVERLAY</text>
-
-          <rect x="932" y="437" width="180" height="110" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <text x="1022" y="489" fill="var(--text)" font-size="20" font-weight="700" text-anchor="middle">NODE B</text>
-          <text x="1022" y="516" fill="var(--muted)" font-size="13" text-anchor="middle">outbound only</text>
-
-          <line x1="228" y1="492" x2="263" y2="492" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-          <line x1="409" y1="492" x2="444" y2="492" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-          <line x1="932" y1="492" x2="897" y2="492" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-          <line x1="751" y1="492" x2="716" y2="492" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-
-          <text x="580" y="596" fill="var(--muted)" font-size="14" text-anchor="middle">Gateway never dials your phone, Starlink home, or hotel laptop.</text>
-        </svg>
-      </div>
-      <p class="sub" style="margin-top:16px">When a direct path exists, nodes connect over the overlay directly. When NAT, CGNAT, or a restrictive network gets in the way, the gateway relay accepts leaf sessions only &mdash; it never dials your phone, your Starlink home connection, or a hotel laptop. Both endpoints reach out to the gateway; the gateway never reaches in.</p>
-    </section>
-
-    <section id="install">
-      <p class="eyebrow">Get started</p>
-      <h2>Install on macOS</h2>
-      <p class="sub">Confirm the current installer in <a href="https://github.com/eigentunnel/eigentunnel-core" target="_blank" rel="noopener">eigentunnel-core</a> before running it on a production Mac.</p>
-      <pre># Expected success line after a clean local setup:
-EigenTunnel install result: PASS</pre>
-      <div class="note">Alpha &mdash; not independently audited. Do not use for classified or life-safety data yet.</div>
-      <div class="cta">
-        <a class="btn btn-p" href="https://github.com/eigentunnel/eigentunnel-core" target="_blank" rel="noopener">eigentunnel-core on GitHub</a>
-        <a class="btn" href="contact.html">Ask about a Cloud pilot</a>
-      </div>
+      <h2>Direct when possible. Managed relay when justified.</h2>
+      <p class="sub">Gateway/relay behavior is commercial product territory. Public Core can test transport primitives, but managed rendezvous, relay admission, fleet policy, and protected-route evidence belong to private Core and Cloud.</p>
+      <div class="note">Claim boundary: EigenTunnel protects traffic routed through EigenTunnel-controlled paths. It does not patch the original endpoint, protect unmanaged bypass traffic, or replace human approval for OT and regulated environments.</div>
     </section>
   </main>
   <footer>
     <div class="foot-grid">
       <div>
         <div class="brand" style="margin-bottom:10px"><span class="mark">ET</span> EigenTunnel</div>
-        <p>&copy; 2026 Eigen Systems. EigenTunnel Core is intended to remain free under AGPL v3.</p>
+        <p>&copy; 2026 Eigen Systems. Core Public is lab-alpha software. Private Core and Cloud are commercial offerings.</p>
       </div>
       <nav>
         <a href="index.html">Home</a>
-        <a href="product.html">Product</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="https://github.com/eigentunnel" target="_blank" rel="noopener">GitHub</a>
+        <a href="developers.html">Developers</a>
+        <a href="oem.html">OEM</a>
+        <a href="federal.html">Federal</a>
+        <a href="pricing.html">Access</a>
       </nav>
     </div>
   </footer>

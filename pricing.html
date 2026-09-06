@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pricing | EigenTunnel</title>
-  <meta name="description" content="EigenTunnel Core is free and AGPL v3. EigenTunnel Cloud is a paid plane for enrollment, CBOM evidence, and managed relay, priced per pilot." />
+  <title>Access and Licensing | EigenTunnel</title>
+  <meta name="description" content="EigenTunnel access model: Core Public for lab inspection, private Core for commercial/OEM use, and Cloud for managed evidence and connectivity workflows." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -16,8 +16,10 @@
       <div class="links">
         <a href="index.html">Home</a>
         <a href="product.html">Product</a>
-        <a href="pricing.html" class="active">Pricing</a>
-        <a href="about.html">About</a>
+        <a href="developers.html">Developers</a>
+        <a href="oem.html">OEM</a>
+        <a href="federal.html">Federal</a>
+        <a href="pricing.html" class="active">Access</a>
         <a href="contact.html">Contact</a>
       </div>
       <a class="btn btn-p cta-link" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
@@ -25,61 +27,55 @@
   </header>
   <main>
     <div class="hero" style="padding-bottom:40px">
-      <p class="kicker">Pricing</p>
-      <h1>Core stays free. Cloud is priced with you, not at you.</h1>
-      <p class="lede">We're in public alpha and pricing Cloud pilots individually while the product and the market both firm up. If you want a number, the fastest way is a 20-minute call.</p>
+      <p class="kicker">Access and licensing</p>
+      <h1>Public lab access is not the same as private Core access.</h1>
+      <p class="lede">EigenTunnel is moving to an access model that supports testing and trust while preserving the proprietary functions that make the product sellable.</p>
     </div>
 
     <section id="tiers">
       <div class="grid cols-2">
         <article class="card">
-          <p class="eyebrow">Self-managed</p>
-          <h3>EigenTunnel Core</h3>
-          <p class="price">Free<small> / forever</small></p>
-          <p>The hybrid-PQC overlay itself. Run it yourself, own your trust store, no account required.</p>
+          <p class="eyebrow">Public review</p>
+          <h3>Core Public</h3>
+          <p class="price">Lab<small> / inspection path</small></p>
+          <p>Minimal source, sanitized fixtures, and test recipes for security reviewers, developers, and test labs.</p>
           <ul>
-            <li>Hybrid PQC tunnels (X25519 + ML-KEM-768)</li>
-            <li>Mutual authentication (ML-DSA-65)</li>
-            <li>Node cloaking and local status</li>
-            <li>AGPL v3, Rust, source on GitHub</li>
+            <li>Buildable public lab kernel</li>
+            <li>Synthetic test recipes only</li>
+            <li>No scanner, Cloud, relay, installer, or customer workflow logic</li>
+            <li>Publication and license terms may change before general release</li>
           </ul>
-          <div class="cta">
-            <a class="btn btn-p" href="product.html#install">Install Core</a>
-          </div>
         </article>
         <article class="card highlight">
-          <p class="eyebrow">Managed</p>
-          <h3>EigenTunnel Cloud</h3>
-          <p class="price">Custom<small> / scoped per pilot</small></p>
-          <p>Everything a fleet needs that one node can't do alone. Priced against node count and which pieces you need.</p>
+          <p class="eyebrow">Commercial</p>
+          <h3>Private Core and Cloud</h3>
+          <p class="price">Scoped<small> / pilot or license</small></p>
+          <p>Access to commercial functionality is granted under private terms, NDA, pilot agreement, OEM license, or service contract.</p>
           <ul>
-            <li>Enrollment, approvals, fleet dashboards</li>
-            <li>CBOM discovery and audit-ready evidence</li>
-            <li>Managed rendezvous</li>
-            <li>Optional outbound-only gateway relay</li>
+            <li>Private Core capabilities and product-grade packaging</li>
+            <li>Cloud enrollment, evidence, integration, and workflow services</li>
+            <li>OEM and integrator licensing paths</li>
+            <li>Support, delivery, and deployment scope defined in writing</li>
           </ul>
-          <div class="cta">
-            <a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
-          </div>
         </article>
       </div>
     </section>
 
     <section id="faq">
       <p class="eyebrow">Questions</p>
-      <h2>Pricing FAQ</h2>
+      <h2>Access FAQ</h2>
       <div class="grid">
         <article class="card">
-          <h3>Will Core ever stop being free?</h3>
-          <p>No. Core ships under AGPL v3 and is designed to remain useful and secure with zero dependency on Cloud.</p>
+          <h3>Can a lab test EigenTunnel without private source?</h3>
+          <p>Yes. Core Public is intended to provide a narrow, repeatable test surface with sanitized fixtures and no commercial workflow logic.</p>
         </article>
         <article class="card">
-          <h3>How is Cloud priced?</h3>
-          <p>By enrolled node count and the mix of enrollment, CBOM evidence, rendezvous, and relay you need. We scope this on a call rather than guessing at a self-serve tier that doesn't fit your fleet.</p>
+          <h3>How do developers get private Core features?</h3>
+          <p>Through an approved private access path: NDA, contributor agreement, pilot scope, OEM agreement, or partner delivery contract.</p>
         </article>
         <article class="card">
-          <h3>Can we pilot before committing?</h3>
-          <p>Yes &mdash; that's the default path right now. Most engagements start as a scoped pilot against a real segment of your network.</p>
+          <h3>Can OEMs embed EigenTunnel?</h3>
+          <p>Yes, but not by copying the public lab kernel and assuming product rights. OEM embedding needs a commercial license and support boundary.</p>
         </article>
       </div>
     </section>
@@ -88,15 +84,15 @@
     <div class="foot-grid">
       <div>
         <div class="brand" style="margin-bottom:10px"><span class="mark">ET</span> EigenTunnel</div>
-        <p>&copy; 2026 Eigen Systems. EigenTunnel Core is intended to remain free under AGPL v3.</p>
+        <p>&copy; 2026 Eigen Systems. Core Public is lab-alpha software. Private Core and Cloud are commercial offerings.</p>
       </div>
       <nav>
         <a href="index.html">Home</a>
         <a href="product.html">Product</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
+        <a href="developers.html">Developers</a>
+        <a href="oem.html">OEM</a>
+        <a href="federal.html">Federal</a>
         <a href="contact.html">Contact</a>
-        <a href="https://github.com/eigentunnel" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </div>
   </footer>

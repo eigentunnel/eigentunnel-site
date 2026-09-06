@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developers and Labs | EigenTunnel</title>
+  <meta name="description" content="How developers and test labs can evaluate EigenTunnel Core Public without receiving private Core or Cloud IP." />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html"><span class="mark">ET</span> EigenTunnel</a>
+    <nav class="primary">
+      <input type="checkbox" id="nav-toggle">
+      <label for="nav-toggle" class="hamburger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="product.html">Product</a>
+        <a href="developers.html" class="active">Developers</a>
+        <a href="oem.html">OEM</a>
+        <a href="federal.html">Federal</a>
+        <a href="pricing.html">Access</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a class="btn btn-p cta-link" href="contact.html">Request access</a>
+    </nav>
+  </header>
+  <main>
+    <div class="hero" style="padding-bottom:40px">
+      <p class="kicker">Developers and test labs</p>
+      <h1>A narrow public path for real technical review.</h1>
+      <p class="lede">Core Public is designed to answer a specific question: can a reviewer build the lab kernel, inspect the cryptographic boundary, and run synthetic tests without receiving the commercial product?</p>
+    </div>
+
+    <section>
+      <p class="eyebrow">What labs can test</p>
+      <h2>The public surface is intentionally small.</h2>
+      <div class="grid">
+        <article class="card"><h3>Crypto and identity</h3><p>Hybrid key establishment, ML-DSA identity behavior, AEAD packet protection, and negative tests around invalid material.</p></article>
+        <article class="card"><h3>Transport primitives</h3><p>QUIC/session/framing primitives, packet routing, and local pipeline behavior under synthetic conditions.</p></article>
+        <article class="card"><h3>Config boundary</h3><p>Sanitized TOML parsing and validation that makes the public profile explicit and keeps private modes out of the public branch.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">What labs do not get</p>
+      <h2>The store stays private.</h2>
+      <div class="grid">
+        <article class="card"><h3>No Cloud workflow</h3><p>No enrollment service, tenant workflow, approvals, evidence engine, reports, CBOM generator, OSCAL package, or integrations.</p></article>
+        <article class="card"><h3>No product packaging</h3><p>No production installer, daemon packaging, managed gateway/relay productization, field scripts, customer topology, or performance claims.</p></article>
+        <article class="card"><h3>No private profiles</h3><p>Commercial profiles, hardened feature paths, and proprietary functions require private access under written terms.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">Recommended lab flow</p>
+      <h2>Keep the review repeatable.</h2>
+      <ol class="steps">
+        <li>Build Core Public from a clean checkout.</li>
+        <li>Run the documented workspace and crate-level test recipes.</li>
+        <li>Review fixture provenance and confirm all inputs are synthetic.</li>
+        <li>Record questions against the public boundary before requesting private access.</li>
+        <li>Move to private Core or Cloud only under NDA, pilot scope, or commercial agreement.</li>
+      </ol>
+      <div class="note">Core Public is not production authorization. It is a controlled review surface.</div>
+    </section>
+  </main>
+  <footer>
+    <div class="foot-grid">
+      <div><div class="brand"><span class="mark">ET</span> EigenTunnel</div></div>
+      <nav><a href="product.html">Product</a><a href="pricing.html">Access</a><a href="contact.html">Contact</a></nav>
+    </div>
+  </footer>
+</body>
+</html>

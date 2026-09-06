@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EigenTunnel | Hybrid Post-Quantum Overlay</title>
-  <meta name="description" content="EigenTunnel: hybrid post-quantum overlay, CBOM discovery, integration-first zero trust. Free Core, paid Cloud enrollment and evidence plane." />
-  <meta property="og:title" content="EigenTunnel | Hybrid Post-Quantum Overlay" />
-  <meta property="og:description" content="Find risky crypto. Protect unpatchable paths. Connect when the network will not cooperate." />
+  <title>EigenTunnel | Post-Quantum Overlay for Protected Paths</title>
+  <meta name="description" content="EigenTunnel helps teams test post-quantum protected paths, find cryptographic exposure, and pilot private Core and Cloud capabilities without giving away proprietary IP." />
+  <meta property="og:title" content="EigenTunnel | Post-Quantum Overlay for Protected Paths" />
+  <meta property="og:description" content="Public lab kernel. Private commercial Core. Cloud for enrollment, evidence, and operating workflows." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://eigentunnel.com/" />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <div class="banner"><strong>Public alpha.</strong> EigenTunnel Core and field gateway paths are real and inspectable.</div>
+  <div class="banner"><strong>Public alpha.</strong> Public Core is a lab kernel. Private Core and Cloud contain the commercial operating system.</div>
   <header>
     <a class="brand" href="index.html"><span class="mark">ET</span> EigenTunnel</a>
     <nav class="primary">
@@ -21,8 +21,10 @@
       <div class="links">
         <a href="index.html" class="active">Home</a>
         <a href="product.html">Product</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
+        <a href="developers.html">Developers</a>
+        <a href="oem.html">OEM</a>
+        <a href="federal.html">Federal</a>
+        <a href="pricing.html">Access</a>
         <a href="contact.html">Contact</a>
       </div>
       <a class="btn btn-p cta-link" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
@@ -30,123 +32,97 @@
   </header>
   <main id="top">
     <div class="hero">
-      <p class="kicker">Core for testing hybrid PQC. Cloud for enterprise protection across the network.</p>
-      <h1>Find risky crypto. Protect unpatchable paths. Connect when the network will not cooperate.</h1>
-      <p class="lede">EigenTunnel Core is the free overlay: cloak enrolled nodes and protect data in flight with hybrid post-quantum crypto. EigenTunnel Cloud adds enrollment, CBOM evidence, managed rendezvous, and optional outbound-only gateway relay.</p>
+      <p class="kicker">Post-quantum protected paths for real networks</p>
+      <h1>Test the tunnel. Protect the product. Sell the operating system.</h1>
+      <p class="lede">EigenTunnel is being split with discipline: a minimal public Core for lab inspection, private Core capabilities for commercial pilots and OEMs, and EigenTunnel Cloud for enrollment, evidence, policy workflow, and managed connectivity.</p>
       <div class="cta">
-        <a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
-        <a class="btn" href="product.html#install">Install Core</a>
-        <a class="btn" href="https://github.com/eigentunnel" target="_blank" rel="noopener">GitHub org</a>
+        <a class="btn btn-p" href="contact.html">Request access</a>
+        <a class="btn" href="developers.html">Developer and lab path</a>
+        <a class="btn" href="product.html">See the split</a>
       </div>
     </div>
 
-    <section id="offering">
-      <p class="eyebrow">Offering</p>
-      <h2>Two layers. One security foundation.</h2>
-      <p class="sub">Core must remain useful and secure when Cloud is absent. Read the full breakdown on the <a href="product.html">product page</a> or see <a href="pricing.html">pricing</a>.</p>
+    <section id="model">
+      <p class="eyebrow">Repository and product model</p>
+      <h2>Open enough to test. Closed enough to build a business.</h2>
+      <p class="sub">The public surface should let developers and test labs inspect the cryptographic and transport boundary without receiving the scanner, control plane, fleet workflows, gateway productization, or customer evidence machinery.</p>
       <div class="grid">
-        <article class="card"><h3>EigenTunnel Core</h3><p>Free hybrid-PQC overlay. Self-managed nodes, peer trust, cloaking, local status. AGPL v3. Rust.</p></article>
-        <article class="card highlight"><h3>EigenTunnel Cloud</h3><p>Paid plane: enrollment, approvals, CBOM evidence, rendezvous, optional relay, fleet dashboards.</p></article>
+        <article class="card">
+          <p class="tag">Public lab</p>
+          <h3>Core Public</h3>
+          <p>Minimal Rust lab kernel, sanitized fixtures, test recipes, and clear limits. Built for inspection, reproducibility, and technical trust.</p>
+        </article>
+        <article class="card highlight">
+          <p class="tag">Commercial</p>
+          <h3>Private Core</h3>
+          <p>Product-grade functions, hardened paths, advanced gateway behavior, packaging, performance work, and private feature access under commercial terms.</p>
+        </article>
+        <article class="card">
+          <p class="tag">Managed platform</p>
+          <h3>EigenTunnel Cloud</h3>
+          <p>Enrollment, approvals, evidence, CBOM/OSCAL-oriented workflows, integrations, fleet visibility, and managed rendezvous or relay services.</p>
+        </article>
       </div>
     </section>
 
-    <section id="protection">
-      <p class="eyebrow">Why it matters</p>
-      <h2>Protect traffic with a long shelf life.</h2>
-      <p class="sub">Harvest-now-decrypt-later is the primary threat model: traffic captured today can be decrypted once large-scale quantum computers arrive. Anything with a multi-year confidentiality requirement is exposed now, not later.</p>
+    <section id="status">
+      <p class="eyebrow">Capability status</p>
+      <h2>Use status language that protects credibility.</h2>
       <div class="grid">
-        <article class="card"><h3>Hybrid tunnels</h3><p>X25519 + ML-KEM-768 (FIPS 203). AES-256-GCM or ChaCha20-Poly1305 bulk.</p></article>
-        <article class="card"><h3>Mutual auth</h3><p>ML-DSA-65 (FIPS 204). No session unless the peer proves a registered identity.</p></article>
-        <article class="card"><h3>Agility</h3><p>Parameter sets can move with standards. Forward secrecy per session.</p></article>
+        <article class="card">
+          <p class="tag built">Built</p>
+          <h3>Public testable kernel</h3>
+          <p>Hybrid X25519 plus ML-KEM path work, ML-DSA identity tests, QUIC/session primitives, packet routing, config validation, and sanitized lab recipes.</p>
+        </article>
+        <article class="card">
+          <p class="tag private">Private pilot</p>
+          <h3>Commercial Core and Cloud</h3>
+          <p>Gateway, enrollment, fleet workflow, scanner, evidence, CBOM, and integrations belong in private repos and scoped pilots until productized.</p>
+        </article>
+        <article class="card">
+          <p class="tag planned">Roadmap</p>
+          <h3>Formal assurance</h3>
+          <p>Independent cryptographic review, FIPS/FedRAMP-aligned documentation, OEM certification paths, and production service-level commitments are not public-alpha claims.</p>
+        </article>
       </div>
     </section>
 
-    <section id="connectivity">
-      <p class="eyebrow">Connectivity</p>
-      <h2>Connect when the network will not cooperate.</h2>
-      <div class="diagram">
-        <svg viewBox="0 0 1160 640" role="img" aria-label="Direct connections route through the EigenTunnel overlay between two nodes. When that is not possible, both nodes connect outbound-only to a gateway, which accepts leaf sessions only and never dials out.">
-          <defs>
-            <marker id="et-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-              <path d="M0,0 L10,5 L0,10 Z" fill="var(--teal)"></path>
-            </marker>
-            <pattern id="et-dots" width="26" height="26" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1" fill="var(--line)"></circle>
-            </pattern>
-          </defs>
-
-          <rect x="0" y="0" width="1160" height="300" rx="20" fill="var(--bg2)" stroke="var(--line)"></rect>
-          <rect x="0" y="0" width="1160" height="300" rx="20" fill="url(#et-dots)" opacity="0.5"></rect>
-          <text x="32" y="46" fill="var(--teal)" font-size="13" font-weight="700" letter-spacing="2">DIRECT</text>
-
-          <rect x="48" y="105" width="200" height="110" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <text x="148" y="167" fill="var(--text)" font-size="20" font-weight="700" text-anchor="middle">NODE A</text>
-
-          <rect x="380" y="95" width="400" height="130" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <rect x="404" y="128" width="44" height="44" rx="10" fill="var(--bg)" stroke="var(--line)"></rect>
-          <text x="426" y="156" fill="var(--teal)" font-size="14" font-weight="700" text-anchor="middle">ET</text>
-          <text x="464" y="157" fill="var(--text)" font-size="20" font-weight="700">EIGENTUNNEL OVERLAY</text>
-          <text x="464" y="186" fill="var(--muted)" font-size="14">hybrid PQC cloak</text>
-
-          <rect x="912" y="105" width="200" height="110" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <text x="1012" y="167" fill="var(--text)" font-size="20" font-weight="700" text-anchor="middle">NODE B</text>
-
-          <line x1="248" y1="160" x2="374" y2="160" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-          <line x1="786" y1="160" x2="906" y2="160" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-
-          <text x="580" y="264" fill="var(--muted)" font-size="14" text-anchor="middle">peer path over the overlay</text>
-
-          <rect x="0" y="332" width="1160" height="300" rx="20" fill="var(--bg2)" stroke="var(--line)"></rect>
-          <rect x="0" y="332" width="1160" height="300" rx="20" fill="url(#et-dots)" opacity="0.5"></rect>
-          <text x="32" y="378" fill="var(--teal)" font-size="13" font-weight="700" letter-spacing="2">RELAY</text>
-
-          <rect x="48" y="437" width="180" height="110" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <text x="138" y="489" fill="var(--text)" font-size="20" font-weight="700" text-anchor="middle">NODE A</text>
-          <text x="138" y="516" fill="var(--muted)" font-size="13" text-anchor="middle">outbound only</text>
-
-          <rect x="269" y="457" width="140" height="70" rx="12" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <rect x="281" y="477" width="30" height="30" rx="6" fill="var(--bg)" stroke="var(--line)"></rect>
-          <text x="296" y="497" fill="var(--teal)" font-size="11" font-weight="700" text-anchor="middle">ET</text>
-          <text x="321" y="497" fill="var(--text)" font-size="13" font-weight="700">OVERLAY</text>
-
-          <rect x="450" y="427" width="260" height="130" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <text x="580" y="479" fill="var(--text)" font-size="20" font-weight="700" text-anchor="middle">GATEWAY</text>
-          <text x="580" y="507" fill="var(--muted)" font-size="13" text-anchor="middle">leaf sessions only &#183; never dials out</text>
-
-          <rect x="751" y="457" width="140" height="70" rx="12" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <rect x="763" y="477" width="30" height="30" rx="6" fill="var(--bg)" stroke="var(--line)"></rect>
-          <text x="778" y="497" fill="var(--teal)" font-size="11" font-weight="700" text-anchor="middle">ET</text>
-          <text x="803" y="497" fill="var(--text)" font-size="13" font-weight="700">OVERLAY</text>
-
-          <rect x="932" y="437" width="180" height="110" rx="14" fill="var(--bg3)" stroke="var(--teal-dim)"></rect>
-          <text x="1022" y="489" fill="var(--text)" font-size="20" font-weight="700" text-anchor="middle">NODE B</text>
-          <text x="1022" y="516" fill="var(--muted)" font-size="13" text-anchor="middle">outbound only</text>
-
-          <line x1="228" y1="492" x2="263" y2="492" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-          <line x1="409" y1="492" x2="444" y2="492" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-          <line x1="932" y1="492" x2="897" y2="492" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-          <line x1="751" y1="492" x2="716" y2="492" stroke="var(--teal)" stroke-width="3" marker-end="url(#et-arrow)"></line>
-
-          <text x="580" y="596" fill="var(--muted)" font-size="14" text-anchor="middle">Gateway never dials your phone, Starlink home, or hotel laptop.</text>
-        </svg>
+    <section id="buyers">
+      <p class="eyebrow">Who this is for</p>
+      <h2>Three paths into EigenTunnel.</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Developers and test labs</h3>
+          <p>Inspect Core Public, run synthetic tests, reproduce the lab boundary, and request access to private functions only when the work justifies it.</p>
+          <p><a href="developers.html">Developer/lab access</a></p>
+        </article>
+        <article class="card">
+          <h3>OEMs and integrators</h3>
+          <p>License private Core capabilities for embedded products, delivery kits, protected access, and co-sell routes without exposing proprietary implementation.</p>
+          <p><a href="oem.html">OEM path</a></p>
+        </article>
+        <article class="card">
+          <h3>Federal and regulated buyers</h3>
+          <p>Start with evidence discipline: approved scope, cryptographic inventory, migration planning, and protected-path pilots without overclaiming authorization status.</p>
+          <p><a href="federal.html">Federal page</a></p>
+        </article>
       </div>
-      <p class="sub" style="margin-top:16px">Gateway accepts leaf sessions only. It never dials your phone, Starlink home, or hotel laptop. More detail on <a href="product.html#connectivity">the product page</a>.</p>
     </section>
 
     <section id="lead" class="tight">
       <div class="split">
         <div>
-          <p class="eyebrow">Talk to us</p>
-          <h2>Piloting EigenTunnel in your environment?</h2>
-          <p class="sub">Tell us about your network and we'll scope a Core deployment or a Cloud pilot together. No pitch deck required &mdash; a working call beats a demo.</p>
+          <p class="eyebrow">Start here</p>
+          <h2>Tell us which access path you need.</h2>
+          <p class="sub">Use Core Public for lab inspection. Use private Core or Cloud when the work involves product-grade features, managed connectivity, CBOM/OSCAL-oriented evidence, integrations, or OEM embedding.</p>
           <div class="cta" style="margin-top:0">
             <a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
-            <a class="btn" href="contact.html">Full contact form</a>
+            <a class="btn" href="contact.html">Contact form</a>
           </div>
         </div>
         <form class="form-card" action="https://script.google.com/macros/s/AKfycbyHmYuK2raMMHFWlxOV9w1ERoaYtPuR9VeYa1m40m8Bi-xcGYrYbbtUtMRkAfAkWa6iiw/exec" method="POST" id="lead-form">
-          <h3>Get the technical brief</h3>
-          <p class="sub" style="margin-bottom:16px">Drop your email and we'll send the CBOM &amp; hybrid-PQC architecture notes.</p>
+          <h3>Request the technical brief</h3>
+          <p class="sub" style="margin-bottom:16px">Ask for the current Core Public boundary, private Core access terms, or Cloud pilot brief.</p>
           <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off">
           <input type="hidden" name="source" value="home-brief">
           <input type="hidden" name="interest" value="Technical brief request">
@@ -154,7 +130,7 @@
             <label for="lead-email">Work email</label>
             <input type="email" id="lead-email" name="email" required placeholder="you@company.com">
           </div>
-          <button class="btn btn-p btn-block" type="submit">Send me the brief</button>
+          <button class="btn btn-p btn-block" type="submit">Send request</button>
           <p class="form-status" id="lead-status" role="status"></p>
         </form>
       </div>
@@ -164,15 +140,16 @@
     <div class="foot-grid">
       <div>
         <div class="brand" style="margin-bottom:10px"><span class="mark">ET</span> EigenTunnel</div>
-        <p>&copy; 2026 Eigen Systems. EigenTunnel Core is intended to remain free under AGPL v3.</p>
+        <p>&copy; 2026 Eigen Systems. Core Public is lab-alpha software. Private Core and Cloud are commercial offerings.</p>
       </div>
       <nav>
         <a href="index.html">Home</a>
         <a href="product.html">Product</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
+        <a href="developers.html">Developers</a>
+        <a href="oem.html">OEM</a>
+        <a href="federal.html">Federal</a>
+        <a href="pricing.html">Access</a>
         <a href="contact.html">Contact</a>
-        <a href="https://github.com/eigentunnel" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </div>
   </footer>
