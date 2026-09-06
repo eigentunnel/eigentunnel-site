@@ -35,22 +35,23 @@
     <section id="compare">
       <p class="eyebrow">Core vs. Cloud</p>
       <h2>What each layer actually does</h2>
-      <p class="sub">Core is the free lab and evaluation tier &mdash; prove the overlay and the crypto work on real traffic. Cloud is production: the locked CNSA 2.0 profile, plus the approvals, evidence, and reach a fleet needs that one node can't provide alone.</p>
+      <p class="sub">Core is the free lab and evaluation tier &mdash; prove the overlay and the crypto work on real traffic. Cloud is production: the locked CNSA 2.0 profile ships today, and a CBOM/compliance evidence prototype exists alongside it; the fleet enrollment, dashboards, and managed relay a fleet eventually needs are roadmap work.</p>
       <table>
         <thead><tr><th>Capability</th><th>Core (free)</th><th>Cloud (paid)</th></tr></thead>
         <tbody>
           <tr><td>Hybrid PQC tunnels, interop profile (X25519 + ML-KEM-768)</td><td>Yes &mdash; lab / eval</td><td>Yes</td></tr>
-          <tr><td>Mutual authentication, interop profile (ML-DSA-65)</td><td>Yes &mdash; lab / eval, self-managed trust</td><td>Yes, with enrollment &amp; approvals</td></tr>
+          <tr><td>Mutual authentication, interop profile (ML-DSA-65)</td><td>Yes &mdash; lab / eval, self-managed trust</td><td>Yes, self-managed trust</td></tr>
           <tr><td>CNSA 2.0 profile (ML-KEM-1024 + ML-DSA-87 + AES-256-GCM, fail-closed)</td><td>&mdash;</td><td>Yes &mdash; production</td></tr>
           <tr><td>Node cloaking &amp; local status</td><td>Yes</td><td>Yes</td></tr>
-          <tr><td>CBOM (crypto bill of materials) discovery</td><td>&mdash;</td><td>Yes, fleet-wide evidence</td></tr>
-          <tr><td>Managed rendezvous</td><td>&mdash;</td><td>Yes</td></tr>
-          <tr><td>Outbound-only gateway relay</td><td>Manual / self-hosted</td><td>Optional managed relay</td></tr>
-          <tr><td>Fleet dashboards &amp; approvals</td><td>&mdash;</td><td>Yes</td></tr>
+          <tr><td>CBOM discovery &amp; evidence artifacts</td><td>&mdash;</td><td>Prototype &mdash; CLI scan, CycloneDX-style export, local review console</td></tr>
+          <tr><td>Compliance evidence package (OSCAL SSP / POA&amp;M / AP / AR)</td><td>&mdash;</td><td>Evidence package, available on request &mdash; not an authorization</td></tr>
+          <tr><td>Fleet enrollment, approvals &amp; dashboards</td><td>&mdash;</td><td>Roadmap</td></tr>
+          <tr><td>Outbound-only gateway relay</td><td>Manual / self-hosted</td><td>Manual / self-hosted today &mdash; managed relay is roadmap</td></tr>
+          <tr><td>Managed rendezvous</td><td>&mdash;</td><td>Roadmap</td></tr>
           <tr><td>License</td><td>AGPL v3</td><td>Commercial</td></tr>
         </tbody>
       </table>
-      <p class="sub" style="margin-top:20px">Core's interop profile is free forever for lab and evaluation. Production security &mdash; the locked CNSA 2.0 profile &mdash; runs under Cloud. See <a href="pricing.html">pricing</a> for how the two are packaged.</p>
+      <p class="sub" style="margin-top:20px">Core's interop profile is free forever for lab and evaluation. Production crypto &mdash; the locked CNSA 2.0 profile &mdash; runs under Cloud today; the fleet-management plane (enrollment, dashboards, managed rendezvous and relay) is roadmap work we're shaping with design partners. See <a href="pricing.html">pricing</a> for how the two are packaged.</p>
     </section>
 
     <section id="protection">
