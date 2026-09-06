@@ -1,0 +1,83 @@
+[
+  {
+    "id": "C01",
+    "capability": "Private cryptographic profile",
+    "status": "Private implementation; developer-test evidence",
+    "claim": "X25519 + ML-KEM-1024, ML-DSA-87 and AES-256-GCM in the private cnsa2 profile.",
+    "limits": "Independent assessment and production deployment evidence pending; no CNSA qualification claimed.",
+    "evidence": "Private Core b38b314, docs/compliance/cnsa2-profile.md and recorded developer tests",
+    "reviewed": "2026-09-06"
+  },
+  {
+    "id": "C02",
+    "capability": "Relay/gateway connectivity",
+    "status": "Founder-reported end-to-end test",
+    "claim": "macOS \u2192 AWS \u2192 macOS with the far endpoint behind Starlink NAT.",
+    "limits": "Test report does not establish the cryptographic profile, broad performance, anti-jam capability or tactical readiness.",
+    "evidence": "Founder statement September 6, 2026; raw reproducible test bundle not published",
+    "reviewed": "2026-09-06"
+  },
+  {
+    "id": "C03",
+    "capability": "Binary platforms",
+    "status": "Build evidence; distribution under review",
+    "claim": "August 9 release build succeeded for macOS ARM64/x86-64 and Linux ARM64/x86-64.",
+    "limits": "Draft packages predate September profile work. Cross-platform runtime, signing and current lab delivery require verification. Windows not established.",
+    "evidence": "https://github.com/eigentunnel/eigentunnel-core/actions/runs/31314878040",
+    "reviewed": "2026-09-06"
+  },
+  {
+    "id": "C04",
+    "capability": "Public Python tools",
+    "status": "Available",
+    "claim": "Offline analysis of supplied synthetic observations; public repository and tests.",
+    "limits": "No live discovery, host remediation, network measurement or certification.",
+    "evidence": "https://github.com/eigentunnel/eigentunnel-lab",
+    "reviewed": "2026-09-06"
+  },
+  {
+    "id": "C05",
+    "capability": "CBOM discovery",
+    "status": "Prototype",
+    "claim": "CLI scan, CycloneDX-style export and local review console.",
+    "limits": "No verified customer GRC import or production export pipeline claimed.",
+    "evidence": "Private Cloud prototype; reviewed capability reconciliation",
+    "reviewed": "2026-09-06"
+  },
+  {
+    "id": "C06",
+    "capability": "OSCAL artifacts",
+    "status": "Working drafts; validation incomplete",
+    "claim": "SSP, POA&M, AP and AR drafts target OSCAL v1.2.2.",
+    "limits": "The recorded schema audit failed all four drafts. No validated export, component definition, GRC integration or authorization claimed.",
+    "evidence": "Local schema audit September 6, 2026; schema hash recorded privately",
+    "reviewed": "2026-09-06"
+  },
+  {
+    "id": "C07",
+    "capability": "Cloud delivery",
+    "status": "Unfinished / roadmap",
+    "claim": "Payment and provisioning unfinished. Fleet enrollment, approvals and dashboards remain roadmap.",
+    "limits": "No generally available managed service, tenant isolation assurance or service-level commitment.",
+    "evidence": "Founder statement and reviewed capability reconciliation",
+    "reviewed": "2026-09-06"
+  },
+  {
+    "id": "C08",
+    "capability": "FRA rail application",
+    "status": "Proposed research evaluation",
+    "claim": "Investigate connection-level protection alongside long-lived rail systems in an approved test environment.",
+    "limits": "No rail deployment, signaling approval, safety integrity level, award or demonstrated safety benefit.",
+    "evidence": "Local FRA concept and quad-chart drafts; not operational evidence",
+    "reviewed": "2026-09-06"
+  },
+  {
+    "id": "C10",
+    "capability": "Integrations and formal assurance",
+    "status": "Not established for customer reliance",
+    "claim": "Integration scope must be evaluated individually.",
+    "limits": "No verified ITSM/SIEM/CMDB/SOAR/GRC connector, FIPS 140-3 validation, FedRAMP/ATLAS authorization, CJIS compliance, NIAP/CSfC qualification or independent audit claimed.",
+    "evidence": "No qualifying evidence established in this audit",
+    "reviewed": "2026-09-06"
+  }
+]

@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product | EigenTunnel</title>
-  <meta name="description" content="How EigenTunnel splits Restricted Core lab kernel, private Core, and Cloud across public testing, commercial IP, and managed evidence workflows." />
-  <link rel="stylesheet" href="assets/style.css" />
-</head>
-<body>
-  <header>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Technology and evaluation scope | EigenTunnel</title><meta name="description" content="EigenTunnel evaluation scope, evidence and limitations for public-sector and technical buyers."><meta property="og:title" content="EigenTunnel | Executive brief"><meta name="description" content="EigenTunnel evaluation scope, evidence and limitations for public-sector and technical buyers."><link rel="stylesheet" href="assets/style.css"></head><body><a class="skip-link" href="#main">Skip to content</a><header>
     <a class="brand" href="index.html"><span class="mark">ET</span> EigenTunnel</a>
     <nav class="primary">
       <input type="checkbox" id="nav-toggle">
       <label for="nav-toggle" class="hamburger" aria-label="Menu"><span></span><span></span><span></span></label>
       <div class="links">
         <a href="index.html">Home</a>
-        <a href="product.html" class="active">Product</a>
+        <a href="executive.html">Business case</a><a href="product.html">Technology</a>
         <a href="developers.html">Developers</a>
         <a href="oem.html">OEM</a>
         <a href="public-sector.html">Public sector</a>
@@ -24,98 +15,4 @@
       </div>
       <a class="btn btn-p cta-link" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
     </nav>
-  </header>
-  <main>
-    <div class="hero" style="padding-bottom:40px">
-      <p class="kicker">Product split</p>
-      <h1>How EigenTunnel connects systems—and what has been tested.</h1>
-      <p class="lede">EigenTunnel combines endpoint software, transport and relay/gateway capabilities. The table separates the restricted lab surface from private capabilities and unfinished Cloud workflows.</p>
-    </div>
-
-    <section id="compare">
-      <p class="eyebrow">Core vs. Cloud</p>
-      <h2>Capabilities and availability</h2>
-      <table>
-        <thead><tr><th>Capability</th><th>Restricted Core lab kernel</th><th>Private Core</th><th>Cloud</th></tr></thead>
-        <tbody>
-          <tr><td>Hybrid PQC primitives and lab tests</td><td>Yes</td><td>Yes</td><td>Uses via product integration</td></tr>
-          <tr><td>Peer registry, cloaking checks, local transport tests</td><td>Yes, sanitized</td><td>Yes, hardened</td><td>Fleet management: roadmap</td></tr>
-          <tr><td>Production packaging, installers, daemons, gateway productization</td><td>No</td><td>Commercial/private</td><td>Deployment scope defined per pilot</td></tr>
-          <tr><td>Relay/gateway connectivity</td><td>No</td><td>Founder-tested: macOS → AWS → macOS through Starlink NAT</td><td>Payment and provisioning unfinished</td></tr>
-          <tr><td>CNSA 2.0 profile (1024 / 87 / AES-256-GCM)</td><td>Primitives only; no locked profile</td><td>Implemented; developer-test evidence</td><td>Commercial offering; production deployment evidence pending</td></tr>
-          <tr><td>Scanner, CBOM discovery and artifacts</td><td>No</td><td>Private interfaces</td><td>Prototype</td></tr>
-          <tr><td>OSCAL v1.2.2 SSP/POA&amp;M/AP/AR</td><td>No</td><td>Implementation evidence</td><td>Working evidence package on request; no authorization</td></tr>
-          <tr><td>Fleet enrollment, approvals and dashboards</td><td>No</td><td>Private interfaces</td><td>Roadmap</td></tr>
-          <tr><td>ITSM, SIEM, CMDB, SOAR, cloud integrations</td><td>No</td><td>Private hooks</td><td>Commercial workflow</td></tr>
-          <tr><td>License posture</td><td>Private source; separate binary evaluation terms</td><td>Commercial/OEM license</td><td>Commercial SaaS/service terms</td></tr>
-        </tbody>
-      </table>
-      <p class="sub" style="margin-top:20px">Restricted Core lab kernel is a separate lab kernel for developers, test labs, and security reviewers. The eigentunnel-core and eigentunnel-cloud product repositories are private. <a href="contact.html">Request private source-review access</a> under written terms.</p>
-    </section>
-
-    <section id="crypto">
-      <p class="eyebrow">Encryption status</p>
-      <h2>Current public cryptography story</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Private lab kernel</h3>
-          <p>Restricted Core lab kernel exposes hybrid X25519 plus ML-KEM key establishment, ML-DSA identity signatures, AEAD packet protection, session derivation, and validation tests.</p>
-        </article>
-        <article class="card">
-          <h3>Claims boundary</h3>
-          <p>The lab branch is alpha code and not independently audited. It is not a FIPS 140-3 validation, FedRAMP authorization, or approval for classified or life-safety systems.</p>
-        </article>
-        <article class="card">
-          <h3>Private advancement</h3>
-          <p>Private Core carries a locked CNSA 2.0 profile &mdash; ML-KEM-1024 + ML-DSA-87 (Category 5) + AES-256-GCM, fail-closed at process start and peer admission. It's implemented with developer-test evidence; production evidence and independent assessment are still pending. Other product hardening, performance work, and packaging remain private until released under explicit terms.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="cloud">
-      <p class="eyebrow">Cloud functions</p>
-      <h2>Cloud is the service-management layer under development.</h2>
-      <div class="grid">
-        <article class="card">
-          <p class="tag private">Private pilot</p>
-          <h3>Enrollment and approvals</h3>
-          <p>Fleet enrollment, approval flow, rotation, revocation, tenant isolation, and operator workflow belong in the private control plane.</p>
-        </article>
-        <article class="card">
-          <p class="tag private">Private pilot</p>
-          <h3>Evidence and CBOM</h3>
-          <p>CBOM discovery is a prototype: CLI scan, CycloneDX-style export, and local review console. OSCAL working evidence packages are available on request.</p>
-        </article>
-        <article class="card">
-          <p class="tag planned">Roadmap/partner work</p>
-          <h3>OSCAL and federal artifacts</h3>
-          <p>OSCAL-oriented mappings (targeting OSCAL v1.2.2, the version named in current RFI evidence requests), control narratives, POA&amp;M inputs, and federal evidence packages are support work. They have no authorization effect.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="connectivity">
-      <p class="eyebrow">Connectivity</p>
-      <h2>Direct when possible. Managed relay when justified.</h2>
-      <p class="sub">Relay/gateway connectivity tested by the founder over macOS → AWS → macOS, with the far endpoint behind Starlink NAT. Cloud payment and provisioning workflows are unfinished. This is a reported end-to-end connectivity test, not evidence of general availability or an independently assessed managed service. The test does not establish which cryptographic profile was used.</p>
-      <div class="note">Claim boundary: EigenTunnel protects traffic routed through EigenTunnel-controlled paths. It does not patch the original endpoint, protect unmanaged bypass traffic, or replace human approval for OT and regulated environments.</div>
-    </section>
-  <section id="cloud-capability-status"><p class="eyebrow">Current capability status</p><h2>Private Core and Cloud</h2><table><thead><tr><th>Capability</th><th>Status</th></tr></thead><tbody><tr><td>CNSA 2.0 algorithm profile</td><td>CNSA 2.0 profile implemented in private Core for the commercial Cloud offering: ML-KEM-1024 + ML-DSA-87 + AES-256-GCM. Developer-test evidence; independent assessment and production deployment evidence pending.</td></tr><tr><td>CBOM discovery and artifacts</td><td>Prototype: CLI scan, CycloneDX-style export, local review console.</td></tr><tr><td>Compliance evidence package</td><td>OSCAL v1.2.2 SSP/POA&amp;M/AP/AR working drafts available on request; no authorization effect.</td></tr><tr><td>Fleet enrollment, approvals and dashboards</td><td>Roadmap.</td></tr><tr><td>Relay/gateway connectivity</td><td>Relay/gateway connectivity tested by the founder over macOS → AWS → macOS, with the far endpoint behind Starlink NAT. Cloud payment and provisioning workflows are unfinished.</td></tr><tr><td>Managed service delivery</td><td>Cloud payment and provisioning workflows are unfinished; fleet enrollment, approvals and dashboards remain roadmap.</td></tr></tbody></table><p class="sub">The private cnsa2 profile defaults to hybrid X25519 plus ML-KEM-1024. Full PQ-only dataplane evidence remains pending. FRA rail use is a proposed research evaluation. These capabilities do not confer FIPS 140-3 validation, ATLAS or FedRAMP authorization.</p></section>
-  </main>
-  <footer>
-    <div class="foot-grid">
-      <div>
-        <div class="brand" style="margin-bottom:10px"><span class="mark">ET</span> EigenTunnel</div>
-        <p>&copy; 2026 Eigen Systems. Restricted Core lab kernel is lab-alpha software. Private Core and Cloud are commercial offerings.</p>
-      </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="developers.html">Developers</a>
-        <a href="oem.html">OEM</a>
-        <a href="public-sector.html">Public sector</a>
-        <a href="pricing.html">Pilots &amp; licensing</a>
-      </nav>
-    </div>
-  </footer>
-</body>
-</html>
+  </header><main id="main"><div class="hero"><p class="kicker">A migration bridge to evaluate</p><h1>Test protection around a hard-to-change data path.</h1><p class="lede">EigenTunnel is software for direct or relayed connections between enrolled systems. A scoped evaluation investigates whether connection-level protection can support a longer application or equipment migration.</p><p class="sub">Application source changes may be avoidable in suitable deployments; routing, firewall, node or gateway configuration can still be required. This is not a universal compatibility promise.</p></div><section><h2>How the pieces fit</h2><div class="grid"><article class="card"><h3>Establish keys</h3><p>The private cnsa2 profile combines X25519 with ML-KEM-1024. ML-KEM establishes shared key material; it is not a bulk-data cipher. The combiner and complete protocol require independent review.</p></article><article class="card"><h3>Authenticate peers</h3><p>The private profile uses ML-DSA-87 signatures for identities. Production key lifecycle and revocation assurance remain separate review work.</p></article><article class="card"><h3>Protect traffic</h3><p>AES-256-GCM is the private profile’s bulk cipher. Encryption applies to configured paths, not unmanaged bypass traffic or a compromised endpoint.</p></article><article class="card"><h3>Connect directly or via a gateway</h3><p>Relay connectivity through Starlink NAT has been founder-tested. The relay trust boundary, metadata exposure and security properties must be verified for the deployed build.</p></article></div><p class="sub">The August binary packages predate September profile work. Do not assume the free evaluation package enables the private cnsa2 profile. <a href="trust.html#C01">Profile evidence and limits</a>.</p></section><section><h2>Choose the engagement</h2><div class="grid"><article class="card"><h3>Free self-hosted lab</h3><p>Public Python tools plus manually reviewed binary access. Direct or prospect-operated gateway evaluation. Your organization pays for its infrastructure; package delivery remains under review.</p></article><article class="card"><h3>Paid engineering</h3><p>Define a connection, integration scope, measurements and deliverables. Company-operated hosting requires a paid scope.</p></article><article class="card"><h3>Cloud service</h3><p>Payment and provisioning unfinished; fleet enrollment, approvals and dashboards remain roadmap. No production managed-service SLA claimed.</p></article></div></section><section><h2>Where to start and where not to deploy</h2><p class="sub">Good evaluation candidates include long-lived applications, vendor appliances, remote facilities and research links where a companion node or gateway can be installed. Use an approved lab environment with synthetic data.</p><p class="sub">Not offered for classified or life-safety operations, deployments requiring validated cryptographic modules or current CNSA/CSfC qualification, or systems where no companion component can be deployed. We do not claim anti-jamming, low probability of intercept/detection, disconnected operation or resilience against compromised endpoints.</p></section><section><h2>Inventory and evidence are separate</h2><p class="sub">CBOM discovery is a prototype. OSCAL SSP/POA&M/AP/AR are working drafts; the recorded v1.2.2 schema audit failed all four. Neither constitutes authorization. No tested GRC import or complete compliance automation is claimed.</p><a class="btn" href="trust.html">Review the claim register and evidence gaps</a></section></main><footer><a class="brand" href="index.html">EigenTunnel · Eigen Systems</a><p>Early-stage software and scoped evaluations. Commercial readiness varies by capability.</p><p><a href="about.html">About</a> · <a href="developers.html">Developers</a> · <a href="contact.html">Contact</a></p><p><a href="trust.html">Evidence and limitations</a> · <a href="federal.html">Federal civilian / defense</a></p></footer></body></html>

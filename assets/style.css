@@ -106,3 +106,5 @@ footer a:hover{color:var(--teal)}
 @media print{header,.cta,footer,.skip-link{display:none}body{background:white;color:black}section,.hero{padding:20px 0}.card{background:white;color:black;break-inside:avoid}.sub,.lede{color:#333}}
 
 nav.primary a.btn-p{color:#06201d}
+
+.table-scroll{overflow-x:auto}.table-scroll table{min-width:640px}section[id],tr[id]{scroll-margin-top:90px}
