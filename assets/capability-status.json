@@ -56,11 +56,11 @@
   {
     "id": "C07",
     "capability": "Cloud delivery",
-    "status": "Unfinished / roadmap",
-    "claim": "Payment and provisioning unfinished. Fleet enrollment, approvals and dashboards remain roadmap.",
-    "limits": "No generally available managed service, tenant isolation assurance or service-level commitment.",
-    "evidence": "Founder statement and reviewed capability reconciliation",
-    "reviewed": "2026-09-06"
+    "status": "Sandbox early access; production review-gated",
+    "claim": "Sandbox self-serve Cloud Team subscribe is available for early access. Production payment workflows and automated provisioning remain review-gated. Fleet enrollment, approvals and dashboards remain roadmap.",
+    "limits": "No generally available managed service, tenant isolation assurance or service-level commitment. Sandbox checkout does not auto-provision a live managed tenant.",
+    "evidence": "Stripe sandbox Payment Link and reviewed capability reconciliation",
+    "reviewed": "2026-09-18"
   },
   {
     "id": "C08",
