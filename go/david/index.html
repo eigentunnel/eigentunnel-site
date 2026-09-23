@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EigenTunnel | David sandbox checkout</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <a class="brand" href="../../index.html"><span class="mark">ET</span> EigenTunnel</a>
+  </header>
+  <main id="main" class="hero">
+    <p class="kicker">Sandbox · invited test</p>
+    <h1>Opening Stripe Checkout…</h1>
+    <p class="lede">Two seats, prefilled for <strong>david@eigentunnel.com</strong> and <strong>patrick@eigentunnel.com</strong>. Test card <code>4242 4242 4242 4242</code>, any future expiry, any CVV, any ZIP.</p>
+    <p id="status" class="sub">Talking to billing…</p>
+    <p class="sub">If nothing happens, use the button below or email Patrick.</p>
+    <p class="cta"><button class="btn btn-p" type="button" id="retry">Retry checkout</button>
+      <a class="btn" href="../../sandbox/checkout.html">Or pick qty 1–5 yourself</a></p>
+  </main>
+  <script>
+  (function () {
+    var API = "https://66rkpxcki4.execute-api.us-east-2.amazonaws.com/dev";
+    var statusEl = document.getElementById("status");
+    function start() {
+      statusEl.textContent = "Creating Stripe Checkout session…";
+      fetch(API + "/v1/public/billing/checkout", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          tenantId: "field-test",
+          planCode: "team",
+          contactEmail: "david@eigentunnel.com",
+          managerSeats: 2,
+          seatEmails: ["david@eigentunnel.com", "patrick@eigentunnel.com"]
+        })
+      }).then(function (r) {
+        return r.json().then(function (d) { return { ok: r.ok, d: d }; });
+      }).then(function (x) {
+        var url = x.d && (x.d.checkoutUrl || x.d.url);
+        if (!x.ok || !url) {
+          statusEl.textContent = "Checkout create failed. Tell Patrick. " + JSON.stringify(x.d || {});
+          return;
+        }
+        statusEl.textContent = "Redirecting to Stripe…";
+        window.location.href = url;
+      }).catch(function (e) {
+        statusEl.textContent = "Network error: " + e;
+      });
+    }
+    document.getElementById("retry").addEventListener("click", start);
+    start();
+  })();
+  </script>
+</body>
+</html>

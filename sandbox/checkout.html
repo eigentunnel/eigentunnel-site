@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EigenTunnel | Sandbox seat checkout</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Sandbox checkout: buy 1–5 EigenTunnel seats and assign unique owner emails.">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <a class="brand" href="../index.html"><span class="mark">ET</span> EigenTunnel</a>
+    <nav class="primary">
+      <div class="links">
+        <a href="../index.html">Home</a>
+        <a href="../pricing.html">Pilots &amp; licensing</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="tight">
+      <p class="eyebrow">Sandbox · Stripe test mode</p>
+      <h2>Buy seats (1–5)</h2>
+      <p class="sub">Quantity is the number of unique seat-owner emails. Each email gets one activate link after payment. No keys in email. Test card <code>4242 4242 4242 4242</code>, any future expiry, any CVV, any ZIP.</p>
+      <div class="form-card">
+        <form id="checkout-form">
+          <div class="field">
+            <label for="contactEmail">Buyer contact email</label>
+            <input id="contactEmail" name="contactEmail" type="email" required placeholder="you@company.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="qty">Number of seats (1–5)</label>
+            <select id="qty" name="qty" required>
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div id="seat-fields"></div>
+          <p id="form-error" class="sub" style="color:#f6a5a5;display:none"></p>
+          <button class="btn btn-p btn-block" type="submit" id="submit">Continue to Stripe</button>
+        </form>
+        <p class="sub" style="margin-top:14px">Invited sandbox only. Activate mail may be handed off manually until production mail is on.</p>
+      </div>
+    </section>
+  </main>
+  <script>
+  (function () {
+    var API = "https://66rkpxcki4.execute-api.us-east-2.amazonaws.com/dev";
+    var MAX = 5;
+    var seatBox = document.getElementById("seat-fields");
+    var qtyEl = document.getElementById("qty");
+    var errEl = document.getElementById("form-error");
+    function renderSeats() {
+      var n = Math.min(MAX, Math.max(1, parseInt(qtyEl.value, 10) || 1));
+      qtyEl.value = String(n);
+      seatBox.innerHTML = "";
+      for (var i = 0; i < n; i++) {
+        var wrap = document.createElement("div");
+        wrap.className = "field";
+        var id = "seat" + i;
+        wrap.innerHTML = '<label for="' + id + '">Seat ' + (i + 1) + ' owner email</label>' +
+          '<input id="' + id + '" type="email" required placeholder="owner' + (i + 1) + '@company.com" autocomplete="email">';
+        seatBox.appendChild(wrap);
+      }
+    }
+    qtyEl.addEventListener("change", renderSeats);
+    renderSeats();
+    document.getElementById("checkout-form").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      errEl.style.display = "none";
+      var contact = document.getElementById("contactEmail").value.trim();
+      var inputs = seatBox.querySelectorAll("input");
+      var emails = [];
+      var seen = {};
+      for (var i = 0; i < inputs.length; i++) {
+        var e = inputs[i].value.trim().toLowerCase();
+        if (!e) { errEl.textContent = "Every seat needs an email."; errEl.style.display = "block"; return; }
+        if (seen[e]) { errEl.textContent = "Seat emails must be unique."; errEl.style.display = "block"; return; }
+        seen[e] = true;
+        emails.push(e);
+      }
+      if (emails.length < 1 || emails.length > MAX) {
+        errEl.textContent = "Choose 1 to 5 seats."; errEl.style.display = "block"; return;
+      }
+      var btn = document.getElementById("submit");
+      btn.disabled = true; btn.textContent = "Creating checkout…";
+      fetch(API + "/v1/public/billing/checkout", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          tenantId: "field-test",
+          planCode: "team",
+          contactEmail: contact,
+          managerSeats: emails.length,
+          seatEmails: emails
+        })
+      }).then(function (r) {
+        return r.json().then(function (d) { return { ok: r.ok, status: r.status, d: d }; });
+      }).then(function (x) {
+        var url = x.d && (x.d.checkoutUrl || x.d.url);
+        if (!x.ok || !url) {
+          errEl.textContent = "Checkout failed (" + x.status + "). " + JSON.stringify(x.d || {});
+          errEl.style.display = "block";
+          btn.disabled = false; btn.textContent = "Continue to Stripe";
+          return;
+        }
+        window.location.href = url;
+      }).catch(function (e) {
+        errEl.textContent = "Network error: " + e;
+        errEl.style.display = "block";
+        btn.disabled = false; btn.textContent = "Continue to Stripe";
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
