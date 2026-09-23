@@ -15,21 +15,26 @@
   <main id="main" class="hero">
     <p class="kicker">Sandbox · macOS leaf</p>
     <h1>Install EigenTunnel leaf</h1>
-    <p class="lede">Download the Mac leaf pack, then activate with the seat token from your activate link. The private key is born on your Mac and never emailed.</p>
+    <p class="lede">Download the Mac leaf pack for a node that will run on macOS. Private keys are born on the Mac and never emailed.</p>
     <p class="cta"><a class="btn btn-p" href="./eigen-leaf-macos.zip">Download macOS leaf pack</a>
       <a class="btn" href="../billing/activate.html">Activate page</a></p>
     <div class="sub" style="text-align:left;max-width:40rem;margin:1.5rem auto">
       <ol>
-        <li>Download and unzip <code>eigen-leaf-macos.zip</code>.</li>
-        <li>Open your activate link and copy the token (or keep that tab open).</li>
-        <li>In Terminal, from the unzipped folder:
-          <pre style="white-space:pre-wrap;word-break:break-all;padding:12px;border:1px solid #333;border-radius:8px">chmod +x activate-and-register.sh leaf-pack/install.sh
-./activate-and-register.sh 'PASTE_TOKEN_HERE' leaf-yourname</pre>
-        </li>
+        <li>Download and unzip <code>eigen-leaf-macos.zip</code> (folder: <code>eigen-leaf-macos-bundle</code>).</li>
+        <li>Double-click <strong>Activate EigenTunnel.command</strong>.
+          First time on this Mac: right-click → Open → Open.</li>
+        <li>Paste your activate link (or token) when prompted. Accept the node name or type <code>leaf-yourname</code>.</li>
         <li>You should see <code>{"accepted":true}</code>.</li>
       </ol>
       <p>Apple Silicon and Intel Macs are both in the zip. Needs Python 3 (preinstalled on macOS).</p>
+      <p>Use the installer for the OS where the node will run. This page is macOS only for now; Windows/Linux packs come later.</p>
       <p><strong>Do not</strong> email <code>peer.env</code> or any private key. Only the activate link/token is shareable.</p>
+      <details style="margin-top:1rem">
+        <summary>Manual Terminal steps (same result)</summary>
+        <pre style="white-space:pre-wrap;word-break:break-all;padding:12px;border:1px solid #333;border-radius:8px;margin-top:0.5rem">cd ~/Downloads/eigen-leaf-macos-bundle
+chmod +x activate-and-register.sh leaf-pack/install.sh
+./activate-and-register.sh 'PASTE_TOKEN_HERE' leaf-yourname</pre>
+      </details>
     </div>
   </main>
 </body>
