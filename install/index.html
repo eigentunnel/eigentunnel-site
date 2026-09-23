@@ -21,14 +21,19 @@
     <div class="sub" style="text-align:left;max-width:40rem;margin:1.5rem auto">
       <ol>
         <li>Download and unzip <code>eigen-leaf-macos.zip</code> (folder: <code>eigen-leaf-macos-bundle</code>).</li>
-        <li>Double-click <strong>Activate EigenTunnel.command</strong>.
-          First time on this Mac: right-click → Open → Open.</li>
+        <li>Double-click <strong>Activate EigenTunnel.command</strong>.</li>
+        <li>If macOS shows <strong>“Not Opened”</strong> (yellow warning): click <strong>Done</strong> (not Move to Trash) → System Settings → Privacy &amp; Security → scroll down → <strong>Open Anyway</strong> → confirm Open.</li>
         <li>Paste your activate link (or token) when prompted. Accept the node name or type <code>leaf-yourname</code>.</li>
         <li>You should see <code>{"accepted":true}</code>.</li>
       </ol>
       <p>Apple Silicon and Intel Macs are both in the zip. Needs Python 3 (preinstalled on macOS).</p>
       <p>Use the installer for the OS where the node will run. This page is macOS only for now; Windows/Linux packs come later.</p>
       <p><strong>Do not</strong> email <code>peer.env</code> or any private key. Only the activate link/token is shareable.</p>
+      <details style="margin-top:1rem" open>
+        <summary>Terminal unblock (if double-click stays blocked)</summary>
+        <p style="margin:0.5rem 0">Paste this one line in Terminal, then press Return. Adjust the path if your unzip is not in Downloads:</p>
+        <pre style="white-space:pre-wrap;word-break:break-all;padding:12px;border:1px solid #333;border-radius:8px;margin-top:0.5rem">xattr -cr ~/Downloads/eigen-leaf-macos-bundle &amp;&amp; open ~/Downloads/eigen-leaf-macos-bundle/Activate\ EigenTunnel.command</pre>
+      </details>
       <details style="margin-top:1rem">
         <summary>Manual Terminal steps (same result)</summary>
         <pre style="white-space:pre-wrap;word-break:break-all;padding:12px;border:1px solid #333;border-radius:8px;margin-top:0.5rem">cd ~/Downloads/eigen-leaf-macos-bundle
