@@ -20,7 +20,21 @@
     <pre id="tokbox" class="sub" style="white-space:pre-wrap;word-break:break-all;padding:12px;border:1px solid #333;border-radius:8px;display:none"></pre>
     <p class="cta"><button class="btn btn-p" type="button" id="copy" disabled>Copy token</button>
       <a class="btn" href="../developers.html">Leaf install docs</a></p>
-    <p class="sub">Env hint for install scripts: set <code>EIGENTUNNEL_ACTIVATE_TOKEN</code> to the token above, <code>EIGENTUNNEL_TENANT_ID=field-test</code>, then run your one-command leaf install.</p>
+    <div class="sub" style="text-align:left;max-width:40rem;margin:1.5rem auto">
+      <p><strong>This page is not the installer.</strong> It only shows your seat activate token. The node private key is created on your Mac and never uploaded.</p>
+      <p>On a Mac with the EigenTunnel leaf pack:</p>
+      <pre style="white-space:pre-wrap;word-break:break-all;padding:12px;border:1px solid #333;border-radius:8px">cd ~/EigenTunnel/leaf-pack
+./activate-and-register.sh PASTE_TOKEN_HERE leaf-$USER</pre>
+      <p>Or manually: run <code>./install.sh --no-wait</code> in the leaf pack, copy <code>EIGEN_PUBLIC_KEY_B64</code> from <code>01-SEND-THIS-FILE/peer.env</code>, then:</p>
+      <pre style="white-space:pre-wrap;word-break:break-all;padding:12px;border:1px solid #333;border-radius:8px">export EIGENTUNNEL_RENDEZVOUS_URL=https://66rkpxcki4.execute-api.us-east-2.amazonaws.com/dev
+export EIGENTUNNEL_ACTIVATE_TOKEN='PASTE_TOKEN_HERE'
+export EIGENTUNNEL_TENANT_ID=field-test
+export EIGENTUNNEL_NODE_ID=leaf-patrick-1
+export EIGENTUNNEL_PEER_ID=leaf-patrick-1
+export EIGENTUNNEL_DEVICE_PUBLIC_KEY='PASTE_PUBLIC_KEY_B64'
+python3 leaf/install/register-public-peer.py</pre>
+      <p>Do not email <code>peer.env</code> or any private key. Only the activate link / token is shareable.</p>
+    </div>
   </main>
   <script>
   (function () {
