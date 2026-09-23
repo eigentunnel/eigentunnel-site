@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EigenTunnel | Activate seat</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <a class="brand" href="../index.html"><span class="mark">ET</span> EigenTunnel</a>
+  </header>
+  <main id="main" class="hero">
+    <p class="kicker">Sandbox · seat activate</p>
+    <h1>Activate your leaf</h1>
+    <p class="lede">This page never shows private keys. Paste the token into leaf install on your machine; the leaf mints its own identity and registers only the public peer to rendezvous.</p>
+    <p class="sub" id="tokline">Looking for <code>?token=</code>…</p>
+    <pre id="tokbox" class="sub" style="white-space:pre-wrap;word-break:break-all;padding:12px;border:1px solid #333;border-radius:8px;display:none"></pre>
+    <p class="cta"><button class="btn btn-p" type="button" id="copy" disabled>Copy token</button>
+      <a class="btn" href="../developers.html">Leaf install docs</a></p>
+    <p class="sub">Env hint for install scripts: set <code>EIGENTUNNEL_ACTIVATE_TOKEN</code> to the token above, <code>EIGENTUNNEL_TENANT_ID=field-test</code>, then run your one-command leaf install.</p>
+  </main>
+  <script>
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var token = q.get("token") || "";
+    var line = document.getElementById("tokline");
+    var box = document.getElementById("tokbox");
+    var btn = document.getElementById("copy");
+    if (!token) {
+      line.textContent = "Missing token. Open the activate link Patrick sent (it includes ?token=…).";
+      return;
+    }
+    line.textContent = "Your activate token (link-only; do not forward private keys):";
+    box.style.display = "block";
+    box.textContent = token;
+    btn.disabled = false;
+    btn.addEventListener("click", function () {
+      navigator.clipboard.writeText(token).then(function () {
+        btn.textContent = "Copied";
+      }, function () {
+        btn.textContent = "Select & copy manually";
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

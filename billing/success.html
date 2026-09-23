@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EigenTunnel | Payment received</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <a class="brand" href="../index.html"><span class="mark">ET</span> EigenTunnel</a>
+  </header>
+  <main id="main" class="hero">
+    <p class="kicker">Sandbox · payment received</p>
+    <h1>You’re in.</h1>
+    <p class="lede">Stripe Checkout completed. Activate links are issued per seat email (link only — identity keys are born on your device, never emailed).</p>
+    <p class="sub" id="session">Checking session…</p>
+    <p class="sub">Sandbox handoff: Patrick will send your activate link (or open the activate page he shared). Then run leaf install with that token and register your public peer.</p>
+    <p class="cta"><a class="btn btn-p" href="../sandbox/checkout.html">Buy more sandbox seats</a>
+      <a class="btn" href="../contact.html">Contact</a></p>
+  </main>
+  <script>
+  (function () {
+    var el = document.getElementById("session");
+    var q = new URLSearchParams(location.search);
+    var sid = q.get("session_id");
+    if (sid) {
+      el.textContent = "Checkout session " + sid.slice(0, 18) + "… recorded.";
+    } else {
+      el.textContent = "Payment confirmed. If you expected an activate email, check with Patrick — sandbox mailer is stub.";
+    }
+  })();
+  </script>
+</body>
+</html>
