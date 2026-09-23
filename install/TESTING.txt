@@ -1,0 +1,66 @@
+EigenTunnel sandbox — prove the lab (macOS)
+
+What this shows in a few minutes:
+  - seat activate + public peer register (private key never leaves this Mac)
+  - outbound-only dial to the AWS gateway (CGNAT/Starlink-friendly)
+  - hairpin between two leaves: ping + tiny UDP echo (Eigen is fast)
+
+NEVER email peer.env or identity.key. Activate link/token only.
+
+
+0) Roles (pick overlay addresses before you activate)
+   Patrick: leaf-patrickmccormick   overlay 10.66.0.2/24
+   David:   leaf-david              overlay 10.66.0.3/24
+
+   If you are David, edit this one line BEFORE Activate:
+     leaf-pack/overlay.txt   →   10.66.0.3/24
+
+
+1) Install + register (once)
+   - Fresh zip: https://eigentunnel.com/install/eigen-leaf-macos.zip
+   - Unzip → double-click "Activate EigenTunnel.command"
+   - Gatekeeper? Done (not Trash) → System Settings → Privacy & Security → Open Anyway
+   - Paste your activate link/token → accept leaf-yourname
+   - Success looks like: {"accepted":true}
+
+
+2) Join the gateway (tunnel-up)
+   Operator places the gateway PUBLIC peer file here (you do not create it):
+     ~/EigenTunnel/02-PUT-GATEWAY-PEER-HERE/peer.env
+   Then start outbound leaf (gateway never dials you):
+
+     cd ~/Downloads/eigen-leaf-macos-bundle/leaf-pack
+     ./install.sh --name leaf-YOURNAME
+
+   Leave that window open. Freeqd should run as mode=gateway_client.
+
+
+3) Smoke test (both Macs dialed in)
+
+   A) Overlay ping (from either Mac, to the other overlay IP):
+        ping -c 5 10.66.0.2
+        ping -c 5 10.66.0.3
+
+   B) Tiny UDP echo (shows RTT through the Eigen hairpin):
+
+      On the server Mac (pick one):
+        cd ~/Downloads/eigen-leaf-macos-bundle
+        python3 bin/eigen-lab-echo.py server --port 9700
+
+      On the client Mac:
+        cd ~/Downloads/eigen-leaf-macos-bundle
+        python3 bin/eigen-lab-echo.py client --host 10.66.0.X --port 9700 --count 50
+
+      Expect: 50/50 ok, median a few milliseconds. Zero loss.
+
+
+4) Optional “flyer” numbers (operator / Patrick)
+   Full strict matrix (clear LAN vs Eigen via gateway, fail-loud) lives in the
+   lab pack: lan-perf-ab/scripts/run_via_gateway.sh
+   Use that only after both leaves are gateway_client and ping works.
+
+
+If something fails
+  - Activate failed with “device public key is invalid” → re-download TODAY’s zip
+  - ping fails → gateway peer missing, freeqd not running, or wrong overlay IP
+  - echo timeouts + gateway relay_decrypt_errors climbing → stop; do not quote numbers
