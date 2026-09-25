@@ -4,7 +4,7 @@
 # Downloads the package, checks its pinned sha256, and runs it. A wrong sha stops everything (no fallback).
 set -euo pipefail
 PKG_URL="https://eigentunnel.com/install/v5/eigentunnel-leaf-e7eb2ae-macos.tgz"
-PKG_SHA256="d3139632b1f4d26641e27f66c1de171d869d6df88c049eb7b807af0eb62f5259"
+PKG_SHA256="a9bee73cb1993d2e79e50c78af7e4855940d9e0a68c32580a7f6e0b5255d0db1"
 stop() { printf '\nSTOPPED: %s\nNothing was installed. You can run the same command again later.\n' "$1"; exit 1; }
 [ "$(uname -s)" = Darwin ] || stop "this installer is for macOS."
 [ "$(id -u)" = 0 ] || stop "run it with sudo (the one-line command does this)."
