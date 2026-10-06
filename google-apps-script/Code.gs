@@ -30,7 +30,7 @@ function doPost(e) {
       params.email || '',
       params.company || '',
       params.interest || '',
-      params.message || ''
+      storedMessage(params)
     ]);
 
     MailApp.sendEmail({
@@ -59,6 +59,41 @@ function getSheet() {
   return sheet;
 }
 
+// Keep this marker identical to EIGENSCAN_MARKER in assets/lead-form.js.
+var EIGENSCAN_MARKER = 'EigenScan request details';
+
+function cleanField(value) {
+  return value == null ? '' : String(value).trim();
+}
+
+// The live sheet has seven columns. Extra EigenScan request fields are folded
+// into Message so a redeploy does not require a new header row. lead-form.js
+// folds the same block before fetch; if that marker is already present, leave
+// the message alone. A no-JS post is folded here after Code.gs is redeployed
+// (Deploy → Manage deployments → New version). Same web app URL.
+function storedMessage(p) {
+  var message = cleanField(p.message);
+  if (message.indexOf(EIGENSCAN_MARKER) === 0) return message;
+  var requestType = cleanField(p.request_type);
+  var role = cleanField(p.role);
+  var sector = cleanField(p.sector);
+  var segments = cleanField(p.segments);
+  var timeframe = cleanField(p.timeframe);
+  if (!requestType && !role && !sector && !segments && !timeframe) {
+    return message;
+  }
+  var lines = [EIGENSCAN_MARKER];
+  if (requestType) lines.push('Request: ' + requestType);
+  if (role) lines.push('Role: ' + role);
+  if (sector) lines.push('Sector: ' + sector);
+  if (segments) lines.push('Approximate network segments or sites: ' + segments);
+  if (timeframe) lines.push('Timeframe: ' + timeframe);
+  lines.push('');
+  lines.push('Notes:');
+  lines.push(message || '(none)');
+  return lines.join('\n');
+}
+
 function buildEmailBody(p) {
   return [
     'New EigenTunnel lead:',
@@ -70,7 +105,7 @@ function buildEmailBody(p) {
     'Source page: ' + (p.source || '(unknown)'),
     '',
     'Message:',
-    p.message || '(none)'
+    storedMessage(p) || '(none)'
   ].join('\n');
 }
 

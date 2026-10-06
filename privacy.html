@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy notice (draft) | EigenTunnel</title>
+  <meta name="description" content="DRAFT privacy notice for eigentunnel.com forms. Not final. Needs counsel review." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <!-- DRAFT PRIVACY NOTICE. Needs counsel review before anyone treats it as Eigen Systems' privacy policy. Not final. -->
+  <div class="draft-banner" role="note"><strong>DRAFT — not a privacy policy.</strong> Counsel has not reviewed this page. Do not treat it as final.</div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <a class="brand" href="index.html"><span class="mark">ET</span> EigenTunnel</a>
+    <nav class="primary">
+      <input type="checkbox" id="nav-toggle">
+      <label for="nav-toggle" class="hamburger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="executive.html">Business case</a>
+        <a href="product.html">Technology</a>
+        <a href="eigenscan/">EigenScan</a>
+        <a href="developers.html">Developers</a>
+        <a href="oem.html">OEM</a>
+        <a href="public-sector.html">Public sector</a>
+        <a href="pricing.html">Pilots &amp; licensing</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a class="btn btn-p cta-link" href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main id="main">
+    <div class="hero" style="padding-bottom:24px">
+      <p class="kicker">Draft for counsel review · October 6, 2026</p>
+      <h1>Privacy notice (draft).</h1>
+      <p class="lede">This page describes how the forms on this static site handle personal information today. It is a draft for counsel. It is not Eigen Systems' privacy policy.</p>
+    </div>
+
+    <section>
+      <h2>What this draft describes</h2>
+      <p class="sub">eigentunnel.com is static HTML. The <a href="contact.html">contact page</a> and the <a href="eigenscan/#request">EigenScan page</a> include forms so Eigen Systems can respond to a request. The EigenScan form is a request for an evaluation or a quote. It does not place an order.</p>
+    </section>
+
+    <section>
+      <h2>Information the forms collect</h2>
+      <p class="sub">Contact form: name, work email, company, what the person is interested in, and a message.</p>
+      <p class="sub">EigenScan request form: name, work email, organization, role, sector, approximate network segments or sites to scan, timeframe, whether the request is for an evaluation or a quote, and a message.</p>
+      <p class="sub">Both forms include a hidden field meant to catch automated spam. When that field is filled in, the intake script discards the submission and does not store it.</p>
+    </section>
+
+    <section>
+      <h2>Where a submission goes</h2>
+      <p class="sub">Each form posts to a Google Apps Script web app in the eigentunnel.com Google Workspace. The script adds a row to a Google Sheet named Leads and emails the submission to patrick@eigentunnel.com. Google keeps that sheet and that mailbox as part of the Workspace account. The site does not send form contents to a separate form vendor.</p>
+      <p class="sub">Intended use, which counsel still needs to confirm: read the request, reply to it, and keep a record of it.</p>
+    </section>
+
+    <section>
+      <h2>Open items for counsel</h2>
+      <div class="todo">
+        <p><strong>TODO — counsel review required before this page is treated as final.</strong></p>
+        <ul>
+          <li>TODO: Confirm the legal entity name, mailing address, and the contact for privacy requests. Public pages currently say both "Eigen Systems" and "Eigen-Systems, Inc."</li>
+          <li>TODO: Set how long form submissions are kept, and how a deletion request is carried out in the Sheet and the notification mailbox.</li>
+          <li>TODO: State the legal basis for collection, and any notice required for federal, defense, state, local, or other regulated requesters.</li>
+          <li>TODO: State access, correction, and deletion rights, and the steps a person uses to exercise them.</li>
+          <li>TODO: Decide how to describe Google Workspace (Sheets and Gmail), including any service-provider or cross-border wording.</li>
+          <li>TODO: Decide whether this page may be indexed or linked as the company's privacy policy. This draft asks search engines not to index it, and it is not listed in the sitemap.</li>
+          <li>TODO: Confirm the published site has no other trackers, cookies, or processors. Pages reviewed for this draft do not embed a web analytics tag.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Other links on the contact page</h2>
+      <p class="sub">The contact page also links to a Google Calendar booking page and to email. Those leave this site and open Google or a mail program. This draft does not describe Google Calendar's own handling of a booking.</p>
+    </section>
+
+    <section>
+      <h2>Questions about this draft</h2>
+      <p class="sub">Email <a href="mailto:patrick@eigentunnel.com">patrick@eigentunnel.com</a>. That is the public contact already printed on the site. It is not a designated privacy office until counsel says otherwise.</p>
+    </section>
+  </main>
+  <footer>
+    <a class="brand" href="index.html">EigenTunnel · Eigen Systems</a>
+    <p>Draft privacy notice. Not final. Needs counsel review.</p>
+    <p><a href="about.html">About</a> · <a href="developers.html">Developers</a> · <a href="contact.html">Contact</a></p>
+    <p><a href="trust.html">Evidence and limitations</a> · <a href="federal.html">Federal civilian / defense</a></p>
+  </footer>
+</body>
+</html>
