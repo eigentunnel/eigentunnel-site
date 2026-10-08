@@ -17,7 +17,7 @@ NEVER email peer.env or identity.key. Activate link/token only.
 
 
 1) Install + register (once)
-   - Fresh zip: https://eigentunnel.com/install/eigen-leaf-macos.zip
+   - Fresh zip: download temporarily unavailable
    - Unzip → double-click "Activate EigenTunnel.command"
    - Gatekeeper? Done (not Trash) → System Settings → Privacy & Security → Open Anyway
    - Paste your activate link/token → accept leaf-yourname
