@@ -108,3 +108,12 @@ footer a:hover{color:var(--teal)}
 nav.primary a.btn-p{color:#06201d}
 
 .table-scroll{overflow-x:auto}.table-scroll table{min-width:640px}section[id],tr[id]{scroll-margin-top:90px}
+
+.form-card.form-card-request{max-width:640px}
+.req{color:var(--teal);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-left:6px}
+.form-note{color:var(--muted);font-size:14px;margin:0 0 16px}
+.draft-banner{background:#3b2a12;color:#ffedd5;padding:12px 20px;text-align:center;font-size:14px;border-bottom:1px solid #9a3412}
+.draft-banner strong{color:#fff}
+.todo{border:1px dashed #b7791f;background:#2a1c09;color:#ffd38a;border-radius:12px;padding:14px 16px;margin:16px 0}
+.todo ul{margin:8px 0 0 18px}
+.todo li{margin:0 0 8px}
