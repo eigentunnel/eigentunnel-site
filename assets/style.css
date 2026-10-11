@@ -111,3 +111,4 @@ nav.primary a.btn-p{color:#06201d}
 
 /* Limited-offer promo banner (2026-10-11) */
 .promo-banner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 18px;padding:12px 28px;background:linear-gradient(90deg,#0b3b36,#0f2d3a);border-bottom:2px solid var(--teal);color:#fff;text-align:center}.promo-banner p{margin:0;font-size:15px;font-weight:600;line-height:1.4}.promo-banner strong{display:inline-block;margin-right:8px;padding:2px 8px;border-radius:6px;background:var(--teal);color:#06201d;font-size:12px;letter-spacing:.08em;text-transform:uppercase;vertical-align:1px}.promo-banner .btn{padding:8px 16px;white-space:nowrap}@media print{.promo-banner{display:none}}
+.setup-steps{margin:12px 0 0 22px;max-width:60ch;color:#d5dee8;font-size:18px}.setup-steps li{margin:4px 0}
