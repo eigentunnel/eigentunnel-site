@@ -7,7 +7,7 @@ Public marketing site for **EigenTunnel**, the post-quantum protected-path produ
 - Contact: patrick@eigentunnel.com
 - Book a call: https://calendar.app.google/K5anZSkG7kXmQUEX6
 
-Previously marketed as FreeQ at getfreeq.com. That name collided with an unrelated influencer's site, so public-facing work now uses EigenTunnel. The product packaging has also changed: Core Public is a minimal lab/review kernel, while private Core and EigenTunnel Cloud contain commercial functions.
+Previously marketed as FreeQ at getfreeq.com. That name collided with an unrelated influencer's site, so public-facing work now uses EigenTunnel. The product packaging has also changed: Core Public is a minimal lab/review kernel, while private Core and EigenTunnel Console contain commercial functions.
 
 ## Pages
 

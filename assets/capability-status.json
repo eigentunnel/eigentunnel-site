@@ -39,9 +39,9 @@
     "id": "C05",
     "capability": "CBOM discovery",
     "status": "Prototype",
-    "claim": "CLI scan, CycloneDX-style export and local review console.",
+    "claim": "CLI scan, CycloneDX-style export and local review screen.",
     "limits": "No verified customer GRC import or production export pipeline claimed.",
-    "evidence": "Private Cloud prototype; reviewed capability reconciliation",
+    "evidence": "Private Console prototype; reviewed capability reconciliation",
     "reviewed": "2026-09-06"
   },
   {
@@ -55,7 +55,7 @@
   },
   {
     "id": "C07",
-    "capability": "Cloud delivery",
+    "capability": "Console delivery",
     "status": "Unfinished / roadmap",
     "claim": "Payment and provisioning unfinished. Fleet enrollment, approvals and dashboards remain roadmap.",
     "limits": "No generally available managed service, tenant isolation assurance or service-level commitment.",
