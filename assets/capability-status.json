@@ -39,7 +39,7 @@
     "id": "C05",
     "capability": "CBOM discovery",
     "status": "Prototype",
-    "claim": "CLI scan, CycloneDX-style export and local review console.",
+    "claim": "CLI scan, CycloneDX-style export and local review screen.",
     "limits": "No verified customer GRC import or production export pipeline claimed.",
     "evidence": "Private Console prototype; reviewed capability reconciliation",
     "reviewed": "2026-09-06"
