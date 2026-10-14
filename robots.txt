@@ -1,3 +1,8 @@
+# eigentunnel.com robots.txt
+# Transactional and personal pages (billing/, sandbox/, go/, install/) carry <meta name="robots" content="noindex">.
+# They stay crawlable so search engines can see that noindex tag. Do not Disallow them here.
+# AT PUBLISH (Patrick): /lossy-links/ and /guides/omb-m-26-15/ are noindex drafts. Remove their noindex tags
+# and uncomment their entries in sitemap.xml when they go live.
 User-agent: *
 Allow: /
 

@@ -24,7 +24,8 @@ function doPost(e) {
     }
 
     // Lossy-link funnel (lossy-links/index.html): brief, free and call forms.
-    if (params.form === 'brief' || params.form === 'call' || params.form === 'free') {
+    // Free-scan form (pilot/index.html): form=pilot, source=pilot. Same Funnel tab and scoring.
+    if (params.form === 'brief' || params.form === 'call' || params.form === 'free' || params.form === 'pilot') {
       return handleFunnel(params);
     }
 
@@ -40,7 +41,7 @@ function doPost(e) {
 
     MailApp.sendEmail({
       to: NOTIFY_EMAIL,
-      subject: 'EigenTunnel: new lead — ' + (params.name || params.email),
+      subject: 'EigenTunnel: new lead: ' + (params.name || params.email),
       body: buildEmailBody(params)
     });
 
@@ -113,6 +114,9 @@ function scoreLead(p) {
   if (tl !== undefined) { pts += tl; why.push('timeline ' + p.timeline + ' +' + tl); }
 
   if (['tactical-radio','satellite','cat-m','rail'].indexOf(p.network) !== -1) { pts += 2; why.push('target network +2'); }
+  // Free-scan (pilot) form: OT, rail, utility and government segments are target buyers.
+  if (p.form === 'pilot' && ['ot','rail','utility','government'].indexOf(p.network) !== -1) { pts += 2; why.push('scan: target segment +2'); }
+  if (p.form === 'pilot') { pts += 2; why.push('free scan requested +2'); }
   if (/sensor|fusion|c2|command|isr|edge|uas|drone|radio|satcom|satellite|rail|ptc|wayside|post-quantum|pqc|quantum|cnsa|tactical|manet/i.test(p.use_case || '')) {
     pts += 1; why.push('use-case keywords +1');
   }
@@ -159,7 +163,7 @@ function handleFunnel(p) {
   var flag = s.tier === 'strong' ? '[STRONG LEAD] ' : '[' + s.tier + '] ';
   MailApp.sendEmail({
     to: NOTIFY_EMAIL,
-    subject: flag + 'EigenTunnel ' + ({call:'call request',brief:'brief download',free:'free sign-up (' + (p.free_option||'') + ')'}[p.form]) + ': ' + (p.name || p.email) + (p.company ? ' (' + p.company + ')' : ''),
+    subject: flag + 'EigenTunnel ' + ({call:'call request',brief:'brief download',free:'free sign-up (' + (p.free_option||'') + ')',pilot:'free on-site scan request'}[p.form]) + ': ' + (p.name || p.email) + (p.company ? ' (' + p.company + ')' : ''),
     body: [
       'Tier: ' + s.tier.toUpperCase() + ' (' + s.points + ' pts)',
       'Why: ' + s.reasons.join('; '),

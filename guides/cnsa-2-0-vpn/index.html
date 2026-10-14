@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CNSA 2.0 for VPNs and Tunnels, in Plain Language | EigenTunnel</title>
+<meta name="description" content="CNSA 2.0 dates for VPNs and routers, the algorithms by name (ML-KEM-1024, ML-DSA-87), and the questions to ask any tunnel vendor. Plain language, cited sources.">
+<link rel="canonical" href="https://eigentunnel.com/guides/cnsa-2-0-vpn/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EigenTunnel">
+<meta property="og:title" content="CNSA 2.0 for VPNs and Tunnels, in Plain Language | EigenTunnel">
+<meta property="og:description" content="CNSA 2.0 dates for VPNs and routers, the algorithms by name (ML-KEM-1024, ML-DSA-87), and the questions to ask any tunnel vendor. Plain language, cited sources.">
+<meta property="og:url" content="https://eigentunnel.com/guides/cnsa-2-0-vpn/">
+<meta property="og:image" content="https://eigentunnel.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="EigenTunnel: Built for bad signal. Ready for quantum.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CNSA 2.0 for VPNs and Tunnels, in Plain Language | EigenTunnel">
+<meta name="twitter:description" content="CNSA 2.0 dates for VPNs and routers, the algorithms by name (ML-KEM-1024, ML-DSA-87), and the questions to ask any tunnel vendor. Plain language, cited sources.">
+<meta name="twitter:image" content="https://eigentunnel.com/assets/og-image.png">
+<!-- TODO(Patrick): Search Console verification. Paste the tag from search.google.com/search-console
+     (URL-prefix property, HTML tag method) and uncomment. Or verify by DNS TXT and delete this line.
+<meta name="google-site-verification" content="TODO_PASTE_TOKEN">
+-->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "02feb3ace23f453da4e8575dbf3267f1"}'></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://eigentunnel.com/#org", "name": "Eigen-Systems, Inc.", "alternateName": "EigenTunnel", "url": "https://eigentunnel.com/", "email": "patrick@eigentunnel.com", "logo": "https://eigentunnel.com/assets/og-image.png", "address": {"@type": "PostalAddress", "addressLocality": "Omaha", "addressRegion": "NE", "addressCountry": "US"}, "founder": {"@type": "Person", "name": "Patrick McCormick"}, "sameAs": ["https://github.com/eigentunnel"]}, {"@type": "WebSite", "@id": "https://eigentunnel.com/#website", "name": "EigenTunnel", "url": "https://eigentunnel.com/", "publisher": {"@id": "https://eigentunnel.com/#org"}}]}</script>
+
+<link rel="stylesheet" href="/assets/style.css"><style>.guide{max-width:820px;margin:0 auto;padding:56px 6vw}.guide h2{margin-top:40px}.guide p,.guide li{line-height:1.65}.guide table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}.guide th,.guide td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}.guide th{background:var(--bg2)}.guide ol,.guide ul{padding-left:22px}.guide .note{color:var(--muted);font-size:14px}.guide .card{margin-top:32px}.guide a{overflow-wrap:anywhere}.guide .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}</style></head><body><a class="skip-link" href="#main">Skip to content</a>
+<div class="promo-banner" role="region" aria-label="Limited offer"><p><strong>Limited offer</strong> 3 free on-site scans. Each runs for 1 to 2 weeks on a network you choose. No hardware to buy: we bring the EigenTunnel Scanner, which works fully air-gapped.</p><a class="btn btn-p" href="/pilot/">Claim a free scan</a></div><header>
+    <a class="brand" href="/index.html"><span class="mark">ET</span> EigenTunnel</a>
+    <nav class="primary">
+      <input type="checkbox" id="nav-toggle">
+      <label for="nav-toggle" class="hamburger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <div class="links">
+        <a href="/index.html">Home</a>
+        <a href="/executive.html">Business case</a><a href="/product.html">Technology</a>
+        <a href="/developers.html">Developers</a>
+        <a href="/oem.html">OEM</a>
+        <a href="/public-sector.html">Public sector</a>
+        <a href="/pricing.html">Pilots & licensing</a>
+        <a class="active" href="/guides/">Guides</a>
+        <a href="/pilot/">Free scan</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+      <a class="btn btn-p cta-link" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
+    </nav>
+  </header><main id="main">
+<article class="guide">
+<p class="kicker">Guide · Updated October 2026</p>
+<h1>CNSA 2.0 for VPNs and tunnels, in plain language</h1>
+<p class="lede">If you run VPNs, site-to-site tunnels or routers for a National Security System, the clock on CNSA 2.0 is already running. This guide explains what CNSA 2.0 is, which dates apply to networking gear, which algorithms it names, and the questions to put to any tunnel vendor, including us.</p>
+
+<h2>What CNSA 2.0 is</h2>
+<p>CNSA 2.0 is the NSA's Commercial National Security Algorithm Suite 2.0: the set of public algorithms the NSA expects National Security Systems (NSS) to use as they move to quantum-resistant cryptography. It replaces CNSA 1.0 over a phased timeline by product category. The NSA expects the transition for NSS to be complete by 2035, in line with National Security Memorandum 10 (NSM-10). <a href="https://media.defense.gov/2025/May/30/2003728741/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS.PDF">[1]</a></p>
+
+<h2>Why tunnels are near the front of the line</h2>
+<p>Adversaries can record encrypted traffic today and decrypt it later once a large quantum computer exists. This is often called "harvest now, decrypt later." VPNs and tunnels carry exactly the long-lived traffic worth recording, so the NSA puts traditional networking equipment on one of the earliest schedules. <a href="https://media.defense.gov/2025/May/30/2003728741/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS.PDF">[1]</a></p>
+
+<h2>The dates that matter for networking equipment</h2>
+<table>
+<thead><tr><th>Category (NSA wording)</th><th>Support and prefer CNSA 2.0 by</th><th>Use CNSA 2.0 exclusively by</th></tr></thead>
+<tbody>
+<tr><td>Traditional networking equipment (e.g., VPNs, routers)</td><td>2026</td><td>2030</td></tr>
+<tr><td>Software and firmware signing</td><td>2025</td><td>2030</td></tr>
+<tr><td>Web browsers, servers and cloud services</td><td>2025</td><td>2033</td></tr>
+<tr><td>Operating systems</td><td>2027</td><td>2033</td></tr>
+<tr><td>Niche equipment (e.g., constrained devices, large PKI)</td><td>2030</td><td>2033</td></tr>
+<tr><td>Custom applications and legacy equipment</td><td colspan="2">Update or replace by 2033</td></tr>
+</tbody></table>
+<p class="note">Source: NSA, "Announcing the Commercial National Security Algorithm Suite 2.0." <a href="https://media.defense.gov/2025/May/30/2003728741/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS.PDF">[1]</a></p>
+<p>Trackers also report a January 1, 2027 procurement gate under CNSSP-15: new NSS acquisitions after that date are expected to support CNSA 2.0. <a href="https://pqcmandates.com/mandate/nsa-cnsa-2">[2]</a> Confirm the current wording with your authorizing official, since this is where program schedules and buying decisions meet.</p>
+
+<h2>The algorithms, in one table</h2>
+<table>
+<thead><tr><th>Job</th><th>CNSA 2.0 algorithm</th><th>What it replaces in a tunnel</th></tr></thead>
+<tbody>
+<tr><td>Key establishment</td><td>ML-KEM-1024 (FIPS 203)</td><td>RSA or (EC)Diffie-Hellman key exchange</td></tr>
+<tr><td>Digital signatures</td><td>ML-DSA-87 (FIPS 204)</td><td>RSA or ECDSA authentication</td></tr>
+<tr><td>Bulk encryption</td><td>AES-256</td><td>Usually already in place</td></tr>
+<tr><td>Hashing</td><td>SHA-384 or SHA-512</td><td>Usually already in place</td></tr>
+<tr><td>Firmware and software signing</td><td>LMS or XMSS</td><td>RSA or ECDSA code signing</td></tr>
+</tbody></table>
+<p class="note">Source: NSA CNSA 2.0 advisory. <a href="https://media.defense.gov/2025/May/30/2003728741/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS.PDF">[1]</a></p>
+<p>The symmetric parts of a tunnel are mostly fine already. The work is in the public-key parts: how the two ends agree on keys and how they prove who they are.</p>
+
+<h2>How the standards world is wiring this into tunnels</h2>
+<ul>
+<li><strong>IPsec / IKEv2:</strong> RFC 9370 lets IKEv2 run more than one key exchange, so a post-quantum exchange such as ML-KEM can be added alongside a classical one. <a href="https://www.rfc-editor.org/rfc/rfc9370.html">[3]</a> Open-source strongSwan 6.0 added ML-KEM support using this approach. <a href="https://www.strongswan.org/blog/2024/12/03/strongswan-6.0.0-released.html">[4]</a></li>
+<li><strong>WireGuard-based tools:</strong> WireGuard intentionally avoids algorithm agility. Tailscale's documentation states its WireGuard implementation is not post-quantum secure today and describes pre-shared keys as the suggested path. <a href="https://tailscale.com/docs/concepts/post-quantum-cryptography">[5]</a></li>
+<li><strong>Bigger keys, real consequences:</strong> post-quantum keys and signatures are much larger than the ones they replace. On clean networks that barely matters. On satellite, cellular IoT and radio links, larger handshakes mean fragmentation, retries and failed connections. Published research on low-Earth-orbit links measured exactly this effect. <a href="https://www.ndss-symposium.org/wp-content/uploads/spacesec26-9.pdf">[6]</a></li>
+</ul>
+
+<h2>Questions to ask any tunnel vendor</h2>
+<ol>
+<li>Which key-establishment and signature algorithms does the product use today, and can it run ML-KEM-1024 and ML-DSA-87 specifically?</li>
+<li>Is post-quantum key exchange hybrid (classical plus post-quantum) or post-quantum only, and is that configurable?</li>
+<li>What is the product's current validation and approval status for your environment? Ask for documents, not adjectives. For NSS, the NSA advisory explains that approval runs through NSA processes rather than FIPS validation alone. <a href="https://media.defense.gov/2025/May/30/2003728741/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS.PDF">[1]</a></li>
+<li>How does the tunnel behave on your worst link: high loss, long delay, NAT, intermittent coverage?</li>
+<li>Can you swap algorithms later without replacing the equipment at each end?</li>
+<li>What evidence will you hand to the authorizing official at the end of a pilot?</li>
+</ol>
+
+<h2>A practical first step</h2>
+<p>Start with an inventory. You cannot plan a CNSA 2.0 migration for tunnels you have not found. Then pick one connection that matters, ideally the hardest one, and test a post-quantum path on it with clear acceptance criteria.</p>
+
+<div class="card highlight">
+<h3>Built for bad signal. Ready for quantum.</h3>
+<p>EigenTunnel is post-quantum encrypted tunnel software designed for the links where ordinary VPNs struggle: satellite, tactical radio, Cat-M cellular and rail radio. It implements a CNSA 2.0 algorithm profile. Patent pending (U.S. Application No. 64/175,794).</p>
+<div class="cta"><a class="btn btn-p" href="../../pilot/">Get a free on-site encryption scan</a><a class="btn" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a></div>
+</div>
+
+<h2>Sources</h2>
+<ol class="sources">
+<li>NSA, Announcing the Commercial National Security Algorithm Suite 2.0: <a href="https://media.defense.gov/2025/May/30/2003728741/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS.PDF">media.defense.gov</a></li>
+<li>PQC Mandate Tracker, NSA CNSA 2.0: <a href="https://pqcmandates.com/mandate/nsa-cnsa-2">pqcmandates.com</a></li>
+<li>RFC 9370, Multiple Key Exchanges in IKEv2: <a href="https://www.rfc-editor.org/rfc/rfc9370.html">rfc-editor.org</a></li>
+<li>strongSwan 6.0.0 release notes: <a href="https://www.strongswan.org/blog/2024/12/03/strongswan-6.0.0-released.html">strongswan.org</a></li>
+<li>Tailscale, Post-quantum cryptography: <a href="https://tailscale.com/docs/concepts/post-quantum-cryptography">tailscale.com</a></li>
+<li>NDSS SpaceSec 2026, The 1-RTT Penalty: PQC Fragmentation in LEO Handovers and ISLs: <a href="https://www.ndss-symposium.org/wp-content/uploads/spacesec26-9.pdf">ndss-symposium.org</a></li>
+</ol>
+<p class="note">This guide is general information, not legal or compliance advice.</p>
+</article>
+</main><footer><a class="brand" href="/index.html">EigenTunnel · Eigen-Systems, Inc.</a><p>Early-stage software and scoped evaluations. Commercial readiness varies by capability.</p><p><a href="/about.html">About</a> · <a href="/developers.html">Developers</a> · <a href="/contact.html">Contact</a></p><p><a href="/trust.html">Evidence and limitations</a> · <a href="/federal.html">Federal civilian / defense</a></p><p>&copy; 2026 Eigen-Systems, Inc. EigenTunnel Scanner is a product of Eigen-Systems, Inc.</p></footer></body></html>
