@@ -18,7 +18,7 @@ document.querySelectorAll('form[action*="script.google.com/macros"]').forEach(fu
         }
         form.reset();
         if (statusEl) {
-          statusEl.textContent = 'Thanks — we got it. We\'ll reply from patrick@eigentunnel.com.';
+          statusEl.textContent = 'Thanks, we got it. We\'ll reply from patrick@eigentunnel.com.';
           statusEl.dataset.state = 'ok';
         }
       })

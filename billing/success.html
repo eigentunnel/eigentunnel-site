@@ -15,7 +15,7 @@
   <main id="main" class="hero">
     <p class="kicker">Sandbox · payment received</p>
     <h1>You’re in.</h1>
-    <p class="lede">Stripe Checkout completed. Activate links are issued per seat email (link only — identity keys are born on your device, never emailed).</p>
+    <p class="lede">Stripe Checkout completed. Activate links are issued per seat email (link only: identity keys are born on your device, never emailed).</p>
     <p class="sub" id="session">Checking session…</p>
     <p class="sub">Sandbox handoff: Patrick will send your activate link (or open the activate page he shared). Then run leaf install with that token and register your public peer.</p>
     <p class="cta"><a class="btn btn-p" href="../sandbox/checkout.html">Buy more sandbox seats</a>
@@ -29,7 +29,7 @@
     if (sid) {
       el.textContent = "Checkout session " + sid.slice(0, 18) + "… recorded.";
     } else {
-      el.textContent = "Payment confirmed. If you expected an activate email, check with Patrick — sandbox mailer is stub.";
+      el.textContent = "Payment confirmed. If you expected an activate email, check with Patrick. The sandbox mailer is a stub.";
     }
   })();
   </script>
