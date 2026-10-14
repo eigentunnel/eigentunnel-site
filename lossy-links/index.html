@@ -6,142 +6,181 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <title>EigenTunnel | Built for bad signal. Ready for quantum.</title>
-  <meta name="description" content="EigenTunnel: quantum-resistant secure links designed for lossy, narrowband and intermittent networks. Patent pending." />
+  <meta name="description" content="Quantum-resistant secure links that connect and stay up on degraded radio, satellite, Cat-M and rail networks. Patent pending." />
   <link rel="stylesheet" href="../assets/style.css" />
   <style>
-    .draft{background:#ffd38a;color:#3a2600;font-size:13px;font-weight:600;text-align:center;padding:8px 16px}
+    .draft{background:#ffd38a;color:#3a2600;font-size:14px;font-weight:600;text-align:center;padding:8px 16px}
+    .skip-link{position:absolute;left:-9999px;top:0;background:var(--teal);color:#06201d;padding:12px 16px;border-radius:0 0 8px 0;font-weight:700;z-index:20}
+    .skip-link:focus{left:0}
+    header{gap:12px}
+    .brand{min-height:44px;display:flex;align-items:center}
+    .btn{min-height:44px;font-size:15px;justify-content:center}
+    a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+    .field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+    .field input,.field select,.field textarea{min-height:46px;font-size:16px}
+    .field label{font-size:14px;color:#c9d4de;font-weight:600}
+    .field .opt{color:var(--muted);font-weight:400}
     .ll-hero{padding:88px 8vw 72px;text-align:center}
-    .ll-hero h1{font-size:clamp(40px,7.5vw,84px);line-height:1.02;font-weight:900;letter-spacing:-.02em}
+    .ll-hero h1{font-size:clamp(38px,7.5vw,84px);line-height:1.04;font-weight:900;letter-spacing:-.02em}
     .ll-hero h1 span{color:var(--teal);display:block}
-    .ll-hero .lede{margin:24px auto 0;max-width:62ch}
-    .ll-hero .cta{justify-content:center}
+    .ll-hero .lede{margin:24px auto 0;max-width:54ch}
+    .ll-hero .cta{justify-content:center;margin-top:32px}
+    .ll-hero .ll-meta{color:var(--muted);font-size:14px;margin-top:18px}
+    .card p{color:#c3cfdb}
     .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-    .chip{border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:600}
-    .patent{color:var(--muted);font-size:14px;margin-top:18px}
-    .form-note{color:var(--muted);font-size:13px;margin-top:10px}
+    .chip{border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:600;font-size:15px}
+    .patent{color:var(--muted);font-size:14px;margin-top:20px}
+    .form-card{max-width:none}
+    .form-card h3{font-size:22px}
+    .form-note{color:var(--muted);font-size:14px;margin-top:12px}
+    .step-label{display:inline-block;color:var(--teal);font-size:12px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;margin-bottom:8px}
+    .split{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
+    .stack{gap:16px}
+    .tier-badge{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin-bottom:8px}
+    footer p+p{margin-top:6px}
+    @media (max-width:900px){.split{grid-template-columns:1fr}#try .stack{order:-1}}
+    @media (max-width:600px){
+      header{padding:10px 16px}
+      header .btn{padding:10px 14px}
+      .ll-hero{padding:56px 20px 48px}
+      section{padding:48px 20px}
+      .ll-hero .cta{flex-direction:column;align-items:stretch}
+      .ll-hero .cta .btn{width:100%}
+      .form-card{padding:20px}
+      .card{padding:20px}
+      .stack .btn,.card .btn{width:100%}
+      footer{padding:32px 20px 40px}
+    }
   </style>
 </head>
 <body>
-<div class="draft">DRAFT for internal review. Not published.</div>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="draft" role="note">DRAFT for internal review. Not published.</div>
 <header>
-  <a class="brand" href="../index.html"><span class="mark">ET</span> EigenTunnel</a>
-  <nav class="primary">
-    <a class="btn btn-p cta-link" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
-  </nav>
+  <a class="brand" href="../index.html" aria-label="EigenTunnel home"><span class="mark" aria-hidden="true">ET</span> EigenTunnel</a>
+  <a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
 </header>
 <main id="main">
   <div class="ll-hero">
     <p class="kicker">EigenTunnel by Eigen-Systems, Inc.</p>
     <h1>Built for bad signal. <span>Ready for quantum.</span></h1>
-    <p class="lede">Quantum-resistant secure links that connect and stay up on the networks missions actually use: degraded tactical radio, satellite, Cat-M cellular and rail radio.</p>
+    <p class="lede">Quantum-resistant secure links that connect and stay up on degraded tactical radio, satellite, Cat-M cellular and rail radio. The networks missions actually run on.</p>
     <div class="cta">
       <a class="btn btn-p" href="#brief">Get the brief</a>
       <a class="btn" href="#try">Try it free</a>
-      <a class="btn" href="#deep-dive">Request the technical deep dive</a>
+      <a class="btn" href="#deep-dive">Request the deep dive (NDA)</a>
     </div>
+    <p class="ll-meta">Patent pending. US-owned. Omaha, Nebraska.</p>
   </div>
 
-  <section>
+  <section aria-labelledby="problem-h">
     <p class="eyebrow">The problem</p>
-    <h2>Post-quantum security was not built for bad links.</h2>
-    <p class="sub">Post-quantum encryption is coming to every network that carries sensitive data. The new algorithms are stronger, but they need much larger setup messages than today's encryption. On a degraded radio net, a satellite link or a low-power cellular modem, those larger setups often stall or fail. When the secure link cannot connect, operators lose the connection or fall back to weaker protection.</p>
+    <h2 id="problem-h">Post-quantum security was not built for bad links.</h2>
+    <p class="sub">Post-quantum encryption is coming to every network that carries sensitive data. The new algorithms are stronger, but their setup messages are much larger than today's. On a degraded radio net, a satellite link or a low-power cellular modem, those larger setups often stall or fail. When the secure link cannot connect, operators lose the connection or fall back to weaker protection.</p>
+    <p class="sub">EigenTunnel is built to close that gap.</p>
   </section>
 
-  <section>
+  <section aria-labelledby="benefits-h">
     <p class="eyebrow">What EigenTunnel delivers</p>
+    <h2 id="benefits-h" class="sr-only" style="position:absolute;left:-9999px">Benefits</h2>
     <div class="grid">
       <article class="card"><h3>Connects where ordinary VPNs give up.</h3><p>Designed to set up and renew quantum-resistant sessions over lossy, narrowband and intermittent links.</p></article>
       <article class="card"><h3>Stays secure through the drops.</h3><p>Built to keep keys fresh through dropouts, coverage gaps and planned outages, with no downgrade in protection.</p></article>
-      <article class="card"><h3>Light on the link.</h3><p>Low overhead compared with plain traffic, so small pipes stay useful.</p></article>
+      <article class="card"><h3>Light on the link.</h3><p>Low overhead compared with sending the same traffic in the clear, so small pipes stay useful.</p></article>
     </div>
   </section>
 
-  <section>
-    <p class="eyebrow">Built for the networks missions use</p>
-    <div class="chips"><span class="chip">Tactical radio</span><span class="chip">Satellite</span><span class="chip">Cat-M cellular</span><span class="chip">Rail radio</span></div>
+  <section aria-labelledby="nets-h">
+    <p class="eyebrow" id="nets-h">Built for the networks missions use</p>
+    <ul class="chips" style="list-style:none"><li class="chip">Tactical radio</li><li class="chip">Satellite</li><li class="chip">Cat-M cellular</li><li class="chip">Rail radio</li></ul>
     <p class="patent">Patent pending (U.S. Application No. 64/175,794).</p>
   </section>
 
-  <section id="brief">
+  <section id="brief" aria-labelledby="brief-h">
     <div class="split">
       <form class="form-card" action="https://script.google.com/macros/s/AKfycbyHmYuK2raMMHFWlxOV9w1ERoaYtPuR9VeYa1m40m8Bi-xcGYrYbbtUtMRkAfAkWa6iiw/exec" method="POST" data-funnel="brief">
-        <h3>Get the brief</h3>
-        <p class="sub" style="margin-bottom:16px">Outcomes, use cases and how a pilot works. We email it to you right away.</p>
-        <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off">
+        <span class="step-label">Step one</span>
+        <h3 id="brief-h">Get the brief</h3>
+        <p class="sub" style="margin-bottom:16px">Outcomes, use cases and how a pilot runs. Sent to your inbox.</p>
+        <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="hidden" name="source" value="lossy-links">
         <input type="hidden" name="form" value="brief">
         <div class="field"><label for="b-name">Name</label><input type="text" id="b-name" name="name" required autocomplete="name"></div>
-        <div class="field"><label for="b-email">Work email</label><input type="email" id="b-email" name="email" required autocomplete="email" placeholder="you@company.com"></div>
-        <div class="field"><label for="b-company">Company</label><input type="text" id="b-company" name="company" required autocomplete="organization"></div>
+        <div class="field"><label for="b-email">Work email</label><input type="email" id="b-email" name="email" required autocomplete="email" inputmode="email" placeholder="you@organization.com"></div>
+        <div class="field"><label for="b-company">Company or agency</label><input type="text" id="b-company" name="company" required autocomplete="organization"></div>
         <div class="field"><label for="b-role">Role</label><input type="text" id="b-role" name="role" required autocomplete="organization-title" placeholder="e.g. Program Manager"></div>
         <button class="btn btn-p btn-block" type="submit">Email me the brief</button>
-        <p class="form-status" role="status"></p>
+        <p class="form-status" role="status" aria-live="polite"></p>
       </form>
       <div class="stack">
-        <article class="card"><h3>What is in the brief</h3><ul>
+        <article class="card"><h3>Inside the brief</h3><ul>
           <li>The outcomes you can evaluate</li>
-          <li>Use cases: sensor fusion and C2, government post-quantum transition, rail</li>
+          <li>Sensor fusion and C2, government post-quantum transition, rail</li>
           <li>The networks it is built for</li>
-          <li>How a pilot works, step by step</li>
+          <li>How a pilot runs, from first call to decision</li>
         </ul></article>
-        <article class="card"><h3>Prefer to talk?</h3><p class="sub" style="margin-bottom:14px">Bring us your toughest link.</p><a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a></article>
+        <article class="card"><h3>Rather talk it through?</h3><p style="margin-bottom:14px">Bring us your toughest link.</p><a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a></article>
       </div>
     </div>
   </section>
 
-  <section id="try">
-    <p class="eyebrow">Try it free</p>
-    <h2>Start on a normal network. Go further when you need the hard links.</h2>
-    <div class="grid">
-      <article class="card"><h3>Free tier</h3><p>A standard post-quantum tunnel for a couple of devices on ordinary networks. The free tier does not include the patent-pending lossy-link capability, which is available on paid plans and pilots.</p></article>
-      <article class="card"><h3>Hosted demo</h3><p>See EigenTunnel on our hosted test gateway with simulated bad links in a guided session with our team. Nothing to install.</p></article>
-      <article class="card highlight"><h3>Full pilot (NDA)</h3><p>A time-boxed pilot of the full product, including the lossy-link capability, on your own link. Available after the mutual NDA is signed. <a href="#deep-dive">Start with the NDA</a>.</p></article>
+  <section id="try" aria-labelledby="try-h">
+    <span class="step-label">Step two</span>
+    <h2 id="try-h">Try it free on a normal network.</h2>
+    <p class="sub">Get hands-on with standard post-quantum tunnels today. The patent-pending lossy-link capability is part of paid plans and the NDA pilot.</p>
+    <div class="split">
+      <form class="form-card" action="https://script.google.com/macros/s/AKfycbyHmYuK2raMMHFWlxOV9w1ERoaYtPuR9VeYa1m40m8Bi-xcGYrYbbtUtMRkAfAkWa6iiw/exec" method="POST" data-funnel="free">
+        <h3>Start free</h3>
+        <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="source" value="lossy-links">
+        <input type="hidden" name="form" value="free">
+        <div class="field"><label for="f-option">I want</label><select id="f-option" name="free_option" required>
+          <option value="free-tier">The free tier</option><option value="hosted-demo">A hosted demo</option><option value="both">Both</option></select></div>
+        <div class="field"><label for="f-name">Name</label><input type="text" id="f-name" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="f-email">Work email</label><input type="email" id="f-email" name="email" required autocomplete="email" inputmode="email"></div>
+        <div class="field"><label for="f-company">Company or agency <span class="opt">(optional)</span></label><input type="text" id="f-company" name="company" autocomplete="organization"></div>
+        <div class="field"><label for="f-role">Role <span class="opt">(optional)</span></label><input type="text" id="f-role" name="role" autocomplete="organization-title"></div>
+        <button class="btn btn-p btn-block" type="submit">Get started free</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <div class="stack">
+        <article class="card"><span class="tier-badge">Free</span><h3>Free tier</h3><p>A standard post-quantum tunnel for a couple of devices on ordinary networks. It does not include the lossy-link capability.</p></article>
+        <article class="card"><span class="tier-badge">Free</span><h3>Hosted demo</h3><p>Watch EigenTunnel hold a secure link on our test gateway under simulated bad conditions, in a guided session with our team. Nothing to install.</p></article>
+        <article class="card highlight"><span class="tier-badge">After NDA</span><h3>Full pilot</h3><p>A time-boxed pilot of the full product, lossy-link capability included, on your own link. <a href="#deep-dive">Start with the NDA</a>.</p></article>
+      </div>
     </div>
-    <form class="form-card" action="https://script.google.com/macros/s/AKfycbyHmYuK2raMMHFWlxOV9w1ERoaYtPuR9VeYa1m40m8Bi-xcGYrYbbtUtMRkAfAkWa6iiw/exec" method="POST" data-funnel="free" style="margin-top:24px">
-      <h3>Try it free</h3>
-      <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off">
-      <input type="hidden" name="source" value="lossy-links">
-      <input type="hidden" name="form" value="free">
-      <div class="field"><label for="f-name">Name</label><input type="text" id="f-name" name="name" required autocomplete="name"></div>
-      <div class="field"><label for="f-email">Work email</label><input type="email" id="f-email" name="email" required autocomplete="email"></div>
-      <div class="field"><label for="f-company">Company</label><input type="text" id="f-company" name="company" autocomplete="organization"></div>
-      <div class="field"><label for="f-role">Role</label><input type="text" id="f-role" name="role" autocomplete="organization-title"></div>
-      <div class="field"><label for="f-option">I want</label><select id="f-option" name="free_option" required>
-        <option value="free-tier">The free tier</option><option value="hosted-demo">A hosted demo</option><option value="both">Both</option></select></div>
-      <button class="btn btn-p btn-block" type="submit">Get started free</button>
-      <p class="form-status" role="status"></p>
-    </form>
   </section>
 
-  <section id="deep-dive">
+  <section id="deep-dive" aria-labelledby="nda-h">
     <div class="split">
       <form class="form-card" action="https://script.google.com/macros/s/AKfycbyHmYuK2raMMHFWlxOV9w1ERoaYtPuR9VeYa1m40m8Bi-xcGYrYbbtUtMRkAfAkWa6iiw/exec" method="POST" data-funnel="nda">
-        <h3>Request the technical deep dive (NDA)</h3>
-        <p class="sub" style="margin-bottom:16px">The approach is patent pending. We go deeper, with performance data, under a mutual NDA.</p>
-        <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off">
+        <span class="step-label">Step three</span>
+        <h3 id="nda-h">Request the technical deep dive (NDA)</h3>
+        <p class="sub" style="margin-bottom:16px">See how it works and the performance data under a mutual NDA, then qualify for the full pilot.</p>
+        <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="hidden" name="source" value="lossy-links">
         <input type="hidden" name="form" value="nda">
         <div class="field"><label for="n-name">Name</label><input type="text" id="n-name" name="name" required autocomplete="name"></div>
-        <div class="field"><label for="n-email">Work email (NDA goes here)</label><input type="email" id="n-email" name="email" required autocomplete="email"></div>
-        <div class="field"><label for="n-company">Company</label><input type="text" id="n-company" name="company" required autocomplete="organization"></div>
+        <div class="field"><label for="n-email">Work email (we send the NDA here)</label><input type="email" id="n-email" name="email" required autocomplete="email" inputmode="email"></div>
+        <div class="field"><label for="n-company">Company or agency</label><input type="text" id="n-company" name="company" required autocomplete="organization"></div>
         <div class="field"><label for="n-role">Role</label><input type="text" id="n-role" name="role" required autocomplete="organization-title"></div>
-        <div class="field"><label for="n-usecase">Use case</label><textarea id="n-usecase" name="use_case" required placeholder="What needs to connect, over what, and what goes wrong today?"></textarea></div>
+        <div class="field"><label for="n-usecase">Use case</label><textarea id="n-usecase" name="use_case" required placeholder="What needs to connect, over what link, and what goes wrong today?"></textarea></div>
         <div class="field"><label for="n-network">Network type</label><select id="n-network" name="network" required>
           <option value="">Choose one</option><option value="tactical-radio">Tactical radio</option><option value="satellite">Satellite</option><option value="cat-m">Cat-M cellular</option><option value="rail">Rail radio</option><option value="other">Other</option></select></div>
         <div class="field"><label for="n-timeline">Timeline</label><select id="n-timeline" name="timeline" required>
           <option value="">Choose one</option><option value="now">Now</option><option value="3mo">Within 3 months</option><option value="6-12mo">6 to 12 months</option><option value="exploring">Exploring</option></select></div>
         <div class="field"><label for="n-gov">Is this for a government program?</label><select id="n-gov" name="gov_program" required>
           <option value="">Choose one</option><option value="yes">Yes</option><option value="no">No</option><option value="unsure">Not sure yet</option></select></div>
-        <button class="btn btn-p btn-block" type="submit">Request NDA and deep dive</button>
-        <p class="form-status" role="status"></p>
-        <p class="form-note">We send Eigen-Systems' mutual NDA for e-signature to your work email. Please do not include classified or export-controlled information in this form.</p>
+        <button class="btn btn-p btn-block" type="submit">Request the NDA and deep dive</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+        <p class="form-note">We send Eigen-Systems' mutual NDA to your work email for e-signature. Please keep classified and export-controlled details out of this form.</p>
       </form>
       <div class="stack">
         <article class="card"><h3>What happens next</h3><ol class="steps">
           <li>Our mutual NDA arrives for e-signature.</li>
-          <li>Book a technical call at a time that suits you.</li>
-          <li>We walk through the approach and performance data.</li>
-          <li>NDA-signed teams can start a time-boxed full pilot on their own link.</li>
+          <li>You book a technical call at a time that suits you.</li>
+          <li>We walk through the approach and the performance data.</li>
+          <li>Qualified teams start a time-boxed full pilot on their own link.</li>
         </ol><a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener" style="margin-top:14px">Book a call</a></article>
       </div>
     </div>
@@ -150,19 +189,20 @@
 <footer>
   <p>Eigen-Systems, Inc. | US-owned | Omaha, Nebraska | SOF RACER member</p>
   <p>Patent pending (U.S. Application No. 64/175,794).</p>
-  <p>Contact: <a href="../contact.html">eigentunnel.com</a> · <a href="mailto:patrick@eigentunnel.com">patrick@eigentunnel.com</a></p>
+  <p><a href="../contact.html">Contact</a> · <a href="mailto:patrick@eigentunnel.com">patrick@eigentunnel.com</a></p>
 </footer>
 <script>
 // Funnel forms post to the existing Apps Script lead endpoint (google-apps-script/Code.gs).
 document.querySelectorAll('form[data-funnel]').forEach(function (form) {
   var statusEl = form.querySelector('.form-status');
   var ok = {
-    brief: 'Thanks. The brief is on its way to your inbox.',
-    free: 'Thanks. We will email your free access and demo details shortly.',
-    nda: 'Thanks. Our mutual NDA is on its way for e-signature. Book a technical call below.'
+    brief: 'Thanks. Check your inbox for the brief.',
+    free: 'Thanks. We will email your free access or demo details shortly.',
+    nda: 'Thanks. Our mutual NDA is on its way. Book your technical call next.'
   }[form.dataset.funnel];
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    var btn = form.querySelector('button[type=submit]'); btn.disabled = true;
     fetch(form.action, { method: 'POST', body: new FormData(form) })
       .then(function (r) { return r.json(); })
       .then(function (j) {
@@ -173,7 +213,8 @@ document.querySelectorAll('form[data-funnel]').forEach(function (form) {
       .catch(function () {
         statusEl.textContent = 'Something went wrong. Email patrick@eigentunnel.com directly instead.';
         statusEl.dataset.state = 'error';
-      });
+      })
+      .then(function () { btn.disabled = false; });
   });
 });
 </script>

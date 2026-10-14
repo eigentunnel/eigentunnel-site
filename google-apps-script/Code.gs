@@ -83,8 +83,9 @@ function buildEmailBody(p) {
 
 var FUNNEL_SHEET = 'Funnel';
 var BOOK_CALL_URL = 'https://calendar.app.google/K5anZSkG7kXmQUEX6';
-// Google Doc ID of docs/lossy-link-brief.md (optional). Leave '' to send the inline text below.
-var BRIEF_DOC_ID = '';
+// The gated brief is NOT in this public repo. Set Script Property BRIEF_DOC_ID to the
+// private Google Doc's ID (Project Settings > Script Properties). It is attached as a PDF.
+function briefDocId() { return PropertiesService.getScriptProperties().getProperty('BRIEF_DOC_ID') || ''; }
 // NDA e-sign: 'manual' (default stub), 'dropboxsign', 'docusign' or 'pandadoc'. See SETUP.md.
 var NDA_PROVIDER = 'manual';
 
@@ -177,14 +178,21 @@ function handleFunnel(p) {
 }
 
 function sendBrief(p) {
+  var id = briefDocId();
+  var hi = 'Hi ' + (p.name || 'there') + ',\n\nThanks for your interest in EigenTunnel. ';
+  var sig = '\n\nReply to this email or book a call any time: ' + BOOK_CALL_URL +
+    '\n\nPatrick McCormick\nEigen-Systems, Inc.\nPatent pending (U.S. Application No. 64/175,794).';
   var opts = { to: p.email, replyTo: NOTIFY_EMAIL, name: 'Patrick McCormick, EigenTunnel',
     subject: 'Your EigenTunnel brief: Built for bad signal. Ready for quantum.' };
-  var intro = 'Hi ' + (p.name || 'there') + ',\n\nThanks for your interest in EigenTunnel. The brief is below' +
-    (BRIEF_DOC_ID ? ' and attached as a PDF' : '') + '. Reply to this email or book a call any time: ' + BOOK_CALL_URL + '\n\nPatrick McCormick\nEigen-Systems, Inc.\n\n';
-  if (BRIEF_DOC_ID) {
-    opts.attachments = [DriveApp.getFileById(BRIEF_DOC_ID).getAs('application/pdf').setName('EigenTunnel-Lossy-Link-Brief.pdf')];
+  if (id) {
+    opts.attachments = [DriveApp.getFileById(id).getAs('application/pdf').setName('EigenTunnel-Lossy-Link-Brief.pdf')];
+    opts.body = hi + 'Your brief is attached.' + sig;
+  } else {
+    // Not configured: tell the lead it is coming and ask Patrick to send it by hand.
+    opts.body = hi + 'I will send your brief personally shortly.' + sig;
+    MailApp.sendEmail({ to: NOTIFY_EMAIL, subject: 'ACTION: send lossy-link brief to ' + p.email,
+      body: 'BRIEF_DOC_ID Script Property is not set. Send the brief to ' + p.email + ' by hand.' });
   }
-  opts.body = intro + BRIEF_TEXT;
   MailApp.sendEmail(opts);
 }
 
@@ -213,7 +221,6 @@ function sendNdaForSignature(p) {
   throw new Error('NDA_PROVIDER ' + NDA_PROVIDER + ' not implemented yet');
 }
 
-var BRIEF_TEXT = "\n## The short version\n\nEigenTunnel gives you quantum-resistant secure links that connect and stay up on the networks missions actually use: degraded tactical radio, satellite, Cat-M cellular and rail radio. The approach is patent pending (U.S. Application No. 64/175,794). We share technical detail and performance data with evaluation partners under a mutual NDA.\n\n## Why this matters now\n\nPost-quantum encryption is coming to every network that carries sensitive data. The new algorithms are stronger, but their setup messages are much larger than today's. On a clean office network that hardly matters. On a degraded radio net, a satellite pass or a low-power cellular modem, those larger setups often stall or fail outright. When the secure link cannot connect, operators either lose the connection or fall back to weaker protection. Neither is acceptable.\n\n## Outcomes you can expect to evaluate\n\n- Connects where ordinary VPN handshakes fail. EigenTunnel is designed to set up and renew quantum-resistant sessions over lossy, narrowband and intermittent links.\n- Stays secure through disruption. Sessions are built to keep fresh keys through dropouts, coverage gaps and planned outages, without downgrading protection.\n- Light on the link. Protected traffic adds little cost compared with sending the same traffic in the clear, which matters when every kilobit counts.\n- Ready for the post-quantum transition. Designed for standards-based post-quantum cryptography, alone or paired with today's classical algorithms.\n\n## Use cases\n\nSensor fusion and C2. Edge sensors and command-and-control nodes rarely get a clean pipe. EigenTunnel is built to carry secure backhaul from sensors to fusion and C2 systems over whatever link is available, so the data path stays protected when the network is at its worst. Integrators can embed it in sensor, edge and C2 platforms rather than bolting on a separate box.\n\nGovernment post-quantum transition. Agencies and programs are planning their move to quantum-resistant encryption, and deployed and remote users are the hardest part of that plan. EigenTunnel is designed to bring quantum-resistant protection to the far edge of the network, where the larger post-quantum setups are most likely to fail on conventional tools. It supports pairing post-quantum with classical algorithms during the transition.\n\nRail and critical infrastructure. Rail operations depend on narrowband radio and long, remote corridors with uneven coverage. EigenTunnel is built to keep wayside, onboard and back-office links secure through coverage gaps, without asking operators to replace the radios they already run.\n\n## Networks it is built for\n\n- Degraded tactical radio\n- Satellite\n- Cat-M cellular\n- Rail radio\n- Other lossy, narrowband or intermittent links (tell us about yours)\n\n## How a pilot works\n\n1. Scope it. A short call to pick one real link, the systems on each end and what success looks like for your team.\n2. Sign a mutual NDA. This opens the technical deep dive and performance data.\n3. Agree the plan. Test environment, measurements, acceptance criteria, schedule and any fees, all written down before work begins.\n4. Run it on your link. We test on your network or a faithful lab stand-in, side by side with what you use today.\n5. Decide. Review results and integration effort together, then proceed, adjust or stop.\n\n## Who we are\n\nEigen-Systems, Inc. is a US-owned Delaware corporation based in Omaha, Nebraska, and a member of the SOF RACER consortium. We partner with platform primes and integrators and support government evaluation and pilot programs.\n\n## Next step\n\nRequest the technical deep dive under NDA at https://eigentunnel.com/lossy-links/#deep-dive, or book a call: https://calendar.app.google/K5anZSkG7kXmQUEX6\n\nPatent pending (U.S. Application No. 64/175,794).\n";
 
 function jsonResponse(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))

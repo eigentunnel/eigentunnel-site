@@ -104,7 +104,8 @@ domains capped at medium.
   lead the NDA is coming). Options: Dropbox Sign, DocuSign, PandaDoc (all have
   template-send APIs). Put API keys in Script Properties, never in the repo.
 - Mutual NDA template to load into the chosen provider.
-- `BRIEF_DOC_ID`: optional Google Doc of `docs/lossy-link-brief.md` to attach as PDF.
+- `BRIEF_DOC_ID` (Script Property): ID of the private Google Doc holding the gated brief. The
+  repo only has a placeholder. If unset, the lead is told it is coming and Patrick gets an action email.
 - Free tier and hosted demo provisioning: manual follow-up until built. Free
   tier must never include the lossy-link capability; the demo must not hand out
   a core binary. Full pilot only after the NDA is signed.
