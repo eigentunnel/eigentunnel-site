@@ -68,7 +68,7 @@
     <div class="cta">
       <a class="btn btn-p" href="#brief">Get the brief</a>
       <a class="btn" href="#try">Try it free</a>
-      <a class="btn" href="#deep-dive">Request the deep dive (NDA)</a>
+      <a class="btn" href="#deep-dive">Book a call</a>
     </div>
     <p class="ll-meta">Patent pending. US-owned. Omaha, Nebraska.</p>
   </div>
@@ -146,22 +146,22 @@
       <div class="stack">
         <article class="card"><span class="tier-badge">Free</span><h3>Free tier</h3><p>A standard post-quantum tunnel for a couple of devices on ordinary networks. It does not include the lossy-link capability.</p></article>
         <article class="card"><span class="tier-badge">Free</span><h3>Hosted demo</h3><p>Watch EigenTunnel hold a secure link on our test gateway under simulated bad conditions, in a guided session with our team. Nothing to install.</p></article>
-        <article class="card highlight"><span class="tier-badge">After NDA</span><h3>Full pilot</h3><p>A time-boxed pilot of the full product, lossy-link capability included, on your own link. <a href="#deep-dive">Start with the NDA</a>.</p></article>
+        <article class="card highlight"><span class="tier-badge">After NDA</span><h3>Full pilot</h3><p>A time-boxed pilot of the full product, lossy-link capability included, on your own link. <a href="#deep-dive">Start with a call</a>.</p></article>
       </div>
     </div>
   </section>
 
-  <section id="deep-dive" aria-labelledby="nda-h">
+  <section id="deep-dive" aria-labelledby="call-h">
     <div class="split">
-      <form class="form-card" action="https://script.google.com/macros/s/AKfycbyHmYuK2raMMHFWlxOV9w1ERoaYtPuR9VeYa1m40m8Bi-xcGYrYbbtUtMRkAfAkWa6iiw/exec" method="POST" data-funnel="nda">
+      <form class="form-card" action="https://script.google.com/macros/s/AKfycbyHmYuK2raMMHFWlxOV9w1ERoaYtPuR9VeYa1m40m8Bi-xcGYrYbbtUtMRkAfAkWa6iiw/exec" method="POST" data-funnel="call">
         <span class="step-label">Step three</span>
-        <h3 id="nda-h">Request the technical deep dive (NDA)</h3>
-        <p class="sub" style="margin-bottom:16px">See how it works and the performance data under a mutual NDA, then qualify for the full pilot.</p>
+        <h3 id="call-h">Book a call with Patrick</h3>
+        <p class="sub" style="margin-bottom:16px">Tell us about your link and we will make the most of the call. The technical deep dive follows under NDA.</p>
         <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="hidden" name="source" value="lossy-links">
-        <input type="hidden" name="form" value="nda">
+        <input type="hidden" name="form" value="call">
         <div class="field"><label for="n-name">Name</label><input type="text" id="n-name" name="name" required autocomplete="name"></div>
-        <div class="field"><label for="n-email">Work email (we send the NDA here)</label><input type="email" id="n-email" name="email" required autocomplete="email" inputmode="email"></div>
+        <div class="field"><label for="n-email">Work email</label><input type="email" id="n-email" name="email" required autocomplete="email" inputmode="email"></div>
         <div class="field"><label for="n-company">Company or agency</label><input type="text" id="n-company" name="company" required autocomplete="organization"></div>
         <div class="field"><label for="n-role">Role</label><input type="text" id="n-role" name="role" required autocomplete="organization-title"></div>
         <div class="field"><label for="n-usecase">Use case</label><textarea id="n-usecase" name="use_case" required placeholder="What needs to connect, over what link, and what goes wrong today?"></textarea></div>
@@ -171,15 +171,15 @@
           <option value="">Choose one</option><option value="now">Now</option><option value="3mo">Within 3 months</option><option value="6-12mo">6 to 12 months</option><option value="exploring">Exploring</option></select></div>
         <div class="field"><label for="n-gov">Is this for a government program?</label><select id="n-gov" name="gov_program" required>
           <option value="">Choose one</option><option value="yes">Yes</option><option value="no">No</option><option value="unsure">Not sure yet</option></select></div>
-        <button class="btn btn-p btn-block" type="submit">Request the NDA and deep dive</button>
+        <button class="btn btn-p btn-block" type="submit">Request a call</button>
         <p class="form-status" role="status" aria-live="polite"></p>
-        <p class="form-note">We send Eigen-Systems' mutual NDA to your work email for e-signature. Please keep classified and export-controlled details out of this form.</p>
+        <p class="form-note">Please keep classified and export-controlled details out of this form.</p>
       </form>
       <div class="stack">
         <article class="card"><h3>What happens next</h3><ol class="steps">
-          <li>Our mutual NDA arrives for e-signature.</li>
-          <li>You book a technical call at a time that suits you.</li>
-          <li>We walk through the approach and the performance data.</li>
+          <li>Pick a time on Patrick's calendar.</li>
+          <li>Talk through your link and mission needs.</li>
+          <li>If there is a fit, we sign a mutual NDA and go into the technical deep dive and performance data.</li>
           <li>Qualified teams start a time-boxed full pilot on their own link.</li>
         </ol><a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener" style="margin-top:14px">Book a call</a></article>
       </div>
@@ -198,7 +198,7 @@ document.querySelectorAll('form[data-funnel]').forEach(function (form) {
   var ok = {
     brief: 'Thanks. Check your inbox for the brief.',
     free: 'Thanks. We will email your free access or demo details shortly.',
-    nda: 'Thanks. Our mutual NDA is on its way. Book your technical call next.'
+    call: 'Thanks. Pick a time on the calendar to lock in your call.'
   }[form.dataset.funnel];
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -209,6 +209,7 @@ document.querySelectorAll('form[data-funnel]').forEach(function (form) {
         if (!j || !j.ok) throw new Error('fail');
         form.reset();
         statusEl.textContent = ok; statusEl.dataset.state = 'ok';
+        if (form.dataset.funnel === 'call') window.open('https://calendar.app.google/K5anZSkG7kXmQUEX6', '_blank', 'noopener');
       })
       .catch(function () {
         statusEl.textContent = 'Something went wrong. Email patrick@eigentunnel.com directly instead.';

@@ -23,8 +23,8 @@ function doPost(e) {
       return jsonResponse({ ok: false, error: 'Missing email' });
     }
 
-    // Lossy-link funnel (lossy-links/index.html): brief + NDA forms.
-    if (params.form === 'brief' || params.form === 'nda' || params.form === 'free') {
+    // Lossy-link funnel (lossy-links/index.html): brief, free and call forms.
+    if (params.form === 'brief' || params.form === 'call' || params.form === 'free') {
       return handleFunnel(params);
     }
 
@@ -79,15 +79,13 @@ function buildEmailBody(p) {
   ].join('\n');
 }
 
-/* ---------- Lossy-link funnel: scoring, gated brief, NDA ---------- */
+/* ---------- Lossy-link funnel: scoring, gated brief, call ---------- */
 
 var FUNNEL_SHEET = 'Funnel';
 var BOOK_CALL_URL = 'https://calendar.app.google/K5anZSkG7kXmQUEX6';
 // The gated brief is NOT in this public repo. Set Script Property BRIEF_DOC_ID to the
 // private Google Doc's ID (Project Settings > Script Properties). It is attached as a PDF.
 function briefDocId() { return PropertiesService.getScriptProperties().getProperty('BRIEF_DOC_ID') || ''; }
-// NDA e-sign: 'manual' (default stub), 'dropboxsign', 'docusign' or 'pandadoc'. See SETUP.md.
-var NDA_PROVIDER = 'manual';
 
 var FREE_MAIL = ['gmail.com','googlemail.com','yahoo.com','hotmail.com','outlook.com','live.com','msn.com',
   'aol.com','icloud.com','me.com','mac.com','proton.me','protonmail.com','gmx.com','gmx.net','mail.com',
@@ -118,7 +116,7 @@ function scoreLead(p) {
   if (/sensor|fusion|c2|command|isr|edge|uas|drone|radio|satcom|satellite|rail|ptc|wayside|post-quantum|pqc|quantum|cnsa|tactical|manet/i.test(p.use_case || '')) {
     pts += 1; why.push('use-case keywords +1');
   }
-  if (p.form === 'nda') { pts += 3; why.push('NDA requested +3'); }
+  if (p.form === 'call') { pts += 3; why.push('call requested +3'); }
   if (p.gov_program === 'yes') { pts += 1; why.push('government program +1'); }
   var free = p.form === 'free' || hasPriorFreeSignup(p.email);
   if (free) { pts += 2; why.push('free sign-up +2'); }
@@ -126,8 +124,8 @@ function scoreLead(p) {
   var tier = pts >= 9 ? 'strong' : pts >= 5 ? 'medium' : 'weak';
   // A .mil/.gov senior contact is strong even from the brief form.
   if (isGov && senior) tier = 'strong';
-  // Free user who also requested the NDA is the strongest signal.
-  if (free && (p.form === 'nda' || hasPriorNda(p.email))) { tier = 'strong'; why.push('free user + NDA'); }
+  // Free user who also requested a call is the strongest signal.
+  if (free && (p.form === 'call' || hasPriorCall(p.email))) { tier = 'strong'; why.push('free user + call'); }
   // Free mail is capped at medium.
   if (isFree && tier === 'strong') { tier = 'medium'; why.push('capped: free mail'); }
   return { tier: tier, points: pts, reasons: why, domain: domain };
@@ -141,7 +139,7 @@ function funnelRowsFor(email, form) {
   return rows.some(function (r) { return r[0] === form && String(r[4]).toLowerCase() === email; });
 }
 function hasPriorFreeSignup(email) { return funnelRowsFor(email, 'free'); }
-function hasPriorNda(email) { return funnelRowsFor(email, 'nda'); }
+function hasPriorCall(email) { return funnelRowsFor(email, 'call'); }
 
 function handleFunnel(p) {
   var s = scoreLead(p);
@@ -149,12 +147,10 @@ function handleFunnel(p) {
   var sh = ss.getSheetByName(FUNNEL_SHEET);
   if (!sh) {
     sh = ss.insertSheet(FUNNEL_SHEET);
-    sh.appendRow(['Timestamp','Form','Tier','Points','Name','Email','Company','Role','Use case','Network','Timeline','Gov program','Reasons','NDA status','Free option']);
+    sh.appendRow(['Timestamp','Form','Tier','Points','Name','Email','Company','Role','Use case','Network','Timeline','Gov program','Reasons','Free option']);
   }
-  var ndaStatus = '';
-  if (p.form === 'nda') ndaStatus = sendNdaForSignature(p);
   sh.appendRow([new Date(), p.form, s.tier, s.points, p.name || '', p.email, p.company || '', p.role || '',
-    p.use_case || '', p.network || '', p.timeline || '', p.gov_program || '', s.reasons.join('; '), ndaStatus, p.free_option || '']);
+    p.use_case || '', p.network || '', p.timeline || '', p.gov_program || '', s.reasons.join('; '), p.free_option || '']);
 
   if (p.form === 'brief') sendBrief(p);
   // Free tier / hosted demo provisioning is a STUB: Patrick follows up manually until the
@@ -163,7 +159,7 @@ function handleFunnel(p) {
   var flag = s.tier === 'strong' ? '[STRONG LEAD] ' : '[' + s.tier + '] ';
   MailApp.sendEmail({
     to: NOTIFY_EMAIL,
-    subject: flag + 'EigenTunnel ' + ({nda:'NDA request',brief:'brief download',free:'free sign-up (' + (p.free_option||'') + ')'}[p.form]) + ': ' + (p.name || p.email) + (p.company ? ' (' + p.company + ')' : ''),
+    subject: flag + 'EigenTunnel ' + ({call:'call request',brief:'brief download',free:'free sign-up (' + (p.free_option||'') + ')'}[p.form]) + ': ' + (p.name || p.email) + (p.company ? ' (' + p.company + ')' : ''),
     body: [
       'Tier: ' + s.tier.toUpperCase() + ' (' + s.points + ' pts)',
       'Why: ' + s.reasons.join('; '),
@@ -171,7 +167,7 @@ function handleFunnel(p) {
       'Form: ' + p.form, 'Name: ' + (p.name || ''), 'Email: ' + p.email, 'Company: ' + (p.company || ''),
       'Role: ' + (p.role || ''), 'Network: ' + (p.network || ''), 'Timeline: ' + (p.timeline || ''),
       'Government program: ' + (p.gov_program || ''), '', 'Use case:', p.use_case || '(n/a)',
-      '', p.form === 'nda' ? 'NDA: ' + ndaStatus : ''
+      '', p.form === 'call' ? 'Sent to the booking calendar. NDA follows the call if there is a fit.' : ''
     ].join('\n')
   });
   return jsonResponse({ ok: true });
@@ -195,32 +191,6 @@ function sendBrief(p) {
   }
   MailApp.sendEmail(opts);
 }
-
-// STUB. Replace with a real e-sign integration once Patrick picks a provider (see SETUP.md).
-// Never put API keys in this repo: store them in Script Properties.
-function sendNdaForSignature(p) {
-  if (NDA_PROVIDER === 'manual') {
-    MailApp.sendEmail({
-      to: NOTIFY_EMAIL,
-      subject: 'ACTION: send mutual NDA to ' + p.email,
-      body: 'Send the Eigen-Systems mutual NDA for e-signature to ' + (p.name || '') + ' <' + p.email + '> at ' +
-        (p.company || '') + '.\nNo e-sign provider is wired up yet (NDA_PROVIDER = manual).'
-    });
-    MailApp.sendEmail({
-      to: p.email, replyTo: NOTIFY_EMAIL, name: 'Patrick McCormick, EigenTunnel',
-      subject: 'EigenTunnel technical deep dive: next steps',
-      body: 'Hi ' + (p.name || 'there') + ',\n\nThanks for requesting the EigenTunnel technical deep dive. ' +
-        'Our mutual NDA will reach you for e-signature shortly. In the meantime, pick a time for the technical call: ' +
-        BOOK_CALL_URL + '\n\nPatrick McCormick\nEigen-Systems, Inc.\nPatent pending (U.S. Application No. 64/175,794).'
-    });
-    return 'pending-manual';
-  }
-  // TODO: 'dropboxsign' -> POST https://api.hellosign.com/v3/signature_request/send_with_template
-  // TODO: 'docusign'    -> Envelopes: create from template (JWT auth)
-  // TODO: 'pandadoc'    -> POST /public/v1/documents from template, then /send
-  throw new Error('NDA_PROVIDER ' + NDA_PROVIDER + ' not implemented yet');
-}
-
 
 function jsonResponse(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))
