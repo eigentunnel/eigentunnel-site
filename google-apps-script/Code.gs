@@ -23,6 +23,11 @@ function doPost(e) {
       return jsonResponse({ ok: false, error: 'Missing email' });
     }
 
+    // Lossy-link funnel (lossy-links/index.html): brief + NDA forms.
+    if (params.form === 'brief' || params.form === 'nda' || params.form === 'free') {
+      return handleFunnel(params);
+    }
+
     getSheet().appendRow([
       new Date(),
       params.source || '',
@@ -73,6 +78,142 @@ function buildEmailBody(p) {
     p.message || '(none)'
   ].join('\n');
 }
+
+/* ---------- Lossy-link funnel: scoring, gated brief, NDA ---------- */
+
+var FUNNEL_SHEET = 'Funnel';
+var BOOK_CALL_URL = 'https://calendar.app.google/K5anZSkG7kXmQUEX6';
+// Google Doc ID of docs/lossy-link-brief.md (optional). Leave '' to send the inline text below.
+var BRIEF_DOC_ID = '';
+// NDA e-sign: 'manual' (default stub), 'dropboxsign', 'docusign' or 'pandadoc'. See SETUP.md.
+var NDA_PROVIDER = 'manual';
+
+var FREE_MAIL = ['gmail.com','googlemail.com','yahoo.com','hotmail.com','outlook.com','live.com','msn.com',
+  'aol.com','icloud.com','me.com','mac.com','proton.me','protonmail.com','gmx.com','gmx.net','mail.com',
+  'yandex.com','zoho.com','hey.com','fastmail.com','tutanota.com','duck.com','comcast.net','att.net','verizon.net'];
+
+function scoreLead(p) {
+  var pts = 0, why = [];
+  var domain = String(p.email || '').split('@')[1] || '';
+  domain = domain.toLowerCase().trim();
+  var isGov = /\.(mil|gov)$/.test(domain) || /\.(mil|gov)\.[a-z]{2}$/.test(domain);
+  var isFree = FREE_MAIL.indexOf(domain) !== -1;
+  if (isGov) { pts += 3; why.push('.mil/.gov domain +3'); }
+  else if (isFree) { why.push('free-mail domain +0'); }
+  else if (domain) { pts += 2; why.push('corporate domain +2'); }
+
+  var role = String(p.role || '').toLowerCase();
+  var senior = /\b(chief|c[etios]o|cfo|president|founder|owner|vp|vice president|director|head|general manager|program manager|pm|peo|portfolio|principal|colonel|col|commander|cdr|capt|captain|gs-1[45]|ses)\b/.test(role);
+  var mid = /\b(manager|lead|architect|engineer|integrator|chief engineer|sme|scientist|officer)\b/.test(role);
+  var junior = /\b(student|intern|trainee)\b/.test(role);
+  if (senior) { pts += 2; why.push('senior role +2'); }
+  else if (mid) { pts += 1; why.push('practitioner role +1'); }
+  else if (junior) { pts -= 1; why.push('student/intern -1'); }
+
+  var tl = { 'now': 3, '3mo': 2, '6-12mo': 1, 'exploring': 0 }[p.timeline];
+  if (tl !== undefined) { pts += tl; why.push('timeline ' + p.timeline + ' +' + tl); }
+
+  if (['tactical-radio','satellite','cat-m','rail'].indexOf(p.network) !== -1) { pts += 2; why.push('target network +2'); }
+  if (/sensor|fusion|c2|command|isr|edge|uas|drone|radio|satcom|satellite|rail|ptc|wayside|post-quantum|pqc|quantum|cnsa|tactical|manet/i.test(p.use_case || '')) {
+    pts += 1; why.push('use-case keywords +1');
+  }
+  if (p.form === 'nda') { pts += 3; why.push('NDA requested +3'); }
+  if (p.gov_program === 'yes') { pts += 1; why.push('government program +1'); }
+  var free = p.form === 'free' || hasPriorFreeSignup(p.email);
+  if (free) { pts += 2; why.push('free sign-up +2'); }
+
+  var tier = pts >= 9 ? 'strong' : pts >= 5 ? 'medium' : 'weak';
+  // A .mil/.gov senior contact is strong even from the brief form.
+  if (isGov && senior) tier = 'strong';
+  // Free user who also requested the NDA is the strongest signal.
+  if (free && (p.form === 'nda' || hasPriorNda(p.email))) { tier = 'strong'; why.push('free user + NDA'); }
+  // Free mail is capped at medium.
+  if (isFree && tier === 'strong') { tier = 'medium'; why.push('capped: free mail'); }
+  return { tier: tier, points: pts, reasons: why, domain: domain };
+}
+
+function funnelRowsFor(email, form) {
+  var sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(FUNNEL_SHEET);
+  if (!sh || sh.getLastRow() < 2) return false;
+  var rows = sh.getRange(2, 2, sh.getLastRow() - 1, 5).getValues(); // Form..Email
+  email = String(email).toLowerCase();
+  return rows.some(function (r) { return r[0] === form && String(r[4]).toLowerCase() === email; });
+}
+function hasPriorFreeSignup(email) { return funnelRowsFor(email, 'free'); }
+function hasPriorNda(email) { return funnelRowsFor(email, 'nda'); }
+
+function handleFunnel(p) {
+  var s = scoreLead(p);
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName(FUNNEL_SHEET);
+  if (!sh) {
+    sh = ss.insertSheet(FUNNEL_SHEET);
+    sh.appendRow(['Timestamp','Form','Tier','Points','Name','Email','Company','Role','Use case','Network','Timeline','Gov program','Reasons','NDA status','Free option']);
+  }
+  var ndaStatus = '';
+  if (p.form === 'nda') ndaStatus = sendNdaForSignature(p);
+  sh.appendRow([new Date(), p.form, s.tier, s.points, p.name || '', p.email, p.company || '', p.role || '',
+    p.use_case || '', p.network || '', p.timeline || '', p.gov_program || '', s.reasons.join('; '), ndaStatus, p.free_option || '']);
+
+  if (p.form === 'brief') sendBrief(p);
+  // Free tier / hosted demo provisioning is a STUB: Patrick follows up manually until the
+  // free-tier and demo-gateway backends exist (see SETUP.md). No core binary is handed out.
+
+  var flag = s.tier === 'strong' ? '[STRONG LEAD] ' : '[' + s.tier + '] ';
+  MailApp.sendEmail({
+    to: NOTIFY_EMAIL,
+    subject: flag + 'EigenTunnel ' + ({nda:'NDA request',brief:'brief download',free:'free sign-up (' + (p.free_option||'') + ')'}[p.form]) + ': ' + (p.name || p.email) + (p.company ? ' (' + p.company + ')' : ''),
+    body: [
+      'Tier: ' + s.tier.toUpperCase() + ' (' + s.points + ' pts)',
+      'Why: ' + s.reasons.join('; '),
+      '',
+      'Form: ' + p.form, 'Name: ' + (p.name || ''), 'Email: ' + p.email, 'Company: ' + (p.company || ''),
+      'Role: ' + (p.role || ''), 'Network: ' + (p.network || ''), 'Timeline: ' + (p.timeline || ''),
+      'Government program: ' + (p.gov_program || ''), '', 'Use case:', p.use_case || '(n/a)',
+      '', p.form === 'nda' ? 'NDA: ' + ndaStatus : ''
+    ].join('\n')
+  });
+  return jsonResponse({ ok: true });
+}
+
+function sendBrief(p) {
+  var opts = { to: p.email, replyTo: NOTIFY_EMAIL, name: 'Patrick McCormick, EigenTunnel',
+    subject: 'Your EigenTunnel brief: Built for bad signal. Ready for quantum.' };
+  var intro = 'Hi ' + (p.name || 'there') + ',\n\nThanks for your interest in EigenTunnel. The brief is below' +
+    (BRIEF_DOC_ID ? ' and attached as a PDF' : '') + '. Reply to this email or book a call any time: ' + BOOK_CALL_URL + '\n\nPatrick McCormick\nEigen-Systems, Inc.\n\n';
+  if (BRIEF_DOC_ID) {
+    opts.attachments = [DriveApp.getFileById(BRIEF_DOC_ID).getAs('application/pdf').setName('EigenTunnel-Lossy-Link-Brief.pdf')];
+  }
+  opts.body = intro + BRIEF_TEXT;
+  MailApp.sendEmail(opts);
+}
+
+// STUB. Replace with a real e-sign integration once Patrick picks a provider (see SETUP.md).
+// Never put API keys in this repo: store them in Script Properties.
+function sendNdaForSignature(p) {
+  if (NDA_PROVIDER === 'manual') {
+    MailApp.sendEmail({
+      to: NOTIFY_EMAIL,
+      subject: 'ACTION: send mutual NDA to ' + p.email,
+      body: 'Send the Eigen-Systems mutual NDA for e-signature to ' + (p.name || '') + ' <' + p.email + '> at ' +
+        (p.company || '') + '.\nNo e-sign provider is wired up yet (NDA_PROVIDER = manual).'
+    });
+    MailApp.sendEmail({
+      to: p.email, replyTo: NOTIFY_EMAIL, name: 'Patrick McCormick, EigenTunnel',
+      subject: 'EigenTunnel technical deep dive: next steps',
+      body: 'Hi ' + (p.name || 'there') + ',\n\nThanks for requesting the EigenTunnel technical deep dive. ' +
+        'Our mutual NDA will reach you for e-signature shortly. In the meantime, pick a time for the technical call: ' +
+        BOOK_CALL_URL + '\n\nPatrick McCormick\nEigen-Systems, Inc.\nPatent pending (U.S. Application No. 64/175,794).'
+    });
+    return 'pending-manual';
+  }
+  // TODO: 'dropboxsign' -> POST https://api.hellosign.com/v3/signature_request/send_with_template
+  // TODO: 'docusign'    -> Envelopes: create from template (JWT auth)
+  // TODO: 'pandadoc'    -> POST /public/v1/documents from template, then /send
+  throw new Error('NDA_PROVIDER ' + NDA_PROVIDER + ' not implemented yet');
+}
+
+var BRIEF_TEXT = "\n## The short version\n\nEigenTunnel gives you quantum-resistant secure links that connect and stay up on the networks missions actually use: degraded tactical radio, satellite, Cat-M cellular and rail radio. The approach is patent pending (U.S. Application No. 64/175,794). We share technical detail and performance data with evaluation partners under a mutual NDA.\n\n## Why this matters now\n\nPost-quantum encryption is coming to every network that carries sensitive data. The new algorithms are stronger, but their setup messages are much larger than today's. On a clean office network that hardly matters. On a degraded radio net, a satellite pass or a low-power cellular modem, those larger setups often stall or fail outright. When the secure link cannot connect, operators either lose the connection or fall back to weaker protection. Neither is acceptable.\n\n## Outcomes you can expect to evaluate\n\n- Connects where ordinary VPN handshakes fail. EigenTunnel is designed to set up and renew quantum-resistant sessions over lossy, narrowband and intermittent links.\n- Stays secure through disruption. Sessions are built to keep fresh keys through dropouts, coverage gaps and planned outages, without downgrading protection.\n- Light on the link. Protected traffic adds little cost compared with sending the same traffic in the clear, which matters when every kilobit counts.\n- Ready for the post-quantum transition. Designed for standards-based post-quantum cryptography, alone or paired with today's classical algorithms.\n\n## Use cases\n\nSensor fusion and C2. Edge sensors and command-and-control nodes rarely get a clean pipe. EigenTunnel is built to carry secure backhaul from sensors to fusion and C2 systems over whatever link is available, so the data path stays protected when the network is at its worst. Integrators can embed it in sensor, edge and C2 platforms rather than bolting on a separate box.\n\nGovernment post-quantum transition. Agencies and programs are planning their move to quantum-resistant encryption, and deployed and remote users are the hardest part of that plan. EigenTunnel is designed to bring quantum-resistant protection to the far edge of the network, where the larger post-quantum setups are most likely to fail on conventional tools. It supports pairing post-quantum with classical algorithms during the transition.\n\nRail and critical infrastructure. Rail operations depend on narrowband radio and long, remote corridors with uneven coverage. EigenTunnel is built to keep wayside, onboard and back-office links secure through coverage gaps, without asking operators to replace the radios they already run.\n\n## Networks it is built for\n\n- Degraded tactical radio\n- Satellite\n- Cat-M cellular\n- Rail radio\n- Other lossy, narrowband or intermittent links (tell us about yours)\n\n## How a pilot works\n\n1. Scope it. A short call to pick one real link, the systems on each end and what success looks like for your team.\n2. Sign a mutual NDA. This opens the technical deep dive and performance data.\n3. Agree the plan. Test environment, measurements, acceptance criteria, schedule and any fees, all written down before work begins.\n4. Run it on your link. We test on your network or a faithful lab stand-in, side by side with what you use today.\n5. Decide. Review results and integration effort together, then proceed, adjust or stop.\n\n## Who we are\n\nEigen-Systems, Inc. is a US-owned Delaware corporation based in Omaha, Nebraska, and a member of the SOF RACER consortium. We partner with platform primes and integrators and support government evaluation and pilot programs.\n\n## Next step\n\nRequest the technical deep dive under NDA at https://eigentunnel.com/lossy-links/#deep-dive, or book a call: https://calendar.app.google/K5anZSkG7kXmQUEX6\n\nPatent pending (U.S. Application No. 64/175,794).\n";
 
 function jsonResponse(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))

@@ -81,3 +81,30 @@ this repo), the live URL does **not** pick up the change automatically:
 
 Workspace accounts get 1,500 `MailApp` emails/day and effectively unlimited
 Sheet writes for this volume — a lead form will never come close.
+
+## Lossy-link funnel (`lossy-links/`, DRAFT)
+
+The `lossy-links/` page posts three forms (`form=brief|free|nda`) to the same
+Web App. `Code.gs` scores each lead, writes it to a `Funnel` tab, emails
+`patrick@eigentunnel.com` (subject starts `[STRONG LEAD]` for strong leads),
+emails the gated brief to brief requesters, and runs the NDA step.
+
+After merging, redeploy as a **new version** (same URL). Until then, the live
+script still accepts these posts as plain leads.
+
+**Scoring** (`scoreLead`): .mil/.gov +3, corporate +2, free mail +0;
+senior role +2, practitioner +1, student/intern -1; timeline now +3, 3mo +2,
+6-12mo +1, exploring +0; target network +2; use-case keywords +1; NDA +3;
+government program +1; free sign-up +2. Strong >= 9, medium 5 to 8, weak <= 4.
+Overrides: .mil/.gov + senior = strong; free user + NDA = strong; free-mail
+domains capped at medium.
+
+**Stubs Patrick must decide:**
+- `NDA_PROVIDER`: `manual` today (emails Patrick an action item and tells the
+  lead the NDA is coming). Options: Dropbox Sign, DocuSign, PandaDoc (all have
+  template-send APIs). Put API keys in Script Properties, never in the repo.
+- Mutual NDA template to load into the chosen provider.
+- `BRIEF_DOC_ID`: optional Google Doc of `docs/lossy-link-brief.md` to attach as PDF.
+- Free tier and hosted demo provisioning: manual follow-up until built. Free
+  tier must never include the lossy-link capability; the demo must not hand out
+  a core binary. Full pilot only after the NDA is signed.
