@@ -106,3 +106,40 @@ domains capped at medium.
 - Free tier and hosted demo provisioning: manual follow-up until built. Free
   tier must never include the lossy-link capability; the demo must not hand out
   a core binary. Full pilot only after a call and a signed NDA.
+
+## Free-scan form (pilot/index.html)
+
+The `/pilot/` page now has a form that posts to the same Web App URL with
+`form=pilot` and `source=pilot`. Rows land on the **Funnel** tab with the same
+scoring as the lossy-link forms (Form column = `pilot`), plus: free scan
+requested +2, and OT / rail / utility / government segment +2.
+
+**Action:** paste the updated `Code.gs` into the Apps Script project, then
+**Deploy > Manage deployments > Edit (pencil) > Version: New version > Deploy**.
+Editing the existing deployment keeps the same `/exec` URL, so no site change
+is needed. Until you redeploy, pilot submissions fall through to the older
+`Leads` tab handler (still captured, just not scored).
+
+## Analytics and Search Console (placeholders, not active)
+
+Every public page has two commented-out slots in `<head>` marked `TODO(Patrick)`.
+No IDs are filled in.
+
+**Analytics choice: Cloudflare Web Analytics.**
+- US company (Cloudflare, Inc., San Francisco), free.
+- Cookieless and does not fingerprint visitors, so no cookie banner is needed.
+- Works on GitHub Pages without moving DNS: add the site under
+  dash.cloudflare.com > Analytics & Logs > Web Analytics > Add a site, choose the
+  JavaScript snippet option, and copy the token.
+- Considered and not chosen: Plausible and Simple Analytics (EU-based),
+  Fathom (Canada-based), GA4 (US, but cookie-based and heavier).
+
+To turn it on: replace `TODO_PASTE_TOKEN` in the Cloudflare snippet and remove
+the surrounding `<!-- -->` on each page (search the repo for `TODO(Patrick): Analytics`).
+
+**Search Console:** preferred method is a **Domain property** verified by a DNS
+TXT record at your DNS host (covers http, https and www, and needs no site
+change). If you use the HTML tag method instead, paste the token into the
+commented `google-site-verification` tag. Then submit
+`https://eigentunnel.com/sitemap.xml`. Also add the site to Bing Webmaster
+Tools (it can import from Search Console).

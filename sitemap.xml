@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://eigentunnel.com/</loc></url>
-  <url><loc>https://eigentunnel.com/product.html</loc></url>
-  <url><loc>https://eigentunnel.com/developers.html</loc></url>
-  <url><loc>https://eigentunnel.com/oem.html</loc></url>
-  <url><loc>https://eigentunnel.com/federal.html</loc></url>
-  <url><loc>https://eigentunnel.com/pricing.html</loc></url>
-  <url><loc>https://eigentunnel.com/about.html</loc></url>
-  <url><loc>https://eigentunnel.com/contact.html</loc></url>
-  <url><loc>https://eigentunnel.com/executive.html</loc></url>
-  <url><loc>https://eigentunnel.com/public-sector.html</loc></url>
-  <url><loc>https://eigentunnel.com/trust.html</loc></url>
-  <url><loc>https://eigentunnel.com/pilot/</loc></url>
+  <url><loc>https://eigentunnel.com/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/product.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/developers.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/oem.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/federal.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/pricing.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/about.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/contact.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/executive.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/public-sector.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/trust.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/pilot/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/guides/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/guides/cnsa-2-0-vpn/</loc><lastmod>2026-10-14</lastmod></url>
+  <!-- ADD AT PUBLISH (Patrick): uncomment when /lossy-links/ goes live with noindex removed.
+  <url><loc>https://eigentunnel.com/lossy-links/</loc><lastmod>2026-10-14</lastmod></url>
+  -->
+  <!-- ADD AT PUBLISH (Patrick): uncomment when the M-26-15 guide is approved and its noindex is removed.
+  <url><loc>https://eigentunnel.com/guides/omb-m-26-15/</loc><lastmod>2026-10-14</lastmod></url>
+  -->
+  <!-- ADD AT PUBLISH (Patrick): use-case pages, after removing their noindex and draft banner.
+  <url><loc>https://eigentunnel.com/use-cases/satellite/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/use-cases/rail/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/use-cases/cellular-iot/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://eigentunnel.com/use-cases/ports/</loc><lastmod>2026-10-14</lastmod></url>
+  -->
 </urlset>

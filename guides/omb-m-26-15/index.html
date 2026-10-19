@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OMB M-26-15 in Plain Language: Federal PQC Migration | EigenTunnel</title>
+<meta name="description" content="What OMB M-26-15 requires of federal civilian agencies, the key post-quantum migration dates, and why cryptographic inventory comes first.">
+<link rel="canonical" href="https://eigentunnel.com/guides/omb-m-26-15/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EigenTunnel">
+<meta property="og:title" content="OMB M-26-15 in Plain Language: Federal PQC Migration | EigenTunnel">
+<meta property="og:description" content="What OMB M-26-15 requires of federal civilian agencies, the key post-quantum migration dates, and why cryptographic inventory comes first.">
+<meta property="og:url" content="https://eigentunnel.com/guides/omb-m-26-15/">
+<meta property="og:image" content="https://eigentunnel.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="EigenTunnel: Built for bad signal. Ready for quantum.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OMB M-26-15 in Plain Language: Federal PQC Migration | EigenTunnel">
+<meta name="twitter:description" content="What OMB M-26-15 requires of federal civilian agencies, the key post-quantum migration dates, and why cryptographic inventory comes first.">
+<meta name="twitter:image" content="https://eigentunnel.com/assets/og-image.png">
+<!-- TODO(Patrick): Search Console verification. Paste the tag from search.google.com/search-console
+     (URL-prefix property, HTML tag method) and uncomment. Or verify by DNS TXT and delete this line.
+<meta name="google-site-verification" content="TODO_PASTE_TOKEN">
+-->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "02feb3ace23f453da4e8575dbf3267f1"}'></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://eigentunnel.com/#org", "name": "Eigen-Systems, Inc.", "alternateName": "EigenTunnel", "url": "https://eigentunnel.com/", "email": "patrick@eigentunnel.com", "logo": "https://eigentunnel.com/assets/og-image.png", "address": {"@type": "PostalAddress", "addressLocality": "Omaha", "addressRegion": "NE", "addressCountry": "US"}, "founder": {"@type": "Person", "name": "Patrick McCormick"}, "sameAs": ["https://github.com/eigentunnel"]}, {"@type": "WebSite", "@id": "https://eigentunnel.com/#website", "name": "EigenTunnel", "url": "https://eigentunnel.com/", "publisher": {"@id": "https://eigentunnel.com/#org"}}]}</script>
+
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/assets/style.css"><style>.guide{max-width:820px;margin:0 auto;padding:56px 6vw}.guide h2{margin-top:40px}.guide p,.guide li{line-height:1.65}.guide table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}.guide th,.guide td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}.guide th{background:var(--bg2)}.guide ol,.guide ul{padding-left:22px}.guide .note{color:var(--muted);font-size:14px}.guide .card{margin-top:32px}.guide a{overflow-wrap:anywhere}.guide .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}</style></head><body><a class="skip-link" href="#main">Skip to content</a>
+<div class="draft" style="background:#ffd38a;color:#3a2600;font-weight:600;text-align:center;padding:8px 16px">DRAFT for review. Not published. Remove this banner and the noindex tag at publish.</div><div class="promo-banner" role="region" aria-label="Limited offer"><p><strong>Limited offer</strong> 3 free on-site scans. Each runs for 1 to 2 weeks on a network you choose. No hardware to buy: we bring the EigenTunnel Scanner, which works fully air-gapped.</p><a class="btn btn-p" href="/pilot/">Claim a free scan</a></div><header>
+    <a class="brand" href="/index.html"><span class="mark">ET</span> EigenTunnel</a>
+    <nav class="primary">
+      <input type="checkbox" id="nav-toggle">
+      <label for="nav-toggle" class="hamburger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <div class="links">
+        <a href="/index.html">Home</a>
+        <a href="/executive.html">Business case</a><a href="/product.html">Technology</a>
+        <a href="/developers.html">Developers</a>
+        <a href="/oem.html">OEM</a>
+        <a href="/public-sector.html">Public sector</a>
+        <a href="/pricing.html">Pilots & licensing</a>
+        <a class="active" href="/guides/">Guides</a>
+        <a href="/pilot/">Free scan</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+      <a class="btn btn-p cta-link" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a>
+    </nav>
+  </header><main id="main">
+<article class="guide">
+<p class="kicker">Guide · Draft for review</p>
+<h1>OMB M-26-15 in plain language</h1>
+<p class="lede">In June 2026 the White House turned federal post-quantum planning into deadlines. Executive Order 14412 set the direction, and two days later OMB Memorandum M-26-15 told civilian agencies how to execute it. Here is what the memo asks for, when, and what it means for the teams doing the work.</p>
+
+<h2>The short version</h2>
+<ul>
+<li><strong>Who:</strong> federal civilian agencies. National Security Systems follow the NSA's separate CNSA 2.0 track. <a href="https://www.qusecure.com/industry/defense/">[3]</a></li>
+<li><strong>First deadline:</strong> a PQC migration plan to OMB and ONCD within 120 days of the memo, which works out to about October 22, 2026. <a href="https://postquantum.com/post-quantum/us-federal-pqc-mandate-2026/">[2]</a></li>
+<li><strong>End state:</strong> full migration of remaining federal civilian systems by 2035, in line with NSM-10. <a href="https://postquantum.com/post-quantum/us-federal-pqc-mandate-2026/">[2]</a></li>
+</ul>
+
+<h2>What the migration plan must contain</h2>
+<p>Reported summaries of the memo list these required elements: <a href="https://postquantum.com/post-quantum/us-federal-pqc-mandate-2026/">[2]</a></p>
+<ol>
+<li>Risk-based prioritization of systems</li>
+<li>Phased timelines</li>
+<li>An automated cryptographic inventory method</li>
+<li>A crypto-agility architecture plan</li>
+<li>Coordination with third parties and vendors</li>
+<li>Resource estimates</li>
+<li>Governance roles</li>
+</ol>
+
+<h2>Key dates</h2>
+<table>
+<thead><tr><th>Date</th><th>Milestone</th></tr></thead>
+<tbody>
+<tr><td>June 24, 2026</td><td>OMB M-26-15 issued</td></tr>
+<tr><td>About October 22, 2026</td><td>Agency PQC migration plans due to OMB and ONCD</td></tr>
+<tr><td>About March 2027</td><td>Federal CBOM standard expected (directed by EO 14412)</td></tr>
+<tr><td>December 31, 2030</td><td>Key-establishment migration for high-value assets and high-impact systems</td></tr>
+<tr><td>December 31, 2031</td><td>Digital-signature migration for those systems</td></tr>
+<tr><td>2035</td><td>Full migration of remaining federal civilian systems</td></tr>
+</tbody></table>
+<p class="note">Sources: <a href="https://postquantum.com/post-quantum/us-federal-pqc-mandate-2026/">[2]</a>, <a href="https://www.encryptionconsulting.com/pqc-for-government-defense-inventory-to-cnsa-2-0-execution/">[4]</a>. Verify against the memo text <a href="https://www.whitehouse.gov/wp-content/uploads/2026/06/M-26-15-Execution-of-the-Migration-to-Post-Quantum-Cryptography.pdf">[1]</a> before publishing.</p>
+
+<h2>Inventory comes first</h2>
+<p>The memo directs agencies toward automated inventories and a cryptographic bill of materials (CBOM): a structured list of where each algorithm, key, certificate, protocol and library is in use. <a href="https://postquantum.com/post-quantum/us-federal-pqc-mandate-2026/">[2]</a> The formal CBOM standard is not expected until about March 2027, so agencies are building toward it now rather than waiting.</p>
+
+<h2>Hybrid is a bridge, not the destination</h2>
+<p>Summaries note the memo describes hybrid classical-plus-post-quantum architectures as an intricate and resource-intensive stopgap. <a href="https://postquantum.com/post-quantum/us-federal-pqc-mandate-2026/">[2]</a> In practice, plan for crypto-agility: systems that can change algorithms by configuration instead of by replacement.</p>
+
+<h2>What to do this quarter</h2>
+<ol>
+<li>Find your cryptography. Start with network-facing services and the links you cannot easily patch.</li>
+<li>Rank systems by how long their data must stay secret and how hard they are to change.</li>
+<li>Pick one hard connection and run a scoped post-quantum pilot with written acceptance criteria.</li>
+</ol>
+
+<div class="card highlight">
+<h3>Built for bad signal. Ready for quantum.</h3>
+<p>EigenTunnel helps with steps one and three: an air-gapped on-site encryption scan, and post-quantum tunnels for difficult links. Patent pending (U.S. Application No. 64/175,794).</p>
+<div class="cta"><a class="btn btn-p" href="../../pilot/">Get a free on-site encryption scan</a><a class="btn" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Book a call</a></div>
+</div>
+
+<h2>Sources</h2>
+<ol class="sources">
+<li>OMB M-26-15, Execution of the Migration to Post-Quantum Cryptography: <a href="https://www.whitehouse.gov/wp-content/uploads/2026/06/M-26-15-Execution-of-the-Migration-to-Post-Quantum-Cryptography.pdf">whitehouse.gov</a></li>
+<li>US Federal PQC Mandate After June 2026: Complete Guide: <a href="https://postquantum.com/post-quantum/us-federal-pqc-mandate-2026/">postquantum.com</a></li>
+<li>QuSecure, Post-Quantum Cryptography for Defense (summary of M-26-15 scope): <a href="https://www.qusecure.com/industry/defense/">qusecure.com</a></li>
+<li>Encryption Consulting, PQC for Government and Defense: <a href="https://www.encryptionconsulting.com/pqc-for-government-defense-inventory-to-cnsa-2-0-execution/">encryptionconsulting.com</a></li>
+</ol>
+<p class="note">This guide is general information, not legal or compliance advice.</p>
+</article>
+</main><footer><a class="brand" href="/index.html">EigenTunnel · Eigen-Systems, Inc.</a><p>Early-stage software and scoped evaluations. Commercial readiness varies by capability.</p><p><a href="/about.html">About</a> · <a href="/developers.html">Developers</a> · <a href="/contact.html">Contact</a></p><p><a href="/trust.html">Evidence and limitations</a> · <a href="/federal.html">Federal civilian / defense</a></p><p>&copy; 2026 Eigen-Systems, Inc. EigenTunnel Scanner is a product of Eigen-Systems, Inc.</p></footer></body></html>
