@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-<div class="promo-banner" role="region" aria-label="Limited offer"><p><strong>Limited offer</strong> 3 free on-site scans. Each runs for 1 to 2 weeks on a network you choose. No hardware to buy: we bring the EigenTunnel Scanner, which works fully air-gapped.</p><a class="btn btn-p" href="https://calendar.app.google/K5anZSkG7kXmQUEX6" target="_blank" rel="noopener">Claim a free scan</a></div>
+<div class="promo-banner" role="region" aria-label="Limited offer"><p><strong>Limited offer</strong> 3 free on-site scans. Each runs for 1 to 2 weeks on a network you choose. No hardware to buy: we bring the EigenTunnel Scanner, which works fully air-gapped.</p><a class="btn btn-p" href="/pilot/#claim">Claim a free scan</a></div>
   <header>
     <a class="brand" href="index.html"><span class="mark">ET</span> EigenTunnel</a>
     <nav class="primary">
@@ -37,6 +37,7 @@
 
     <section class="tight">
       <div class="split">
+        <div class="form-panel">
         <form class="form-card" action="https://script.google.com/macros/s/AKfycbyHmYuK2raMMHFWlxOV9w1ERoaYtPuR9VeYa1m40m8Bi-xcGYrYbbtUtMRkAfAkWa6iiw/exec" method="POST" id="contact-form">
           <h3>Send us the details</h3>
           <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off">
@@ -69,8 +70,13 @@
             <textarea id="c-message" name="message" placeholder="Operating systems, node count, direct or self-hosted gateway test, and your intended use case."></textarea>
           </div>
           <button class="btn btn-p btn-block" type="submit">Send</button>
-          <p class="form-status" id="contact-status" role="status"></p>
+          <p class="form-status" id="contact-status" role="alert"></p>
         </form>
+        <div class="form-thanks form-card" hidden>
+          <h3>Message received</h3>
+          <p>We got your message and we'll reply soon.</p>
+        </div>
+        </div>
 
         <div class="stack">
           <article class="card">
