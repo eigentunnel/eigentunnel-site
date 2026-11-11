@@ -1,0 +1,36 @@
+# EigenTunnel
+
+> EigenTunnel is software from Eigen-Systems, Inc. for encrypted connections between systems, including a way to add quantum-resistant protection to selected traffic paths. Start with one connection, a scoped pilot, and evidence for the next decision.
+
+Relay connectivity is founder-tested. Payment and provisioning for EigenTunnel Console (the paid, managed service for setting up and running EigenTunnel connections) are unfinished. Independent cryptographic assessment is pending. This site is an evidence index for evaluation, not an independent audit or a product certification.
+
+## Public pages
+
+- [Home](https://eigentunnel.com/): A practical path to quantum-resistant connections for existing systems. Protection applies to traffic routed through EigenTunnel.
+- [Technology](https://eigentunnel.com/product.html): Direct or relayed connections between enrolled systems, and what a scoped evaluation does and does not show.
+- [Developers and labs](https://eigentunnel.com/developers.html): Free lab evaluation on infrastructure you host. Public Python tools are available; Core source stays private. Windows support is not established.
+- [OEM and integrators](https://eigentunnel.com/oem.html): Licensing for organizations that want EigenTunnel inside a product, appliance, managed service, or delivery motion.
+- [Federal civilian and defense](https://eigentunnel.com/federal.html): Bounded connection evaluations. Civilian and non-national-security migration planning and defense qualification are different contexts; neither is satisfied by an algorithm name or a lab result.
+- [Pilots and licensing](https://eigentunnel.com/pricing.html): Free lab, a quoted paid evaluation, commercial deployment, and OEM integration. There is no published standard subscription price; fees are in the written offer.
+- [About](https://eigentunnel.com/about.html): Eigen-Systems, Inc. builds EigenTunnel. The product was previously marketed as FreeQ.
+- [Contact](https://eigentunnel.com/contact.html): Talk with Eigen-Systems about lab review, private Core licensing, Console pilots, OEM partnerships, or federal program support.
+- [Executive brief](https://eigentunnel.com/executive.html): What EigenTunnel does, why a team might fund one evaluation, and the evidence needed before a wider deployment.
+- [Public sector](https://eigentunnel.com/public-sector.html): Direct and self-hosted gateway evaluations for public facilities and research labs, using synthetic traffic.
+- [Evidence and limitations](https://eigentunnel.com/trust.html): Claim register of what is demonstrated, what is proposed, and what remains open. Register reviewed September 6, 2026.
+- [Free on-site scans](https://eigentunnel.com/pilot/): Limited offer of 3 free on-site EigenTunnel Scanner scans, 1 to 2 weeks each, on a network you choose. The scanner is air-gapped. No hardware to buy.
+
+## Linked from those pages
+
+- [Capability register (JSON)](https://eigentunnel.com/assets/capability-status.json): Dated claims and limits, linked from the evidence page.
+- [GitHub organization](https://github.com/eigentunnel): Public organization page. The eigentunnel-core and eigentunnel-cloud repositories are private.
+- [Public lab tools](https://github.com/eigentunnel/eigentunnel-lab): Python tools for offline analysis of supplied synthetic observations.
+
+## Limits stated on the site
+
+- The private cnsa2 profile uses X25519, ML-KEM-1024, ML-DSA-87, and AES-256-GCM. It has developer-test evidence. No CNSA qualification is claimed.
+- A founder-reported relay test ran macOS to AWS to macOS, with the far endpoint behind Starlink NAT. That report does not establish which cryptographic profile was used.
+- An August 9 release build succeeded for macOS and Linux, ARM64 and x86-64. Windows is not established.
+- EigenTunnel Scanner is a CBOM discovery prototype. Laboratory testing on the site says it builds and runs on Red Hat Enterprise Linux 10.2 and was tested on RHEL 9.8 in FIPS mode. The register states that FIPS 140-3 validation is not claimed.
+- OSCAL SSP, POA&M, AP, and AR drafts target v1.2.2. The recorded schema audit failed all four. No FedRAMP authorization, CJIS compliance, or independent audit is claimed.
+- Console payment and provisioning are unfinished. Fleet enrollment, approvals, and dashboards remain roadmap.
+- Rail use is a proposed research evaluation. No rail deployment, signaling approval, or safety integrity level is claimed.
